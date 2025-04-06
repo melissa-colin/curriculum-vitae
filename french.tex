@@ -109,9 +109,10 @@
 \setlist[itemize,1]{label=-, left=0.1cm, itemsep=0pt, topsep=0pt, parsep=0pt, partopsep=0pt}
 
 % -------------------- Sizes
-\def\margin{0.5cm}
+\def\margin{0.4cm}
 \def\headerHeight{5cm}
 \def\spaceBetweenContent{0.2cm}
+\def\linkSize{5cm}
 \def\squareSize{\dimexpr\headerHeight-\margin*2\relax}
 \def\triangleSize{\margin}
 
@@ -119,13 +120,13 @@
 \newlength{\contentWidth}
 \setlength{\contentWidth}{\dimexpr\paperwidth - (\margin*2)\relax}
 \newlength{\blockWidth}
-\setlength{\blockWidth}{\dimexpr (\paperwidth - \margin*6)/2\relax}
+\setlength{\blockWidth}{\dimexpr (\paperwidth - \margin*7)/2\relax}
 
 % Définition de \topContent, \contentHeight, \textTop et \textHeight
 \def\topContent{(\headerHeight + \spaceBetweenContent + \margin)}
 \def\contentHeight{\dimexpr\paperheight - \topContent - \margin\relax}
 \def\textTop{(\headerHeight+\margin+\spaceBetweenContent)}
-\def\textHeight{(\contentHeight - \margin)}
+\def\textHeight{(\contentHeight - \margin*2)}
 
 % Espaces entre les lignes
 \def\spaceSections{0.15cm}
@@ -192,6 +193,8 @@
 \newcommand{\location}{Bordeaux et périphérie}
 \newcommand{\linkedin}{https://urlr.me/Bpqxd}
 \newcommand{\phone}{+33 7 82 52 XX XX}
+% \newcommand{\phone}{+33 7 82 52 XX XX}
+\newcommand{\search}{Stage de recherche dans le domaine de l’Intelligence Artificielle, sur la période du 26 mai au 29 août 2025, pour une durée de plus de deux mois.}
 
 
 % -------------------- Header shape
@@ -276,12 +279,12 @@
       xshift=\margin + 0.5cm,
       yshift=-\margin - 1.5cm,
       text=white,
-      font=\fontsize{12}{16}\selectfont,
+      font=\fontsize{13}{16}\selectfont,
       align=left
-    ] at (current page.north west) {\parbox{14cm}{\robotoMonoL{\cvdesc}}};
+    ] at (current page.north west) {\parbox{(\paperwidth-\squareSize-\margin*4)}{\robotoMonoL{\cvdesc}}};
 
     % Ligne 1 rangé 1
-    \node[anchor=north west, xshift=\margin + 0.5cm, yshift=-\margin - 3cm, text=white] at (current page.north west) {
+    \node[anchor=north west, xshift=\margin*2, yshift=-\margin - 2.9cm, text=white] at (current page.north west) {
     \begin{tabular}{@{}lll@{}}
         \includegraphics[height=0.5cm]{github.png} & 
         \hspace{-0.3cm}\raisebox{0.1cm}{\href{\github}{\poppinsL{\fontsize{9}{12}\selectfont\textcolor{white}{\github}}}}
@@ -289,7 +292,7 @@
     };
 
     % Ligne 1 rangé 2
-    \node[anchor=north west, xshift=\margin + 5cm, yshift=-\margin - 3cm, text=white] at (current page.north west) {
+    \node[anchor=north west, xshift=\margin*2 + \linkSize, yshift=-\margin - 2.9cm, text=white] at (current page.north west) {
     \begin{tabular}{@{}lll@{}}
         \includegraphics[height=0.5cm]{medium.png} & 
         \hspace{-0.3cm}\raisebox{0.1cm}{\href{\medium}{\poppinsL{\fontsize{9}{12}\selectfont\textcolor{white}{\medium}}}}
@@ -297,7 +300,7 @@
     };
 
     % Ligne 1 rangé 3
-    \node[anchor=north west, xshift=\margin + 10cm, yshift=-\margin - 3cm, text=white] at (current page.north west) {
+    \node[anchor=north west, xshift=\margin*2 + \linkSize*2, yshift=-\margin - 2.9cm, text=white] at (current page.north west) {
     \begin{tabular}{@{}lll@{}}
         \includegraphics[height=0.5cm, height=0.5cm, trim=0 0.8 0 0, clip]{email.png} & 
         \hspace{-0.3cm}\raisebox{0.1cm}{\href{mailto:\email}{\poppinsL{\fontsize{9}{12}\selectfont\textcolor{white}{\email}}}}
@@ -306,7 +309,7 @@
 
 
     % Ligne 2 rangé 1
-    \node[anchor=north west, xshift=\margin + 0.5cm, yshift=-\margin - 3.8cm, text=white] at (current page.north west) {
+    \node[anchor=north west, xshift=\margin*2, yshift=-\margin - 3.8cm, text=white] at (current page.north west) {
         \begin{tabular}{@{}lll@{}}
             \includegraphics[height=0.5cm]{location.png} & 
             \hspace{-0.3cm}\raisebox{0.1cm}{\poppinsL{\fontsize{9}{12}\selectfont\textcolor{white}{\location}}}
@@ -314,7 +317,7 @@
     };
 
     % Ligne 2 rangé 2
-    \node[anchor=north west, xshift=\margin + 5cm, yshift=-\margin - 3.8cm, text=white] at (current page.north west) {
+    \node[anchor=north west, xshift=\margin*2 + \linkSize, yshift=-\margin - 3.8cm, text=white] at (current page.north west) {
     \begin{tabular}{@{}lll@{}}
         \includegraphics[height=0.5cm]{linkedin.png} & 
         \hspace{-0.3cm}\raisebox{0.1cm}{\href{\linkedin}{\poppinsL{\fontsize{9}{12}\selectfont\textcolor{white}{\linkedin}}}}
@@ -322,7 +325,7 @@
     };
 
     % Ligne 2 rangé 3
-    \node[anchor=north west, xshift=\margin + 10cm, yshift=-\margin - 3.8cm, text=white] at (current page.north west) {
+    \node[anchor=north west, xshift=\margin*2 + \linkSize*2, yshift=-\margin - 3.8cm, text=white] at (current page.north west) {
     \begin{tabular}{@{}lll@{}}
         \includegraphics[height=0.5cm, trim=0 4 0 0, clip]{phone.png} & 
         \hspace{-0.3cm}\raisebox{0.1cm}{\poppinsL{\fontsize{9}{12}\selectfont\textcolor{white}{\phone}}}
@@ -330,6 +333,28 @@
     };
 
   \end{tikzpicture}
+}
+
+% -------------------- Search bar
+\newcommand{\searchbar}{
+  \begin{tikzpicture}[remember picture,overlay]
+    % Rectangle gris arrondi avec bordure
+    \draw[gray, line width=2.5pt, rounded corners=10pt]
+      ([xshift=\margin*2, yshift=-\headerHeight-(\margin/2)]current page.north west)
+      rectangle
+      ([xshift=-\squareSize-\margin*2, yshift=-\headerHeight-\margin*2.5]current page.north east);
+    \fill[white, rounded corners=10pt]
+      ([xshift=\margin*2, yshift=-\headerHeight-(\margin/2)]current page.north west)
+      rectangle
+      ([xshift=-\squareSize-\margin*2, yshift=-\headerHeight-\margin*2.5]current page.north east);
+      % Loupe à gauche
+      \node[anchor=west, xshift=\margin+0.6cm, yshift=-\headerHeight-(\margin)-1.9mm, opacity=0.5] at (current page.north west) {
+        \includegraphics[height=0.5cm]{glass.png}
+      };
+      \node[anchor=west, xshift=\margin+1.2cm, yshift=-\headerHeight-(\margin)-1.9mm, text=black, font=\fontsize{8}{9}\selectfont] at (current page.north west) {
+        \parbox{14.4cm}{\robotoMonoL{\search}}
+      };
+    \end{tikzpicture}
 }
 
 % -------------------- Content shape
@@ -367,7 +392,7 @@
         ([xshift=(\margin*2), yshift=-\textTop]current page.north west)
         rectangle
         ([xshift=-(\margin*2), yshift=-\textHeight]current page.north east);
-    \node[anchor=north west, xshift=\dimexpr (\margin*3) + \blockWidth\relax, yshift=-\textTop, text=black, font=\normalsize] at (current page.north west) {%
+    \node[anchor=north west, xshift=\dimexpr (\margin*4) + \blockWidth\relax, yshift=-\textTop, text=black, font=\normalsize] at (current page.north west) {%
       \begin{minipage}{\blockWidth}%
         \BODY
       \end{minipage}%
@@ -391,24 +416,23 @@
 
 \NewEnviron{leftarrowbox}{
   \begin{tikzpicture}[overlay, remember picture]
-    \node[anchor=north west, xshift=0, yshift=-1.5cm] at (0, 0) {\arrowup{3.5}};
+    \node[anchor=north west, xshift=0, yshift=-1.55cm] at (0, 0) {\arrowup{3.5}};
   \end{tikzpicture}
-  \hspace*{0.25cm}
-  \begin{minipage}{(\blockWidth-0.4cm)}%
+  \hspace*{0.05cm}
+  \begin{minipage}{(\blockWidth-0.05cm)}%
    \BODY
   \end{minipage}%
 }
 
 \NewEnviron{dendleftarrowbox}{
   \begin{tikzpicture}[overlay, remember picture]
-    \node[anchor=north west, xshift=0, yshift=-0.35cm] at (0, 0) {\wtffsdyfjfgd{1.1}};
+    \node[anchor=north west, xshift=0, yshift=-0.35cm] at (0, 0) {\wtffsdyfjfgd{1.15}};
   \end{tikzpicture}
-  \hspace*{0.25cm}
-  \begin{minipage}{(\blockWidth-0.4cm)}%
+  \hspace*{0.05cm}
+  \begin{minipage}{(\blockWidth-0.05cm)}%
    \BODY
   \end{minipage}%
 }
-
 
 
 % -------------------- Document
@@ -425,19 +449,19 @@
     
       \vspace{\spaceSections} 
       \subsection{Bibliothèques et frameworks}
-      OpenCV, Pythorch, Tensorflow, Numpy, Pendas, scikit-learn, GradCam, LIME, SHAP
+      OpenCV, PyTorch, TensorFlow, NumPy, Pandas, scikit-learn, Grad-CAM, LIME, SHAP
     
       \vspace{\spaceSections} 
       \subsection{IA, data, et computer vision}
-      Prétraitement de la donnée, MLOps, évaluation, explicabilité, Deep learning,  CNN,  transformer, ViT, encoder-decoder, attention
+      Prétraitement des données, MLOps, évaluation, explicabilité, Deep Learning, CNN, transformer, ViT, encoder-decoder, attention
     
       \vspace{\spaceSections} 
       \subsection{Logiciels et outils}
-      Excel, Docker, Elasticsearch, LaTex, Kubeflow, Kubernetes, Canva, Git/Github
+      Excel, Docker, Elasticsearch, LaTeX, Kubeflow, Kubernetes, Canva, Git/GitHub
     
       \vspace{\spaceSections} 
       \subsection{Langues}
-      Français, anglais (B1), Chinois (A1), espagnol (A2)
+      Français, anglais (B1), chinois (A1), espagnol (A2)
     
       \vspace{\spaceSections} 
       \subsection{Méthodes Agiles / SCRUM}
@@ -446,11 +470,11 @@
     \subsection{RGPD et IA Act}
     
       \vspace{\spaceSections} 
-    \subsection{SoftSkills}
+    \subsection{Soft Skills}
       Curiosité, organisation, leadership, collaboration, adaptabilité
   \section{Publications}
   \textcolor{darkgray}{Colin, M. (2024) \textit{YOLOv8 Explained: Understanding Object Detection from Scratch}. Medium. \href{https://medium.com/@melissa.colin/yolov8-explained-understanding-object-detection-from-scratch-763479652312}{\textcolor{darkgray}{\faPaperclip}}}\\ \\
-    \textbf{Colin, M.}, \& \textbf{hraibi Kaadoud, I.} (2024). \textit{Performances et explicabilité de ViT et d’architectures CNN : une étude empirique utilisant LIME, SHAP et GradCam}. RJCIA (PFIA 2024). \href{https://hal.science/hal-04641791v1}{\faPaperclip}
+    \textbf{Colin, M.}, \& \textbf{Hraibi Kaadoud, I.} (2024). \textit{Performances et explicabilité de ViT et d’architectures CNN : une étude empirique utilisant LIME, SHAP et Grad-CAM}. RJCIA (PFIA 2024). \href{https://hal.science/hal-04641791v1}{\faPaperclip}
   \section{Associatif}
   \subsection{Responsable Networking}
   \job{ai4industry}{10/2024 -- ...}
@@ -466,7 +490,7 @@
   \vspace{-0.5cm}
 
   \section{Centres d'intérêts}
-  Audio-visuel : Montage vidéo, cadrage, prise et retouche photos\\
+  Audiovisuel : Montage vidéo, cadrage, prise et retouche photos\\
   Sport : Demi-fond et escalade
 \end{area-left}
 
@@ -476,13 +500,12 @@
       \job{Développeuse IA (alternance)}{07/2023 -- 09/2024}
       \begin{leftarrowbox}
         \begin{itemize}
-          \item Tri, analyse et statistiques des données.
-          \item Mise en place de processus de QA/QC.
-          \item Développement de pipeline d’entrainement (MLOps).
-          \item Optimisation des hyperparamètres et entrainement de modèles de détection et de reconnaissance d’actions.
-          \item Amélioration des modèles (60\% → 90\% de pertinence) et de leur compréhension (XAI : IA Explicable).
-          \item Réduction du temps d’inférence des modèles de 70 \%.
           \item Développement d'une nouvelle méthode IA de reconnaissance des comportements suspects.
+          \item Amélioration des modèles (60\% → 90\% de pertinence) et de leur compréhension (XAI : IA Explicable).
+          \item Optimisation des hyperparamètres et entraînement de modèles de détection et de reconnaissance d’actions.
+          \item Développement de pipelines d’entraînement (MLOps).
+          \item Réduction du temps d’inférence des modèles de 70\%.
+          \item Tri, analyse, statistiques et mise en place de processus de QA/QC pour une grande quantitée des données.
         \end{itemize}
       \end{leftarrowbox}
       \vspace{\spaceSections} 
@@ -490,21 +513,20 @@
       \begin{dendleftarrowbox}
 
         \begin{itemize}
-          \item Optimisation et amélioration d’algorithmes
-          \item Développement et test en Python
-          \item Entraînement de modèles de détections d’objets
+          \item Développement, tests et optimisation d’algorithmes en Pyhton.
+          \item Entraînement de modèles de détection d’objets.
         \end{itemize}
       \end{dendleftarrowbox}
 
       \vspace{\spaceSections} 
-    \subsection{eveho (Cenon)}
+    \subsection{Eveho (Cenon)}
       \job{Chargée de projet web (stagiaire)}{06/2022 -- 08/2022}
 
     \subsection{COACHINTERNET (Mérignac)}
       \job{Webmaster (stagiaire)}{05/2022 -- 06/2022}
 
     \subsection{Superprof}
-      \job{Professeur particulier de mathématiques}{12/2018 -- 12/2021}
+      \job{Professeure particulière de mathématiques}{12/2018 -- 12/2021}
 
   \vspace{-0.5cm}
   \section{Formations}
@@ -514,10 +536,10 @@
       % Spécialisation en Intelligence Artificielle prévue en 3ᵉ année.
 
       \vspace{\spaceSections}
-      \subsection{Titre RNCP de niveau 6 : Développeur IA}
+      \subsection{Titre RNCP de niveau 6 : Développeuse IA}
       \job{EPSI (Bordeaux)}{09/2021 -- 09/2024}
       VidAI : Outil web simplifiant l'édition vidéo grâce à une assistance IA.\\ \\
-      EcoSort : Application mobile pour le tri des déchets via reconnaissance d’image et géolocalisation, gagnante d'une compétition nationale d'innovation.
+      EcoSort : Application mobile pour le tri des déchets via reconnaissance d’image et géolocalisation, gagnante d'une compétition nationale d'innovation. \href{https://www.youtube.com/watch?v=GGjImtkW-us}{\faPaperclip}
 
       \vspace{\spaceSections}
       \subsection{BTS Services informatiques aux organisations}
@@ -527,10 +549,11 @@
 
       \vspace{\spaceSections}
       \subsection{Baccalauréat Sciences et Technologies de l'Industrie et du Développement Durable}
-      \job{Lycée les iris (Lormont)}{09/2019 -- 09/2021}
-      Option SIN : Système d'Information et Numérique 
+      \job{Lycée Les Iris (Lormont)}{09/2019 -- 09/2021}
+      Option SIN : Systèmes d'Information et Numérique 
 
 
 \end{area-right}
+\searchbar
 
 \end{document}
