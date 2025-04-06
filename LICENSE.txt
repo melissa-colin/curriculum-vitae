@@ -1,0 +1,5 @@
+Copyright Mélissa Colin 2025
+
+All rights reserved.
+
+Unauthorized copying, reuse, modification, or distribution of this work, including the LaTeX source code and any compiled outputs (e.g., PDF), is strictly prohibited without prior written consent from the author.
