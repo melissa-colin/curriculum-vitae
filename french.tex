@@ -223,9 +223,9 @@
   % Triangles dans chaque coin du carré vide
   % Coin bas droite
    \fill[headerRed, opacity=0.9] 
-    ([xshift=(-\margin*2), yshift=-0.1mm-(\margin*2+\squareSize)]current page.north east)
-    -- ([xshift=(-\margin*2-\triangleSize), yshift=-0.1mm-(\margin*2+\squareSize)]current page.north east)
-    -- ([xshift=(-\margin*2), yshift=-0.1mm-(\margin*2+\squareSize)+\triangleSize]current page.north east)
+    ([xshift=0.1mm+(-\margin*2), yshift=-0.1mm-(\margin*2+\squareSize)]current page.north east)
+    -- ([xshift=0.1mm+(-\margin*2-\triangleSize), yshift=-0.1mm-(\margin*2+\squareSize)]current page.north east)
+    -- ([xshift=0.1mm+(-\margin*2), yshift=-0.1mm-(\margin*2+\squareSize)+\triangleSize]current page.north east)
     -- cycle;
 
   % Coin haut-droit
@@ -251,9 +251,15 @@
 
 
     % Image portrait
-    \node[anchor=north east, xshift=-\margin*2, yshift=-\margin*2] at (current page.north east) {
+    \begin{scope}
+      \clip[rounded corners=5pt]
+        ([xshift=-\margin*2, yshift=-\margin*2]current page.north east) 
+        rectangle ++(-\squareSize, -\squareSize);
+      \node[anchor=north east, xshift=-\margin*2, yshift=-\margin*2] at (current page.north east) {
         \includegraphics[width=\squareSize]{pdp.png}
-    };
+      };
+    \end{scope}
+    
 
     % Nom
     \node[
