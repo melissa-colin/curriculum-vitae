@@ -1,0 +1,283 @@
+% Le code complet est trop long pour une seule réponse.
+% Voici la première partie. Je t'envoie la suite dans un second message.
+
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot,
+    top=1.5 cm,
+    bottom=1.5 cm,
+    left=1.5 cm,
+    right=1.5 cm,
+    footskip=1.0 cm,
+]{geometry}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{primaryColor}{RGB}{0, 0, 0}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage{amsmath}
+\usepackage[
+    pdftitle={Mélissa Colin's CV},
+    pdfauthor={Mélissa Colin},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref}
+\usepackage[pscoord]{eso-pic}
+\usepackage{calc}
+\usepackage{bookmark}
+\usepackage{lastpage}
+\usepackage{changepage}
+\usepackage{paracol}
+\usepackage{ifthen}
+\usepackage{needspace}
+\usepackage{iftex}
+
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage{charter}
+
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt}
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\columnsep}{0.15cm}
+\pagenumbering{gobble}
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{-1pt}{0.3 cm}{0.2 cm}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$}
+
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0 cm + 10pt
+    ]
+}{
+    \end{itemize}
+}
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+}
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{0 cm + 0.00001 cm}{0 cm + 0.00001 cm}
+}{
+    \end{adjustwidth}
+}
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+}
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \setcolumnwidth{, \fill, 4.5 cm}
+    \begin{paracol}{3}
+    {\raggedright #2} \switchcolumn
+}{
+    \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+}
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+}
+\newcommand{\placelastupdatedtext}{%
+  \AddToShipoutPictureFG*{%
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{Last updated in July 2025}
+    }}}%
+  }%
+}
+\let\hrefWithoutArrow\href
+\begin{document}
+
+
+    \begin{header}
+        \fontsize{25 pt}{25 pt}\selectfont Mélissa Colin
+
+        \vspace{5 pt}
+
+        \normalsize
+        % \fontsize{13 pt}{13 pt}\selectfont Engineering student specializing in deep learning and AI, aspiring to contribute to groundbreaking research at Google in machine learning and computer vision.\\
+        \fontsize{13 pt}{13 pt}\selectfont CS student specializing in AI, passionate about using technology to drive positive impact. Dedicated to academic excellence, research, and leadership as a woman in tech.\\
+        \normalsize
+        \vspace{4pt}
+        \faMapMarker*~Bordeaux, France \quad | \quad \faPhone*~+33 7 82 52 XX XX \quad | \quad \faEnvelope~\href{mailto:melissa.colin@enseirb-matmeca.fr}{melissa.colin@enseirb-matmeca.fr}\\
+        \faGlobe~\href{https://melissacolin.ai}{melissacolin.ai} \quad | \quad \faLinkedin~\href{https://www.linkedin.com/in/m%C3%A9lissa-colin/}{LinkedIn} \quad | \quad \faGithub~\href{https://github.com/melissa-colin}{GitHub}
+    \end{header}
+
+\vspace{0.2cm}
+
+\section{About me}
+    \begin{onecolentry}
+        % \textbf{Languages:} French (Native), English (B1 - 640 points on TOEIC), Spanish (A2), Chinese (Mandarin) (A1)
+        \textbf{Languages:} French (Native speaker), English (B2), Chinese (Mandarin) (A1)
+    \end{onecolentry}
+\vspace{0.1 cm}
+\begin{onecolentry}
+    \textbf{Programming Languages:} C, Python, SQL, JavaScript \\
+    \textbf{Machine Learning, data, AI Tools:} TensorFlow, NumPy, PyTorch, Keras, scikit-learn, Pandas, OpenCV \\
+    \textbf{DevOps, MLOps:} Docker, Kubeflow, Kubernetes \\
+    \textbf{Others:} LaTeX, Git/GitHub, Agile Methods / SCRUM, GDPR
+\end{onecolentry}
+\vspace{0.1 cm}
+\begin{onecolentry}
+    \textbf{Soft Skills:} Curiosity, Organization, Leadership, Collaboration, Adaptability
+\end{onecolentry}
+\vspace{0.1 cm}
+    \begin{onecolentry}
+        \textbf{Interests:} Middle-distance running, climbing, photography and video editing.
+    \end{onecolentry}
+% \vspace{0.1 cm}
+%     \begin{onecolentry}
+%         \textbf{References available upon request.}
+%     \end{onecolentry}
+
+
+\vspace{0.3cm}
+\section*{Education}
+
+\textbf{ENSEIRB-MATMECA, Bordeaux INP} — \textit{Engineer Diploma in Computer Science (Master's degree)} \hfill \textbf{2024 - 2027} \\
+\textit{Rank:} 3\textsuperscript{rd} out of 93 students \hfill \textit{GPA: 3.7/4.0} \\
+% \textit{Specialization:} Deep Learning and Artificial Intelligence \\
+\textit{Track:} Engineer-Doctor\\
+\textit{Relevant coursework:} Bash, Linux, C, GDB, Make; Computer Architecture; Functional Programming (JS); Algorithms; Numerical Methods; Probability; Machine Learning; Graph Theory; Operational Research; Computer Networks; LaTeX\\
+\textit{Projects:} Development of \textit{Little Town} and \textit{Quoridor} games in C with strategy algorithms (graphs algorithms and minmax); implementation of a \textit{pacman} game in JavaScript with functional programming.
+
+\vspace{0.3cm}
+
+\textbf{EPSI Bordeaux} — \textit{Bachelor in Artificial Intelligence and Data Science} \hfill \textbf{2023 – 2024} \\
+\textit{Valedictorian} \hfill \textit{GPA: 3.804/4.0} \\
+Professional training in data science and AI with a focus on practical application in industry.\\
+\textit{Relevant coursework:} Python; Data Mining; Data Engineering; Data Processing; Machine Learning; Computer Vision; SQL; Software Testing; Model Evaluation; Agile Project Management.
+
+\vspace{0.3cm}
+
+\textbf{EPSI Bordeaux} — \textit{Higher National Diploma in IT Services for Organizations (equivalent to Associate Degree) } \hfill \textbf{2021 – 2023} \\
+\textit{Valedictorian} \hfill \textit{GPA: 3.337/4.0} \\
+Two-year technical degree focused on software development and business information systems.\\
+\textit{Track:} Software Solutions and Business Applications (SLAM)\\
+\textit{Relevant coursework:} Linux; Web Programming (HTML, CSS, PHP, JavaScript); Cybersecurity; Python; C\# Testing; SEO and Digital Marketing (Google Ads, SEM); Communication; Management and Project Planning.
+
+\vspace{0.3cm}
+
+
+\textbf{Lycée Les Iris, Lormont} — \textit{Baccalauréat STI2D (Science and Technology for Industry and Sustainable Development) equivalent to High School Diploma} \hfill \textbf{2021} \\
+\textit{Valedictorian} \hfill \textit{GPA: 3.7/4.0} \\
+Engineering-oriented high school diploma with technical specialization.
+
+\textit{Relevant coursework:} Mathematics; Physics and Chemistry; Digital Information Systems; Sustainable Industrial Design.\\
+\textit{Final project:} Designed and prototyped a connected smart pet food dispenser.
+
+\vspace{0.3cm}
+\section{Publications}
+   \vspace{0.1 cm}
+    \begin{onecolentry}
+        \textbf{Colin, M.} YOLOv8 Explained: Understanding Object Detection from Scratch. \textit{Medium}, 2024. (\href{https://medium.com/@melissa.colin/yolov8-explained-understanding-object-detection-from-scratch-763479652312}{Link to Article})
+    \end{onecolentry}
+    \vspace{0.1 cm}
+   \begin{onecolentry}
+     \textbf{Colin, M.}, Chraibi Kaadoud, I. "Performances and Explainability of ViT and CNN Architectures: An Empirical Study Using LIME, SHAP, and GradCam," \textit{RJCIA (PFIA 2024)}, La Rochelle, France (\href{https://medium.com/@melissa.colin/yolov8-explained-understanding-object-detection-from-scratch-763479652312}{Link to Paper})
+ \end{onecolentry}
+
+
+\vspace{0.3cm}
+\section*{Professional Experience}
+\textbf{R\&D AI engineer Intern — Sector Group, Paris France} \hfill \textit{Jun 2025 – Aug 2025}
+\begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=1.5pt, parsep=0pt]
+    \item Researched critical system certification (IEC 61508) for AI-based components.
+    \item Designed a secure RAG (Retrieval-Augmented Generation) system for internal knowledge analysis.
+    \item Explored visual information extraction from degraded complex diagrams.
+\end{itemize}
+\vspace{0.3cm}
+
+\textbf{AI Developer (Apprenticeship) — Cali Intelligences, Talence France} \hfill \textit{Jul 2023 – Sep 2024}
+\begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=1.5pt, parsep=0pt]
+        \item Implemented QA/QC processes, including data sorting and statistical analysis for more than 1M videos. Thereby improving detection model accuracy from 60\% to 90\%.
+        \item Developed MLOps pipelines for AI training, optimizing hyperparameters and improving data augmentation.
+        \item Conducted research on a new method for action recognition and reducing inference latency by 70\%.
+        \item Appointed Data Lead: responsible for dataset management and the main point of contact for all data-related needs within the company.
+        \item Initiated and led monthly awareness sessions to educate the team on responsible AI practices, bias mitigation, and compliance (e.g. GDPR, AI Act).
+\end{itemize}
+\vspace{0.3cm}
+
+\textbf{Python Developer Intern — Cali Intelligences, Talence France} \hfill \textit{Jan 2023 – Mar 2023}
+\begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=1.5pt, parsep=0pt]
+    \item Developed object detection pipelines with OpenCV and PyTorch.
+    \item Optimized inference routines for real-time use cases.
+\end{itemize}
+\vspace{0.3cm}
+\textbf{Web Project Intern — Eveho, Cenon France } \hfill \textit{Jun 2022 – Aug 2022}
+\vspace{0.3cm}
+
+\textbf{Webmaster Intern - COACHINTERNET.FR, Mérignac France} \hfill \textit{May 2022 – Jun 2022}
+\vspace{0.3cm}
+\section*{Leadership \& Engagement}
+
+
+\textbf{Vice President — Forum Ingenib, Bordeaux INP} \hfill \textbf{2025–present} \\
+Leading the organization of Bordeaux INP’s largest engineering job fair, welcoming over 1,500 students and 100+ companies annually, including top French tech employers. \\
+Managed a team of 20 students across 4 departments (Communication, Corporate Relations, Treasury, and Logistics). I structured regular follow-ups, set clear goals, and motivated teams — especially the Corporate Relations division, the most critical and resource-intensive. My leadership enabled us to maintain strong partnerships and ensure the event's continued success and national impact.
+
+\vspace{0.3cm}
+
+\textbf{Training Lead — Eirb’IA (AI Student Club)} \hfill \textbf{2025–present} \\
+Currently designing the official course curriculum and internal AI training program for voluntary student members for the 2025/2026 academic year.\\
+This includes course content creation (intro to AI, ML projects, ethics), timeline planning, and onboarding strategies. My initiative aims to strengthen the club’s technical culture and train future contributors, positioning Eirb’IA as a leading AI community within the school.
+
+\vspace{0.3cm}
+
+\textbf{Networking Coordinator — ai4industry (France-wide AI workshop)} \hfill \textbf{2024–present} \\
+Single-handedly organized a large-scale academic networking session aimed at promoting doctoral studies among Master's and final-year engineering students in AI.\\
+Planned the full-day schedule, communication strategy, and on-site operations. Personally contacted and coordinated 30+ researchers from labs across France, distributing them across various workshops, booths, and panels. \\
+Promoted the event in front of several amphitheaters, led a roundtable discussion, and managed support staff to ensure seamless execution on the day of the event.
+
+\vspace{0.3cm}
+
+\textbf{Campus Ambassador — Capgemini Engineering} \hfill \textbf{2025–present} \\
+Act as an intermediary between Capgemini and engineering students, promoting opportunities and organizing events to connect academia and industry.
+
+\vspace{0.3cm}
+\textbf{Masculine Contraception Awareness - (ENSC \& Planning Familial)} \hfill \textbf{2022–2024} \\
+Participated in weekly “permanences” (open clinics) to raise awareness of male contraception options, particularly thermal methods. \\
+I engaged in one-on-one conversations with men to provide information, challenge taboos, and promote a shared approach to reproductive responsibility. This experience enhanced my communication skills, empathy, and reinforced my commitment to inclusive health advocacy.
+
+
+\end{document}
