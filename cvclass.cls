@@ -218,15 +218,22 @@
 
 
     % Image portrait
-    \begin{scope}
+    % \begin{scope}
+    %   \clip[rounded corners=5pt]
+    %     ([xshift=-\margin*2, yshift=-\margin*2]current page.north east) 
+    %     rectangle ++(-\squareSize, -\squareSize);
+    %   \node[anchor=north east, xshift=-\margin*2, yshift=-\margin*2] at (current page.north east) {
+    %     \includegraphics[width=\squareSize]{\profilepicture}
+    %   };
+    % \end{scope}
+     \begin{scope}
       \clip[rounded corners=5pt]
-        ([xshift=-\margin*2, yshift=-\margin*2]current page.north east) 
-        rectangle ++(-\squareSize, -\squareSize);
-      \node[anchor=north east, xshift=-\margin*2, yshift=-\margin*2] at (current page.north east) {
-        \includegraphics[width=\squareSize]{\profilepicture}
+      ([xshift=-\margin*1.5, yshift=-\margin*2]current page.north east) 
+      rectangle ++(-\squareSize, -\squareSize);
+      \node[anchor=north east, xshift=-\margin*1.5, yshift=-\margin*2] at (current page.north east) {
+      \includegraphics[width=\squareSize]{\profilepicture}
       };
-    \end{scope}
-    
+    \end{scope}   
 
     % Nom
     \node[
@@ -287,8 +294,10 @@
     % Ligne 2 rangé 1
     \node[anchor=north west, xshift=\margin*2, yshift=-\margin - 3.8cm, text=white] at (current page.north west) {
         \begin{tabular}{@{}lll@{}}
-            \includegraphics[height=0.5cm]{location.png} & 
-            \hspace{-0.3cm}\raisebox{0.1cm}{\poppinsL{\fontsize{9}{12}\selectfont\textcolor{white}{\location }}}
+            % \includegraphics[height=0.5cm]{location.png} & 
+            % \hspace{-0.3cm}\raisebox{0.1cm}{\poppinsL{\fontsize{9}{12}\selectfont\textcolor{white}{\location }}}
+            \includegraphics[height=0.5cm]{link.png} & 
+          \hspace{-0.3cm}\raisebox{0.1cm}{\href{\website}{\poppinsL{\fontsize{9}{12}\selectfont\textcolor{white}{\website }}}}
         \end{tabular}
     };
     % Texte invisible superposé au logo pour les ATS
