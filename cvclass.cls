@@ -413,7 +413,7 @@
 
 \NewEnviron{leftarrowbox}{
   \begin{tikzpicture}[overlay, remember picture]
-    \node[anchor=north west, xshift=0, yshift=-1.55cm] at (0, 0) {\arrowup{3.5}};
+    \node[anchor=north west, xshift=0, yshift=-1.75cm] at (0, 0) {\arrowup{4.}};
   \end{tikzpicture}
   \hspace*{0.05cm}
   \begin{minipage}{(\blockWidth-0.05cm)}%
@@ -423,7 +423,7 @@
 
 \NewEnviron{dendleftarrowbox}{
   \begin{tikzpicture}[overlay, remember picture]
-    \node[anchor=north west, xshift=0, yshift=-0.35cm] at (0, 0) {\wtffsdyfjfgd{1.15}};
+    \node[anchor=north west, xshift=0, yshift=-0.3cm] at (0, 0) {\wtffsdyfjfgd{1.}};
   \end{tikzpicture}
   \hspace*{0.05cm}
   \begin{minipage}{(\blockWidth-0.05cm)}%
