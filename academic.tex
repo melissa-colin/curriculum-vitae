@@ -3,21 +3,25 @@
 % --- Packages ---
 \usepackage[
     ignoreheadfoot,
-    top=1.25 cm,
-    bottom=1.25 cm,
-    left=1.25 cm,
-    right=1.25 cm,
-    footskip=1.25 cm,
+    top=1.2 cm,
+    bottom=1.2 cm,
+    left=1.2 cm,
+    right=1.2 cm,
+    footskip=1.0 cm,
 ]{geometry}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{fontawesome5}
 \usepackage[dvipsnames]{xcolor}
+
+% --- DÉFINITION DE TON ROUGE ---
+\definecolor{MyRed}{RGB}{160, 20, 40} % Ou remplacer par MidnightBlue si tu préfères un bleu foncé
+
 \usepackage[
     pdftitle={Melissa Colin CV},
     pdfauthor={Melissa Colin},
     colorlinks=true,
-    urlcolor=MidnightBlue
+    urlcolor=MyRed
 ]{hyperref}
 \usepackage{paracol} 
 
@@ -29,52 +33,59 @@
 \setlength{\parindent}{0pt}
 \setlength{\columnsep}{0.6cm}
 
-% --- SECTION FORMATTING ---
+% --- SECTION FORMATTING (EN ROUGE) ---
 \titleformat{\section}
-  {\large\bfseries\scshape\raggedright\color{MidnightBlue}} 
+  {\large\bfseries\scshape\raggedright\color{MyRed}} 
   {} 
   {0em} 
   {} 
   [\titlerule]
 
-\titlespacing{\section}{0pt}{10pt}{4pt} 
+\titlespacing{\section}{0pt}{8pt}{4pt} 
 
-% Custom itemize (Compact but safe)
+% Custom itemize
 \setlist[itemize]{leftmargin=*, noitemsep, topsep=1pt, partopsep=0pt, parsep=0pt} 
 
 % --- Macros ---
 \newcommand{\entry}[4]{
   \noindent \textbf{#1} \hfill #2 \\
-  \textit{#3} \hfill \textit{#4} \par % \par assure la fin du paragraphe proprement
+  \textit{#3} \hfill \textit{#4} \par 
 }
 
 \begin{document}
 
 % --- HEADER ---
 \begin{center}
-    {\fontsize{22}{22}\selectfont \textbf{Mélissa COLIN}} \\[3pt]
-    \textbf{AI \& Computer Vision Student | Aspiring Research Scientist} \\[3pt]
+    {\fontsize{22}{22}\selectfont \textbf{Mélissa COLIN}} \\[5pt] % Un peu plus d'espace sous le nom
+    % AJOUT DE \large ICI POUR GROSSIR LE TITRE
+    {\large \textbf{AI \& Deep Learning Student | Aspiring Research Scientist}} \\[5pt] 
+    
+    \small{ % Contact un peu plus petit pour laisser la vedette au titre
     \faMapMarker* Bordeaux, France \quad | \quad \faPhone* +33 7 82 52 XX XX \quad | \quad \faEnvelope~ \href{mailto:melissa.colin@enseirb-matmeca.fr}{melissa.colin@enseirb-matmeca.fr} \\
     \faGlobe~ \href{https://melissacolin.ai}{melissacolin.ai} \quad | \quad \faLinkedin~ \href{https://www.linkedin.com/in/m%C3%A9lissa-colin/}{LinkedIn} \quad | \quad \faGithub~ \href{https://github.com/melissa-colin}{GitHub}
+    }
 \end{center}
 
 % --- SUMMARY ---
 \vspace{2pt}
-\small{\textit{Incoming Visiting Research Student at UAlberta (Mitacs Globalink Awardee). Top 3\% Engineering Student specializing in Deep Learning and Computer Vision. Seeking a Research Scientist Internship (Feb 2027) to leverage expertise in MLOps, RAG systems, and Interpretability (XAI).}}
-
+% J'ai remis \small ici pour que ce bloc soit bien distinct du corps du texte
+{\small
+\textit{Incoming Visiting Research Student at UAlberta (Mitacs Globalink Awardee). Top 3\% Engineering Student focused on Fundamental Deep Learning. Seeking a Research Scientist Internship (Feb 2027) to contribute to the design of \textbf{novel neural architectures (Post-Transformer)} and \textbf{Multimodal Foundation Models}.}
+}
 % --- RESEARCH & AWARDS ---
 \section{Research \& Academic Honors}
 
-\entry{Mitacs Globalink Research Award}{2026}{Highly selective grant for international research excellence (Top-tier funding).}{}
-% Suppression du vspace négatif problématique ici
+\entry{Mitacs Globalink Research Award}{2026}{Highly selective grant for international research excellence (Top-tier funding).}{Edmonton, Canada}
+
 \begin{itemize}
     \item Selected to join the \textbf{Vision and Learning Lab (UAlberta)} under Prof. Li Cheng.
-    \item \textbf{Project:} Developing quantum-enhanced computer vision algorithms for behavioral analysis.
+    % \item \textbf{Project:} Developing quantum-enhanced computer vision algorithms for behavioral analysis.
 \end{itemize}
 
 \vspace{6pt}
 
-\entry{Published Paper (PFIA 2024)}{La Rochelle, France}{Colin, M. \& Chraibi Kaadoud, I. "Performances and Explainability of ViT and CNN Architectures"}{}
+\entry{Published Paper (PFIA 2024)}{2024}{Colin, M. \& Chraibi Kaadoud, I. "Performances and Explainability of ViT and CNN Architectures"}{La Rochelle, France}
+
 \begin{itemize}
     \item Conducted an empirical study comparing Vision Transformers and CNNs using \textbf{LIME, SHAP, and Grad-CAM}.
     \item Link to paper: \href{https://hal.science/hal-04641791}{HAL Science Archive}
@@ -86,14 +97,14 @@
 \entry{ENSEIRB-MATMECA, Bordeaux INP}{Sep 2024 -- Sep 2027 (Expected)}{M.Sc. in Computer Science \& Engineering (Diplôme d'ingénieur)}{GPA: 3.7/4.0}
 \begin{itemize}
     \item \textbf{Rank:} 3\textsuperscript{rd} / 93 (Top 3\%). \textbf{Track:} Research Focus (Engineer-Doctor).
-    \item \textbf{Relevant Coursework:} Graph Theory, Advanced Algorithms, Numerical Methods, Machine Learning.
+    \item \textbf{Relevant Coursework:} Graph Theory, Advanced Algorithms, Numerical Methods, Machine/Deep Learning, Game Theory.
 \end{itemize}
 
 \vspace{6pt}
 
 \entry{EPSI Bordeaux}{Sep 2023 -- Sep 2024}{B.Sc. in AI \& Data Science (Valedictorian)}{GPA: 3.8/4.0}
 \begin{itemize}
-    \item Ranked 1\textsuperscript{st} in cohort. Focused on Data Mining, Model Evaluation, and SQL optimization.
+    \item \textbf{Ranked 1\textsuperscript{st}} in cohort. Focused on Data Mining, Model Evaluation, and SQL optimization.
 \end{itemize}
 
 % --- EXPERIENCE ---
@@ -102,7 +113,7 @@
 \entry{Sector Group}{Jun 2025 -- Aug 2025}{R\&D AI Engineer Intern}{Paris, France}
 \begin{itemize}
     \item \textbf{Secure RAG System:} Engineered a Retrieval-Augmented Generation pipeline achieving \textbf{70\% recall} and \textbf{100\% reliability} on specialized internal queries by implementing multi-format document analysis.
-    \item \textbf{AI Strategy:} Audited compliance with \textbf{IEC 61508} safety standards for critical AI components.
+    % \item \textbf{AI Strategy:} Audited compliance with \textbf{IEC 61508} safety standards for critical AI components.
     \item \textbf{Leadership:} Trained 9 managers on AI integration strategies, achieving a 100\% satisfaction rate.
 \end{itemize}
 
@@ -125,7 +136,7 @@
 % --- SKILLS ---
 \section{Technical Skills}
 \begin{itemize}
-    \item \textbf{Languages:} Python (Expert), SQL, C, C++, JavaScript, R.
+    \item \textbf{Languages:} Python (Expert), SQL, C, JavaScript.
     \item \textbf{Deep Learning \& CV:} PyTorch, TensorFlow, OpenCV, Transformers (ViT), YOLO, CNNs, Attention.
     \item \textbf{Data Science \& XAI:} Pandas, NumPy, scikit-learn, Grad-CAM, LIME, SHAP.
     \item \textbf{MLOps \& Tools:} Docker, Kubernetes, Git, Linux/Bash, LaTeX.
