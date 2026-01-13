@@ -1,272 +1,144 @@
 \documentclass[10pt, letterpaper]{article}
 
-% Packages:
+% --- Packages ---
 \usepackage[
     ignoreheadfoot,
-    top=1.0 cm,
-    bottom=1.0 cm,
-    left=1.0 cm,
-    right=1.0 cm,
-    footskip=1.0 cm,
+    top=1.25 cm,
+    bottom=1.25 cm,
+    left=1.25 cm,
+    right=1.25 cm,
+    footskip=1.25 cm,
 ]{geometry}
 \usepackage{titlesec}
-\usepackage{tabularx}
-\usepackage{array}
-\usepackage[dvipsnames]{xcolor}
-\definecolor{primaryColor}{RGB}{0, 0, 0}
 \usepackage{enumitem}
 \usepackage{fontawesome5}
-\usepackage{amsmath}
+\usepackage[dvipsnames]{xcolor}
 \usepackage[
-    pdftitle={Mélissa Colin's CV},
-    pdfauthor={Mélissa Colin},
-    pdfcreator={LaTeX with RenderCV},
+    pdftitle={Melissa Colin CV},
+    pdfauthor={Melissa Colin},
     colorlinks=true,
-    urlcolor=primaryColor
+    urlcolor=MidnightBlue
 ]{hyperref}
-\usepackage[pscoord]{eso-pic}
-\usepackage{calc}
-\usepackage{bookmark}
-\usepackage{lastpage}
-\usepackage{changepage}
-\usepackage{paracol}
-\usepackage{ifthen}
-\usepackage{needspace}
-\usepackage{iftex}
+\usepackage{paracol} 
 
-\ifPDFTeX
-    \input{glyphtounicode}
-    \pdfgentounicode=1
-    \usepackage[T1]{fontenc}
-    \usepackage[utf8]{inputenc}
-    \usepackage{lmodern}
-\fi
+% --- Fonts ---
+\usepackage{charter} 
 
-\usepackage{charter}
-
-\raggedright
-\AtBeginEnvironment{adjustwidth}{\partopsep0pt}
+% --- Settings ---
 \pagestyle{empty}
-\setcounter{secnumdepth}{0}
 \setlength{\parindent}{0pt}
-\setlength{\topskip}{0pt}
-\setlength{\columnsep}{0.15cm}
-\pagenumbering{gobble}
+\setlength{\columnsep}{0.6cm}
 
-\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+% --- SECTION FORMATTING ---
+\titleformat{\section}
+  {\large\bfseries\scshape\raggedright\color{MidnightBlue}} 
+  {} 
+  {0em} 
+  {} 
+  [\titlerule]
 
-\titlespacing{\section}{-1pt}{0.3 cm}{0.2 cm}
+\titlespacing{\section}{0pt}{10pt}{4pt} 
 
-\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$}
+% Custom itemize (Compact but safe)
+\setlist[itemize]{leftmargin=*, noitemsep, topsep=1pt, partopsep=0pt, parsep=0pt} 
 
-\newenvironment{highlights}{
-    \begin{itemize}[
-        topsep=0.10 cm,
-        parsep=0.10 cm,
-        partopsep=0pt,
-        itemsep=0pt,
-        leftmargin=0 cm + 10pt
-    ]
-}{
-    \end{itemize}
+% --- Macros ---
+\newcommand{\entry}[4]{
+  \noindent \textbf{#1} \hfill #2 \\
+  \textit{#3} \hfill \textit{#4} \par % \par assure la fin du paragraphe proprement
 }
-\newenvironment{highlightsforbulletentries}{
-    \begin{itemize}[
-        topsep=0.10 cm,
-        parsep=0.10 cm,
-        partopsep=0pt,
-        itemsep=0pt,
-        leftmargin=10pt
-    ]
-}{
-    \end{itemize}
-}
-\newenvironment{onecolentry}{
-    \begin{adjustwidth}{0 cm + 0.00001 cm}{0 cm + 0.00001 cm}
-}{
-    \end{adjustwidth}
-}
-\newenvironment{twocolentry}[2][]{
-    \onecolentry
-    \def\secondColumn{#2}
-    \setcolumnwidth{\fill, 4.5 cm}
-    \begin{paracol}{2}
-}{
-    \switchcolumn \raggedleft \secondColumn
-    \end{paracol}
-    \endonecolentry
-}
-\newenvironment{threecolentry}[3][]{
-    \onecolentry
-    \def\thirdColumn{#3}
-    \setcolumnwidth{, \fill, 4.5 cm}
-    \begin{paracol}{3}
-    {\raggedright #2} \switchcolumn
-}{
-    \switchcolumn \raggedleft \thirdColumn
-    \end{paracol}
-    \endonecolentry
-}
-\newenvironment{header}{
-    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
-}{
-    \par\kern\topsep
-}
-\newcommand{\placelastupdatedtext}{%
-  \AddToShipoutPictureFG*{%
-    \put(
-        \LenToUnit{\paperwidth-2 cm-0 cm+0.05cm},
-        \LenToUnit{\paperheight-1.0 cm}
-    ){\vtop{{\null}\makebox[0pt][c]{
-        \small\color{gray}\textit{Last updated in July 2025}
-    }}}%
-  }%
-}
-\let\hrefWithoutArrow\href
+
 \begin{document}
 
+% --- HEADER ---
+\begin{center}
+    {\fontsize{22}{22}\selectfont \textbf{Mélissa COLIN}} \\[3pt]
+    \textbf{AI \& Computer Vision Student | Aspiring Research Scientist} \\[3pt]
+    \faMapMarker* Bordeaux, France \quad | \quad \faPhone* +33 7 82 52 XX XX \quad | \quad \faEnvelope~ \href{mailto:melissa.colin@enseirb-matmeca.fr}{melissa.colin@enseirb-matmeca.fr} \\
+    \faGlobe~ \href{https://melissacolin.ai}{melissacolin.ai} \quad | \quad \faLinkedin~ \href{https://www.linkedin.com/in/m%C3%A9lissa-colin/}{LinkedIn} \quad | \quad \faGithub~ \href{https://github.com/melissa-colin}{GitHub}
+\end{center}
 
-    \begin{header}
-        \fontsize{25 pt}{25 pt}\selectfont Mélissa Colin
+% --- SUMMARY ---
+\vspace{2pt}
+\small{\textit{Incoming Visiting Research Student at UAlberta (Mitacs Globalink Awardee). Top 3\% Engineering Student specializing in Deep Learning and Computer Vision. Seeking a Research Scientist Internship (Feb 2027) to leverage expertise in MLOps, RAG systems, and Interpretability (XAI).}}
 
-        \vspace{5 pt}
+% --- RESEARCH & AWARDS ---
+\section{Research \& Academic Honors}
 
-        \normalsize
-        \fontsize{11.5 pt}{11.5 pt}\selectfont Computer Science student specializing in AI, seeking a 17-week R\&D internship (May 18 - Sept 25)\\
-        % \fontsize{13 pt}{13 pt}\selectfont CS student specializing in AI, passionate about using technology to drive positive impact. Dedicated to academic excellence, research, and leadership as a woman in tech.\\
-        \normalsize
-        \vspace{4pt}
-        \faMapMarker*~Bordeaux, France \quad | \quad \faPhone*~+33 7 82 52 XX XX \quad | \quad \faEnvelope~\href{mailto:melissa.colin@enseirb-matmeca.fr}{melissa.colin@enseirb-matmeca.fr}\\
-        \faGlobe~\href{https://melissacolin.ai}{melissacolin.ai} \quad | \quad \faLinkedin~\href{https://www.linkedin.com/in/m%C3%A9lissa-colin/}{LinkedIn} \quad | \quad \faGithub~\href{https://github.com/melissa-colin}{GitHub}
-    \end{header}
-
-\vspace{0.2cm}
-
-\section{About me}
-    \begin{onecolentry}
-        % \textbf{Languages:} French (Native), English (B1 - 640 points on TOEIC), Spanish (A2), Chinese (Mandarin) (A1)
-        \textbf{Languages:} French (Native speaker), English (B2), Chinese (Mandarin) (A1)
-    \end{onecolentry}
-\vspace{0.1 cm}
-\begin{onecolentry}
-    \textbf{Programming Languages:} C, C++, Python, SQL, JavaScript \\
-    \textbf{Machine Learning, data, AI Tools:} TensorFlow, NumPy, PyTorch, Keras, scikit-learn, Pandas, OpenCV, YOLO, Ollama \\
-    \textbf{MLOps:} Docker, Kubeflow, Kubernetes \\
-    \textbf{Others:} LaTeX, Git/GitHub, Agile Methods / SCRUM, GDPR
-\end{onecolentry}
-\vspace{0.1 cm}
-\begin{onecolentry}
-    \textbf{Soft Skills:} Curiosity, Organization, Leadership, Collaboration, Adaptability
-\end{onecolentry}
-\vspace{0.1 cm}
-    \begin{onecolentry}
-        \textbf{Interests:} Middle-distance running, climbing, photography and video editing.
-    \end{onecolentry}
-% \vspace{0.1 cm}
-%     \begin{onecolentry}
-%         \textbf{References available upon request.}
-%     \end{onecolentry}
-
-
-\vspace{0.3cm}
-\section*{Education}
-
-\textbf{ENSEIRB-MATMECA, Bordeaux INP} — \textit{Engineer Diploma in Computer Science (Master's degree)} \hfill \textbf{2024 - 2027} \\
-\textit{Rank:} 3\textsuperscript{rd} out of 93 students \hfill \textit{GPA: 3.7/4.0} \\
-% \textit{Specialization:} Deep Learning and Artificial Intelligence \\
-\textit{Track:} Engineer-Doctor\\
-\textit{Relevant coursework:} Algorithms; Numerical Methods; Machine Learning; Graph Theory; Data Science\\
-% \textit{Projects:} Development of \textit{Little Town} and \textit{Quoridor} games in C with strategy algorithms (graphs algorithms and minmax); implementation of a \textit{pacman} game in JavaScript with functional programming.
-
-\vspace{0.3cm}
-
-\textbf{EPSI Bordeaux} — \textit{Bachelor in Artificial Intelligence and Data Science} \hfill \textbf{2023 – 2024} \\
-\textit{Valedictorian} \hfill \textit{GPA: 3.804/4.0} \\
-% Professional training in data science and AI with a focus on practical application in industry.\\
-\textit{Relevant coursework:} Data Mining/ Engineering and Processing; Machine Learning; SQL; Model Evaluation
-\vspace{0.3cm}
-
-\textbf{EPSI Bordeaux} — \textit{Higher National Diploma in IT Services for Organizations (equivalent to Associate Degree) } \hfill \textbf{2021 – 2023} \\
-\textit{Valedictorian} \hfill \textit{GPA: 3.337/4.0} \\
-Two-year technical degree focused on software development and business information systems.\\
-\textit{Track:} Software Solutions and Business Applications (SLAM)\\
-% \textit{Relevant coursework:} Linux; Web Programming (HTML, CSS, PHP, JavaScript); Cybersecurity; Python; C\# Testing; SEO and Digital Marketing (Google Ads, SEM); Communication; Management and Project Planning.
-
-\vspace{0.3cm}
-
-
-\textbf{Lycée Les Iris, Lormont} — \textit{Baccalauréat STI2D (Science and Technology for Industry and Sustainable Development) equivalent to High School Diploma} \hfill \textbf{2021} \\
-\textit{Valedictorian} \hfill \textit{GPA: 3.7/4.0} \\
-% Engineering-oriented high school diploma with technical specialization.
-
-% \textit{Relevant coursework:} Mathematics; Physics and Chemistry; Digital Information Systems; Sustainable Industrial Design.\\
-% \textit{Final project:} Designed and prototyped a connected smart pet food dispenser.
-
-\vspace{0.3cm}
-\section{Publications}
-   \vspace{0.1 cm}
-    \begin{onecolentry}
-        \textbf{Colin, M.} YOLOv8 Explained: Understanding Object Detection from Scratch. \textit{Medium}, 2024. (\href{https://medium.com/@melissa.colin/yolov8-explained-understanding-object-detection-from-scratch-763479652312}{Link to Article})
-    \end{onecolentry}
-    \vspace{0.1 cm}
-   \begin{onecolentry}
-     \textbf{Colin, M.}, Chraibi Kaadoud, I. "Performances and Explainability of ViT and CNN Architectures: An Empirical Study Using LIME, SHAP, and GradCam," \textit{RJCIA (PFIA 2024)}, La Rochelle, France (\href{https://hal.science/hal-04641791}{Link to Paper})
- \end{onecolentry}
-
-
-\vspace{0.3cm}
-\section*{Professional Experience}
-\textbf{R\&D AI engineer Intern — \href{https://www.sector-group.net/}{Sector Group}, Paris France} \hfill \textit{Jun 2025 – Aug 2025}
-\begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=1.5pt, parsep=0pt]
-    \item Trained 9 managers on AI implementation achieving 100\% satisfaction rate and triggering immediate knowledge-sharing sessions in their teams by conducting 1-hour individual trainings and producing a strategic report of AI actions to deploy per department.
-    \item Designed a secure RAG system achieving 100\% reliability on tested cases and 70\% information retrieval capability by integrating a multi-format analysis pipeline and testing on 100+ queries.
-    \item Researched critical system certification standards (IEC 61508) for AI-based component integration.
+\entry{Mitacs Globalink Research Award}{2026}{Highly selective grant for international research excellence (Top-tier funding).}{}
+% Suppression du vspace négatif problématique ici
+\begin{itemize}
+    \item Selected to join the \textbf{Vision and Learning Lab (UAlberta)} under Prof. Li Cheng.
+    \item \textbf{Project:} Developing quantum-enhanced computer vision algorithms for behavioral analysis.
 \end{itemize}
-\vspace{0.3cm}
 
-\textbf{AI Developer (Apprenticeship) — \href{https://www.cali-intelligences.com/}{Cali Intelligences}, Talence France} \hfill \textit{Jul 2023 – Sep 2024}
-\begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=1.5pt, parsep=0pt]
-        \item Reduced theft detection false positives by 50\% by developing an innovative AI method that separately processes pause data, object detection, and container compliance.
-        \item Improved model accuracy from 60\% to 90\% by implementing QA/QC processes on 100k images and 10k videos and optimizing hyperparameters using explainable AI techniques (LIME, SHAP, Grad-CAM).
-        \item Reduced model inference time by 70\% by optimizing architecture and deployment pipelines.
-        \item Accelerated training cycles by ~7 hours by developing MLOps pipelines for a dozen object detection models, automating data preparation and parameter configuration.
-        \item Developed a post-detection correction algorithm achieving 100\% accuracy in recovering tracking jumps and ID inversions, ensuring continuous object tracking.
-        \item Appointed Data Lead: responsible for dataset management and the main point of contact for all data-related needs within the company.
-        \item Initiated and led monthly awareness sessions to educate the team on responsible AI practices, bias mitigation, and compliance (e.g. GDPR, AI Act).
+\vspace{6pt}
+
+\entry{Published Paper (PFIA 2024)}{La Rochelle, France}{Colin, M. \& Chraibi Kaadoud, I. "Performances and Explainability of ViT and CNN Architectures"}{}
+\begin{itemize}
+    \item Conducted an empirical study comparing Vision Transformers and CNNs using \textbf{LIME, SHAP, and Grad-CAM}.
+    \item Link to paper: \href{https://hal.science/hal-04641791}{HAL Science Archive}
 \end{itemize}
-\vspace{0.3cm}
 
-\textbf{Python Developer Intern — \href{https://www.cali-intelligences.com/}{Cali Intelligences}, Talence France} \hfill \textit{Jan 2023 – Mar 2023}
-\begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=1.5pt, parsep=0pt]
-    \item Mastered object detection fundamentals by developing and testing Python algorithms with OpenCV and PyTorch to gain proficiency in the company's core technologies.
+% --- EDUCATION ---
+\section{Education}
+
+\entry{ENSEIRB-MATMECA, Bordeaux INP}{Sep 2024 -- Sep 2027 (Expected)}{M.Sc. in Computer Science \& Engineering (Diplôme d'ingénieur)}{GPA: 3.7/4.0}
+\begin{itemize}
+    \item \textbf{Rank:} 3\textsuperscript{rd} / 93 (Top 3\%). \textbf{Track:} Research Focus (Engineer-Doctor).
+    \item \textbf{Relevant Coursework:} Graph Theory, Advanced Algorithms, Numerical Methods, Machine Learning.
 \end{itemize}
-\vspace{0.3cm}
-\textbf{Web Project Intern — \href{https://eveho.io/}{eveho}, Cenon France } \hfill \textit{Jun 2022 – Aug 2022}
-\vspace{0.3cm}
 
-\textbf{Webmaster Intern — COACHINTERNET.FR, Mérignac France} \hfill \textit{May 2022 – Jun 2022}
-\vspace{0.3cm}
-\section*{Engagement}
-\textbf{Vice President — Forum Ingenib, Bordeaux INP} \hfill \textit{May 2025 – present} \\
-Orchestrated annual recruitment forum attracting 800 students and 80 companies from 2 schools by coordinating 6 teams of 20 people and managing a €100k budget.
+\vspace{6pt}
 
-% \vspace{0.3cm}
+\entry{EPSI Bordeaux}{Sep 2023 -- Sep 2024}{B.Sc. in AI \& Data Science (Valedictorian)}{GPA: 3.8/4.0}
+\begin{itemize}
+    \item Ranked 1\textsuperscript{st} in cohort. Focused on Data Mining, Model Evaluation, and SQL optimization.
+\end{itemize}
 
-% \textbf{Training Lead — Eirb'IA (AI Student Club)} \hfill \textit{July 2025 – present} \\
-% Designed official AI training curriculum for student members.
+% --- EXPERIENCE ---
+\section{Professional Experience}
 
-\vspace{0.3cm}
+\entry{Sector Group}{Jun 2025 -- Aug 2025}{R\&D AI Engineer Intern}{Paris, France}
+\begin{itemize}
+    \item \textbf{Secure RAG System:} Engineered a Retrieval-Augmented Generation pipeline achieving \textbf{70\% recall} and \textbf{100\% reliability} on specialized internal queries by implementing multi-format document analysis.
+    \item \textbf{AI Strategy:} Audited compliance with \textbf{IEC 61508} safety standards for critical AI components.
+    \item \textbf{Leadership:} Trained 9 managers on AI integration strategies, achieving a 100\% satisfaction rate.
+\end{itemize}
 
-\textbf{Networking Coordinator — ai4industry (France-wide AI workshop)} \hfill \textit{Oct 2024 – present} \\
-Enhanced 50 master's students understanding of doctoral career paths by coordinating 20 speakers and managing a €5k budget for a full-day academic exchange event. Animated round table discussions fostering interactions between researchers and students.
+\vspace{6pt}
 
-\vspace{0.3cm}
+\entry{Cali Intelligences}{Jul 2023 -- Sep 2024}{AI Developer (Apprenticeship)}{Talence, France}
+\begin{itemize}
+    \item \textbf{Impact:} Boosted object detection accuracy from \textbf{60\% to 90\%} by engineering automated QA/QC pipelines on a dataset of \textbf{100k+ images/videos} and optimizing hyperparameter search spaces.
+    \item \textbf{Optimization:} Reduced false positives by \textbf{50\%} via modular architecture and decreased inference latency by \textbf{70\%} by refactoring deployment pipelines for real-time edge cases.
+    \item \textbf{MLOps:} Saved \textbf{7 hours per training cycle} by fully automating Data, Train, and Eval pipelines.
+\end{itemize}
 
-\textbf{Campus Ambassador — Capgemini} \hfill \textit{Sept 2025 – present} \\
-Bridge between Capgemini and engineering students, promoting industry opportunities.
+\vspace{6pt}
 
-\vspace{0.3cm}
-\textbf{Health Education Volunteer — ENSC \& Planning Familial} \hfill \textit{Jan 2022 – Sept 2024} \\
-Participated in weekly clinics raising awareness of male contraception options.
+\entry{Cali Intelligences}{Jan 2023 -- Mar 2023}{Python Developer Intern}{Talence, France}
+\begin{itemize}
+    \item Developed a post-processing algorithm achieving \textbf{100\% precision} in correcting object tracking errors.
+\end{itemize}
+
+% --- SKILLS ---
+\section{Technical Skills}
+\begin{itemize}
+    \item \textbf{Languages:} Python (Expert), SQL, C, C++, JavaScript, R.
+    \item \textbf{Deep Learning \& CV:} PyTorch, TensorFlow, OpenCV, Transformers (ViT), YOLO, CNNs, Attention.
+    \item \textbf{Data Science \& XAI:} Pandas, NumPy, scikit-learn, Grad-CAM, LIME, SHAP.
+    \item \textbf{MLOps \& Tools:} Docker, Kubernetes, Git, Linux/Bash, LaTeX.
+    \item \textbf{Languages:} French (Native), English (Advanced/B2), Chinese (Beginner/A1).
+\end{itemize}
+
+% --- LEADERSHIP ---
+\section{Leadership \& Engagement}
+
+\entry{Vice President, Forum Ingenib}{May 2025 -- Present}{Managed €100k budget \& team of 20 students for a fair with 1,500+ attendees.}{}
+
+\vspace{2pt}
+
+\entry{Networking Coordinator, ai4industry}{Oct 2024 -- Present}{Coordinated 30+ researchers for a national academic networking event.}{}
 
 \end{document}
