@@ -41,7 +41,7 @@
 
 \usetikzlibrary{calc}
 
-\graphicspath{{img/}}
+\graphicspath{{assets/img/}}
 \pagenumbering{gobble}
 
 % -------------------- For CV parser
@@ -58,7 +58,7 @@
 % -------------------- Font
 \ifxetex
   \newfontfamily{\Lekton}[
-  Path=./fonts/,
+  Path=assets/fonts/,
   Extension = .ttf,
   Ligatures = TeX,
   UprightFont = Lekton-Regular,
@@ -66,7 +66,7 @@
   ItalicFont = Lekton-Italic,
   ]{Lekton}
   \newfontfamily{\Poppins}[
-    Path=./fonts/,
+    Path=assets/fonts/,
     Extension = .ttf,
     Ligatures = TeX,
     UprightFont = Poppins-Light,
@@ -82,7 +82,7 @@
   ]{Poppins}
   \newfontfamily{\RobotoMono}[
   NFSSFamily=RobotoMono,
-  Path=./fonts/,
+  Path=assets/fonts/,
   Extension = .ttf,
   Ligatures = TeX,
   UprightFont = RobotoMono-Regular,
@@ -98,12 +98,12 @@
   ]{RobotoMono}
   \renewcommand{\familydefault}{RobotoMono}
 
-  \newfontface\lekton{Lekton-Regular.ttf}[Path=./fonts/]
-  \newfontface\lektonI{Lekton-Italic.ttf}[Path=./fonts/]
-  \newfontface\lektonB{Lekton-Bold.ttf}[Path=./fonts/]
-  \newfontface\robotoMonoL{RobotoMono-Light.ttf}[Path=./fonts/]
-  \newfontface\robotoMono{RobotoMono-Regular.ttf}[Path=./fonts/]
-  \newfontface\poppinsL{Poppins-Light.ttf}[Path=./fonts/]
+  \newfontface\lekton{Lekton-Regular.ttf}[Path=assets/fonts/]
+  \newfontface\lektonI{Lekton-Italic.ttf}[Path=assets/fonts/]
+  \newfontface\lektonB{Lekton-Bold.ttf}[Path=assets/fonts/]
+  \newfontface\robotoMonoL{RobotoMono-Light.ttf}[Path=assets/fonts/]
+  \newfontface\robotoMono{RobotoMono-Regular.ttf}[Path=assets/fonts/]
+  \newfontface\poppinsL{Poppins-Light.ttf}[Path=assets/fonts/]
 \fi
 
 \newcommand\textulf[1]{{\NHLight\bfseries#1}}
