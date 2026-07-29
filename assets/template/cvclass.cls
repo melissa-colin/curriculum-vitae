@@ -34,6 +34,11 @@
 \RequirePackage{pdfcomment}
 \RequirePackage{fontawesome5}
 \usetikzlibrary{shapes.geometric} % Load the library for geometric shapes
+\usetikzlibrary{decorations.pathmorphing} % Pour soulignement "chalk" sur les titres de section
+\usetikzlibrary{fadings} % Pour effet "focus / depth-of-field" derrière la photo
+\usetikzlibrary{shadows.blur} % Pour glow/blur réel autour du cadre photo
+% Fade radial doux : opaque au centre, transparent sur les bords
+\tikzfading[name=ball fade, inner color=transparent!0, outer color=transparent!100]
 
 % Assurez-vous que les tailles de police sont définies avant enumitem
 \RequirePackage{fontspec}
@@ -120,31 +125,38 @@
   opacity=1,
   contents={\includegraphics[width=\paperwidth,height=\paperheight]{\background}}
 }
-% -------------------- Section title
+% -------------------- Section title (style "chalkboard" : titre + soulignement craie irrégulier)
 \newcommand{\fancysectiontitle}[1]{%
-  
-  \vspace{\margin/2}%
   \begin{tikzpicture}[baseline=(title.base)]
     \node[
-      fill=black,
-      rounded corners=4pt,
-      inner xsep=6pt,  % réduit horizontalement
-      inner ysep=3pt,  % réduit verticalement
+      inner xsep=0pt,
+      inner ysep=2pt,
       text=TitleRed,
-      font=\Lekton\bfseries\fontsize{12.6pt}{15pt}\selectfont
+      font=\Lekton\bfseries\fontsize{13pt}{15pt}\selectfont
     ] (title) {\strut#1};
+    % Soulignement irrégulier façon craie
+    \draw[TitleRed, line width=1.4pt, decorate,
+          decoration={random steps, segment length=3pt, amplitude=0.5pt}]
+      ([yshift=-1pt]title.south west) -- ([yshift=-1pt]title.south east);
   \end{tikzpicture}%
 }
 
 
 \titleformat{\section}
-{\normalfont} 
-{}          
-{0pt}       
+{\normalfont}
+{}
+{0pt}
 {\fancysectiontitle} %
 
+% Spacing autour des titres de section : grand espace AVANT (respiration / séparation
+% de la section précédente), petit espace APRÈS (titre proche de son propre contenu)
+\titlespacing*{\section}
+  {0pt}        % indentation à gauche
+  {1.3cm}      % espace AVANT le titre
+  {0.05cm}     % espace APRÈS le titre
+
 \titleformat{\subsection}
-{\normalfont\bfseries\fontsize{9pt}{11pt}\selectfont}  % style
+{\normalfont\bfseries\fontsize{9pt}{11pt}\selectfont\color{headerRed!75!black}}  % style + accent rouge atténué
 {}        % pas de numéro
 {0pt}     % espacement entre label et texte (inutile ici)
 {}  % espace avant le contenu de la sous-section
@@ -165,6 +177,23 @@
 \newcommand{\header}{
   \begin{tikzpicture}[remember picture,overlay]
 
+  % --- Glow flou doux (vrai blur via tikz shadows.blur) en TOUT PREMIER,
+  %     avant tous les fills headerRed. Comme ça les rectangles + triangles
+  %     headerRed couvrent uniformément l'ombre dans toute la zone red,
+  %     et le seul endroit où le blur reste visible est sur les bords du
+  %     cadre photo (zone qui n'est pas couverte par les fills red).
+  \node[
+    anchor=north east,
+    xshift=-\margin*1.5,
+    yshift=-\margin*2,
+    inner sep=0pt, outer sep=0pt,
+    minimum width=\squareSize,
+    minimum height=\squareSize,
+    rounded corners=5pt,
+    fill=none,
+    draw=none,
+    blur shadow={shadow blur steps=12, shadow blur radius=12pt, shadow xshift=0pt, shadow yshift=0pt, shadow opacity=55}
+  ] at (current page.north east) {};
 
   % Rectangle rouge
   \fill[headerRed, opacity=0.9]
@@ -220,7 +249,7 @@
     % Image portrait
     % \begin{scope}
     %   \clip[rounded corners=5pt]
-    %     ([xshift=-\margin*2, yshift=-\margin*2]current page.north east) 
+    %     ([xshift=-\margin*2, yshift=-\margin*2]current page.north east)
     %     rectangle ++(-\squareSize, -\squareSize);
     %   \node[anchor=north east, xshift=-\margin*2, yshift=-\margin*2] at (current page.north east) {
     %     \includegraphics[width=\squareSize]{\profilepicture}
@@ -228,12 +257,12 @@
     % \end{scope}
      \begin{scope}
       \clip[rounded corners=5pt]
-      ([xshift=-\margin*1.5, yshift=-\margin*2]current page.north east) 
+      ([xshift=-\margin*1.5, yshift=-\margin*2]current page.north east)
       rectangle ++(-\squareSize, -\squareSize);
       \node[anchor=north east, xshift=-\margin*1.5, yshift=-\margin*2] at (current page.north east) {
       \includegraphics[width=\squareSize]{\profilepicture}
       };
-    \end{scope}   
+    \end{scope}
 
     % Nom
     \node[
@@ -335,21 +364,21 @@
 % -------------------- Search bar
 \newcommand{\searchbar}{
   \begin{tikzpicture}[remember picture,overlay]
-    % Rectangle gris arrondi avec bordure
+    % Rectangle gris arrondi avec bordure (hauteur d'origine, étendu vers la droite jusqu'à la marge)
     \draw[gray, line width=2.5pt, rounded corners=10pt]
       ([xshift=\margin*2, yshift=-\headerHeight-(\margin/2)]current page.north west)
       rectangle
-      ([xshift=-\squareSize-\margin*2, yshift=-\headerHeight-\margin*2.5]current page.north east);
+      ([xshift=-\margin*2, yshift=-\headerHeight-\margin*2.5]current page.north east);
     \fill[white, rounded corners=10pt]
       ([xshift=\margin*2, yshift=-\headerHeight-(\margin/2)]current page.north west)
       rectangle
-      ([xshift=-\squareSize-\margin*2, yshift=-\headerHeight-\margin*2.5]current page.north east);
+      ([xshift=-\margin*2, yshift=-\headerHeight-\margin*2.5]current page.north east);
       % Loupe à gauche
       \node[anchor=west, xshift=\margin+0.6cm, yshift=-\headerHeight-(\margin)-1.9mm, opacity=0.5] at (current page.north west) {
         \includegraphics[height=0.5cm]{glass.png}
       };
       \node[anchor=west, xshift=\margin+1.2cm, yshift=-\headerHeight-(\margin)-2.1mm, text=black, font=\fontsize{9}{9}\selectfont] at (current page.north west) {
-        \parbox{14.4cm}{\robotoMonoL{\search}}
+        \parbox{18.5cm}{\robotoMonoL{\search}}
       };
     \end{tikzpicture}
 }
@@ -358,7 +387,7 @@
 \newcommand{\content}{
 \begin{tikzpicture}[remember picture,overlay]
 
-% White rectangle
+% White rectangle (opacity réduite pour laisser apparaître subtilement le fond chalkboard)
 \fill[white, opacity=0.9]
     ([xshift=\margin, yshift=-\topContent]current page.north west)
     rectangle
@@ -368,13 +397,18 @@
 }
 
 % Environnement area-left
+% Décalage vertical appliqué uniquement au contenu textuel des colonnes (pas aux
+% rectangles de fond), pour laisser de la place sous la searchbar sans déplacer
+% le calque blanc.
+\def\columnTopOffset{0.5cm}
+
 \NewEnviron{area-left}{%
   \begin{tikzpicture}[remember picture, overlay]
     \fill[white, opacity=0]
         ([xshift=(\margin*2), yshift=-\textTop]current page.north west)
         rectangle
         ([xshift=-(\margin*2), yshift=-\textHeight]current page.north east);
-    \node[anchor=north west, xshift=(\margin*2), yshift=-\textTop, text=black, font=\normalsize] at (current page.north west) {%
+    \node[anchor=north west, xshift=(\margin*2), yshift=-\textTop-\columnTopOffset, text=black, font=\normalsize] at (current page.north west) {%
       \begin{minipage}{\blockWidth}%
         \BODY
       \end{minipage}%
@@ -389,7 +423,7 @@
         ([xshift=(\margin*2), yshift=-\textTop]current page.north west)
         rectangle
         ([xshift=-(\margin*2), yshift=-\textHeight]current page.north east);
-    \node[anchor=north west, xshift=\dimexpr (\margin*4) + \blockWidth\relax, yshift=-\textTop, text=black, font=\normalsize] at (current page.north west) {%
+    \node[anchor=north west, xshift=\dimexpr (\margin*4) + \blockWidth\relax, yshift=-\textTop-\columnTopOffset, text=black, font=\normalsize] at (current page.north west) {%
       \begin{minipage}{\blockWidth}%
         \BODY
       \end{minipage}%

@@ -306,3 +306,38 @@ TSWLatexianTemp*
 # option is specified. Footnotes are the stored in a file with suffix Notes.bib.
 # Uncomment the next line to have this generated file ignored.
 #*Notes.bib
+
+## =====================================================================
+## Ajouts du 29/07/2026 — protection des données personnelles et internes
+## Le dépôt a vocation à devenir public : tout ce qui suit ne doit jamais
+## y entrer, et être listé ici vaut mieux que d'y penser à chaque commit.
+## =====================================================================
+
+# Numéro de téléphone et données de contact réelles (voir personal.tex)
+personal.tex
+
+# Documents internes, marqués « ne pas diffuser tel quel »
+master-cv.md
+info_complementaire.md
+revue_ami.md
+
+# Relevés de notes et dossiers de candidature compilés
+S[0-9].pdf
+S[0-9].PDF
+*transcript*.pdf
+*-full.pdf
+
+# PDF compilés : en local ils contiennent le vrai numéro (personal.tex),
+# donc aucun ne doit être suivi. Le dépôt ne porte que les sources.
+*.pdf
+
+# État local d'outils : configuration machine et bases de données de session.
+# Rien de tout ça n'a sa place dans un dépôt, encore moins public.
+.claude/
+.tokensave/
+
+# Sauvegardes locales horodatées, pas du code source
+*.backup_*
+
+# Réponses de formulaire de candidature, données personnelles
+form_*.txt

@@ -1,57 +1,46 @@
-# My LaTeX CV
+# CV — Mélissa Colin
 
-This repository contains the LaTeX source code for my personal CV, available in both French and English. The project uses custom LaTeX classes and fonts for a modern, professional look.
+Sources LaTeX de mes CV. Trois documents, deux moteurs, une classe maison.
 
-## Overview
+| Fichier | Moteur | Usage |
+|---|---|---|
+| `french.tex` | XeLaTeX | CV français, mise en page deux colonnes (classe `assets/template/cvclass`) |
+| `cv-research-general.tex` | pdfLaTeX | CV anglais, candidatures recherche et LinkedIn |
+| `google-student-researcher.tex` | pdfLaTeX | CV anglais ciblé Google Student Researcher |
 
-- **French version:** `french.tex`
-- **English version:** `academic.tex`
-- Custom class and Lua script: `assets/template/cvclass.cls`, `assets/template/creationdate.lua`
-- Fonts: `assets/fonts/`
-- Images/icons: `assets/img/`
+## Données personnelles
 
-## Build Instructions
+Le numéro de téléphone n'est pas dans le dépôt. Il vit dans `personal.tex`, ignoré par git :
 
-You need a working LaTeX environment with `xelatex` and `pdflatex` (for English version). Fonts are included in the repository.
-
-To compile both CVs and clean auxiliary files:
-
-```sh
-make all
+```latex
+\newcommand{\myphone}{+33 6 XX XX XX XX}
 ```
 
-To compile only the French or English version:
+Chaque CV fait `\IfFileExists{personal.tex}{\input{personal.tex}}{}` suivi d'un `\providecommand` de repli. En local tu compiles avec le vrai numéro, un clone du dépôt obtient une version masquée, et il n'y a rien à penser avant chaque commit.
+
+Les PDF compilés ne sont pas suivis non plus, pour la même raison : en local ils contiennent le vrai numéro.
+
+## Compilation
 
 ```sh
-make french   # Compile french.tex → french.pdf
-make academic # Compile academic.tex → academic.pdf
+make all      # les trois CV
+make french   # français uniquement
+make general  # CV recherche généraliste
+make google   # CV ciblé Google
+make clean    # supprime auxiliaires et PDF
+make help     # liste les cibles
 ```
 
-To clean all generated files (including PDFs):
+Il faut XeLaTeX et pdfLaTeX. Les polices sont incluses dans `assets/fonts/`.
 
-```sh
-make clean
-```
+## Structure
 
-## Project Structure
+- `assets/fonts/` — Lekton, Poppins, RobotoMono
+- `assets/img/` — photos et icônes
+- `assets/template/` — classe LaTeX `cvclass.cls` et script Lua
 
-- `french.tex` : CV principal en français (utilise une classe personnalisée)
-- `academic.tex` : CV académique en anglais (format article)
-- `assets/fonts/` : Polices utilisées (Lekton, Poppins, RobotoMono)
-- `assets/img/` : Images et icônes (GitHub, LinkedIn, etc.)
-- `assets/template/` : Classe LaTeX et scripts Lua
-- `Makefile` : Commandes de compilation et nettoyage
+## Licence
 
-## Requirements
+**Tous droits réservés.** Vous n'êtes pas autorisé à copier, réutiliser, modifier ou distribuer tout ou partie de ce code ou de sa sortie compilée sans autorisation écrite explicite de l'autrice.
 
-- [XeLaTeX](https://www.tug.org/xetex/)
-- [pdfLaTeX](https://www.tug.org/applications/pdftex/)
-- Standard LaTeX packages (geometry, fontawesome5, xcolor, hyperref, paracol, etc.)
-
-## License
-
-⚠️ **All rights reserved.**
-
-You are **not permitted** to copy, reuse, modify, or distribute any part of this code or its compiled output without **explicit written permission** from the author.
-
-If you're interested in using this template or have any questions, feel free to reach out.
+Si ce template vous intéresse, écrivez-moi.

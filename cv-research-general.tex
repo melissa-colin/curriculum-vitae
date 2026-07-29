@@ -1,0 +1,209 @@
+% =====================================================================
+%  CV — version générale, candidatures recherche (stages, labos, LinkedIn)
+%  Dérivé de google-student-researcher.tex par SUPPRESSION du ciblage.
+%
+%  CE QUI A ÉTÉ RETIRÉ par rapport à la version Google :
+%   - "Available from 02/27 for a six-month placement in Canada" → TODO(human)
+%   - "see attached transcript" → aucun relevé n'accompagne un CV envoyé à froid
+%   - pdftitle spécifique à l'annonce
+%
+%  CE QUI EST RESTÉ, et pourquoi :
+%   - Publications AVANT l'expérience : vrai pour toute candidature recherche,
+%     pas seulement pour Google. C'est le premier critère d'un encadrant.
+%   - Diplôme en MM/YY : c'était une exigence Google, mais un format de date
+%     non ambigu à l'international ne coûte rien et évite le 03/04 vs 04/03.
+%
+%  INTERDITS (master-cv.md §11) : projet clical, −58 %, PFA 82,3 %,
+%  audience Medium, Google Final Round, projets perso, noms de clients.
+% =====================================================================
+
+\documentclass[10pt, letterpaper]{article}
+
+\usepackage[
+    ignoreheadfoot,
+    top=1.1 cm,
+    bottom=1.1 cm,
+    left=1.2 cm,
+    right=1.2 cm,
+    footskip=1.0 cm,
+]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{textcomp}
+
+\definecolor{MyRed}{RGB}{160, 20, 40}
+
+\usepackage[
+    pdftitle={Melissa Colin — CV — Research},
+    pdfauthor={Melissa Colin},
+    colorlinks=true,
+    urlcolor=MyRed
+]{hyperref}
+
+\usepackage{charter}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\titleformat{\section}
+  {\large\bfseries\scshape\raggedright\color{MyRed}}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{7pt}{3pt}
+
+\setlist[itemize]{leftmargin=*, noitemsep, topsep=1pt, partopsep=0pt, parsep=0pt}
+
+\newcommand{\entry}[4]{%
+  \noindent \textbf{#1} \hfill #2 \\
+  \textit{#3} \hfill \textit{#4} \par
+}
+
+\IfFileExists{personal.tex}{\input{personal.tex}}{}
+\providecommand{\myphone}{+33 7 82 52 XX XX}
+
+\begin{document}
+
+% ---------------------------------------------------------------- HEADER
+\begin{center}
+    {\fontsize{21}{21}\selectfont \textbf{Mélissa COLIN}} \\[4pt]
+
+    % Positionnement : large d'abord, spécialité en second. Le lecteur voit
+    % qu'il peut te confier autre chose, sans que tu perdes ta signature.
+    % Le statut d'étudiante a été retiré de cette ligne : la section Education
+    % arrive juste dessous et la date "Expected 09/27" le dit déjà. Ça libère
+    % la place pour la spécialité, qui, elle, n'est écrite nulle part ailleurs.
+    {\large Deep Learning \& Computer Vision $\cdot$ Specialising in 3D Human Motion} \\[4pt]
+
+    \small{
+    \faMapMarker* Bordeaux, France \quad|\quad
+    % TODO(human) — LE NUMÉRO DE TÉLÉPHONE.
+    % Sur un CV envoyé par mail à un encadrant : garde-le, c'est un canal direct.
+    % Sur un PDF déposé dans la section "Sélection" de LinkedIn : ce fichier est
+    % téléchargeable par n'importe qui, indexable, et tu ne peux plus le reprendre.
+    % Décide. Si tu publies sur LinkedIn, commente la ligne ci-dessous.
+    \faPhone* \myphone{} \quad|\quad
+    \faEnvelope~\href{mailto:contact@melissacolin.ai}{contact@melissacolin.ai} \\
+    \faGlobe~\href{https://melissacolin.ai}{melissacolin.ai} \quad|\quad
+    \faLinkedin~\href{https://www.linkedin.com/in/m\%C3\%A9lissa-colin/}{LinkedIn} \quad|\quad
+    \faGithub~\href{https://github.com/melissa-colin}{github.com/melissa-colin} \quad|\quad
+    \faGraduationCap~\href{https://scholar.google.com/citations?user=7r7iFpsAAAAJ}{Scholar} \quad|\quad
+    \href{https://orcid.org/0009-0003-2525-4824}{ORCID 0009-0003-2525-4824}
+    }
+\end{center}
+
+\vspace{2pt}
+
+% ---------------------------------------------------------------- ACCROCHE
+% Phrases 1 et 2 : ce que tu fais et par quel mécanisme. Indépendant de l'annonce.
+% Phrase 3 : "seeking", pas "followed by". "Followed by" se lit comme un plan
+% déjà arrangé, donc comme une candidate déjà prise : un encadrant qui cherche
+% un doctorant passe au dossier suivant. "Seeking" transforme la même phrase en
+% invitation. "academic or industrial" ouvre aussi la porte aux labos privés.
+% Phrase 4 : fenêtre bornée des deux côtés. Un encadrant a besoin du début ET
+% de la fin pour savoir si son projet tient dedans, sinon il doit t'écrire.
+{\small \textit{3D human motion reconstruction and computer vision. I correct physically
+impossible poses recovered from video using evidence taken from the image rather than from
+the noisy motion itself. Expected graduation 09/27, and seeking a PhD position in computer
+vision afterwards, academic or industrial. Available from 02/27 for a research placement of
+up to eight months, through 09/27.}}
+
+% ---------------------------------------------------------------- EDUCATION
+\section{Education}
+
+\entry{ENSEIRB-MATMECA, Bordeaux INP}{Sep 2024 -- Expected 09/27}%
+{MEng in Computer Science (\textit{Diplôme d'ingénieur}), AI track, currently in final year}{Bordeaux, France}
+\begin{itemize}
+    % "see attached transcript" retiré : ce CV circule seul. Un lecteur étranger
+    % qui ne connaît pas le /20 doit quand même pouvoir situer le chiffre, d'où
+    % le rang et le pourcentage qui, eux, se lisent dans n'importe quel système.
+    \item Rank in cohort: \textbf{5\textsuperscript{th}/81 (top 6\%)} in semester 8, Feb--May 2026, and \textbf{3\textsuperscript{rd}/93} in semester 6; 4\textsuperscript{th}/81 on the project unit, 5\textsuperscript{th}/53 on the advanced electives. French /20 scale; transcript available on request.
+    \item Feb--May 2026: \textbf{Deep Learning 18/20} $\cdot$ \textbf{Research Initiation 17/20} (research-methods elective) $\cdot$ Applied TCP/IP 17.5/20 $\cdot$ Cryptology 16.5/20.
+    \item Coursework: deep learning, computability \& complexity, game theory, operations research, numerical algorithms, compilation.
+\end{itemize}
+
+\vspace{4pt}
+
+\entry{EPSI Bordeaux}{Sep 2021 -- Sep 2024}%
+{BSc in Artificial Intelligence \& Data Science (RNCP level 6, EQF/bachelor level)}{Bordeaux, France}
+\begin{itemize}
+    \item Professional dossier across four competency blocks: data modelling, predictive modelling, production \& maintenance of AI systems, project management.
+\end{itemize}
+
+% ---------------------------------------------------------------- PUBLICATIONS
+\section{Publications}
+
+\begin{itemize}
+    \item \textbf{Colin, M.}, Chraibi Kaadoud, I. \textit{Performances and Explainability of ViT and CNN Architectures: An Empirical Study Using LIME, SHAP and Grad-CAM.} RJCIA / PFIA 2024, La Rochelle. First author, published, presented orally.
+    \hfill \href{https://hal.science/hal-04641791}{[HAL]}
+    % Titre exact du papier de Yilin Wang encore inconnu : marqué [À CONFIRMER]
+    % dans master-cv.md §3.2, donc je ne l'écris pas. Demande-le AVANT le
+    % 11 septembre : tu perds l'accès au Slack UAlberta en partant.
+    \item \textbf{Co-author}, 3D group dance generation. In preparation, targeting ICLR 2027. My contribution: the motion corpus refined by my correction pipeline was used to retrain and re-evaluate the model.
+    \item \textbf{First author}, physics-grounded refinement of 3D human motion. In preparation, targeting CVPR 2027.
+\end{itemize}
+
+% ---------------------------------------------------------------- RESEARCH
+\section{Research Experience}
+
+\entry{Vision and Learning Lab, University of Alberta (Prof. Li Cheng)}{May 2026 -- Sep 2026}%
+{Visiting Research Student, \textbf{Mitacs Globalink Research Award (2026)}}{Edmonton, Canada}
+\begin{itemize}
+    \item \textbf{Evidence-based motion correction.} Built a pipeline that corrects reconstructed 3D human motion \textit{without reading the noisy motion itself}, using only signals extracted from the image: ray--plane foot-ground contact, z-buffer occlusion ordering, monocular depth, camera calibration. The correction therefore comes from a source independent of the error.
+    \item \textbf{Depth corrector.} Monocular depth from \textit{Depth Anything}, brought to a usable scale by anchoring it on two quantities measurable directly in the image (foot height and head size), then used to fix the depth ordering between people. Purely algorithmic: nothing trained, no ground truth. Result: $-$33\% inter-person penetration, measured on 100\% of the data.
+    \item \textbf{First-author work in progress.} Paired clean$\leftrightarrow$noisy motion corpus built via \textit{render-then-estimate}; physics enters through the training data only, not the loss or the architecture. That choice follows the AGRoL ablation, where auxiliary physics losses degrade jitter by +68\%.
+    \item \textbf{Distributed infrastructure.} 12-shard multi-GPU sharding with work stealing across two compute sites, reproducible environments, resilient detached execution.
+\end{itemize}
+
+\vspace{4pt}
+
+\entry{ENSEIRB-MATMECA, Research Initiation elective, 17/20}{Feb -- May 2026}%
+{Reproduction and critical study of \textit{InterMask} (ICLR 2025)}{Bordeaux, France}
+\begin{itemize}
+    \item Reproduced the VQ-VAE baseline (FID 1.034 $\to$ \textbf{0.918}), then tested two hypotheses on the physical constraints of the loss (asymmetric foot-contact penalty, temporal augmentation).
+    \item \textbf{Reported a negative result:} neither variant improved FID or R-Precision. Published the finding as-is rather than dropping it.
+\end{itemize}
+
+% ---------------------------------------------------------------- INDUSTRY
+\section{Industry Experience}
+
+\entry{Sector Group}{Jun -- Aug 2025}{R\&D Engineer, AI and Safety}{Paris, France}
+\begin{itemize}
+    \item Trustworthy-AI research on information extraction from \textbf{non-OCR'd PDF documents} (no text layer, so vision and document processing had to be combined), under the \textbf{IEC 61508} functional-safety framework. RAG pipeline (RAGFlow fork), 100+ queries, 9 business units audited.
+    % ATTENTION : formulation "abstention" à vérifier avant envoi. master-cv.md
+    % §4.3 marque le couple 70 % / 100 % comme [À CONFIRMER]. Ce couple n'est
+    % cohérent que si le système s'abstient quand il n'est pas sûr : 100 % de
+    % précision sur les réponses émises, et le recall bas en est la
+    % contrepartie logique. Si la sémantique réelle est autre, réécris la ligne.
+    \item Tuned the pipeline for an abstention regime, where a wrong answer costs more than a missing one: \textbf{100\% precision on the answers actually returned}, at 70\% recall over the evaluation query set.
+\end{itemize}
+
+\vspace{4pt}
+
+\entry{Cali Intelligences (deeptech start-up, real-time video analytics)}{Jan 2023 -- Sep 2024}%
+{Applied AI Intern, then AI Developer (apprenticeship)}{Talence, France}
+\begin{itemize}
+    \item Designed and built the full training pipeline for the detection models (YOLOv7 $\to$ YOLOv8): ingestion, label conversion, augmentation library written from scratch in OpenCV, pre-training validation, YAML-driven orchestration, Docker/GitHub Actions/K3s deployment. \textbf{Detection accuracy 60\% $\to$ 90\%.}
+    \item Benchmarked and selected the annotation tooling against 38 explicit requirements; redesigned the data storage into a bronze/silver medallion architecture on AWS for GDPR and EU AI Act traceability.
+\end{itemize}
+
+% ---------------------------------------------------------------- SKILLS
+\section{Technical Skills}
+\begin{itemize}
+    \item \textbf{Programming languages:} \textbf{Python} (advanced) $\cdot$ C, SQL (intermediate) $\cdot$ Java $\cdot$ TypeScript/JavaScript $\cdot$ C++ $\cdot$ Bash $\cdot$ R.
+    \item \textbf{Deep learning:} PyTorch, CNNs, Transformers/ViT, VQ-VAE, LoRA/PEFT, multi-stage fine-tuning. Implemented from scratch: K-Means, Naive Bayes, logistic regression, backprop through a hidden layer, PCA.
+    \item \textbf{3D human motion:} SMPL/SMPL-H/SMPL-X, axis-angle rotations, forward kinematics, AMASS, monocular 3D pose estimation, Multi-HMR, camera calibration, z-buffer rasterisation. Metrics: MPJPE, PA-MPJPE, penetration, foot-skate, jitter, PFC, FID-motion, R-Precision, SDF.
+    \item \textbf{Explainability:} LIME, SHAP, Grad-CAM, Grad-CAM++ (subject of my RJCIA 2024 paper).
+    \item \textbf{Tooling:} Docker, Kubernetes/K3s, Git, GitHub Actions, Linux, SLURM-style GPU clusters, \LaTeX{}.
+    \item \textbf{Languages:} French (native) $\cdot$ English \textbf{B2, TOEIC 840/990}, research internship entirely in English $\cdot$ Mandarin Chinese (elementary).
+\end{itemize}
+
+% ---------------------------------------------------------------- AWARDS
+\section{Awards \& Leadership}
+\begin{itemize}
+    \item \textbf{Mitacs Globalink Research Award (2026)}: competitive international research funding, awarded on project proposal; funds the University of Alberta placement.
+    \item \textbf{Vice-President, Forum INGENIB} (Apr 2025 -- present): \texteuro{}100k budget, 20-student team, 800 students and 80 companies hosted.
+    \item \textbf{Networking Lead, ai4industry workshop} (Oct 2024 -- Jun 2025): recruited and coordinated 22 speakers (PhD students and researchers) around post-doctorate career panels.
+    \item Student engagement formally validated at \textit{"high level"} by the school for two consecutive semesters (16/20).
+\end{itemize}
+
+\end{document}
