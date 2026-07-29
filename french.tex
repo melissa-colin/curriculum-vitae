@@ -25,7 +25,7 @@
 % -------------------- Colors
 \definecolor{primaryColor}{RGB}{0, 0, 0}
 \definecolor{headerRed}{HTML}{691616}
-\definecolor{TitleRed}{HTML}{FF001F}
+\definecolor{TitleRed}{HTML}{D10018}
 \definecolor{jobs}{RGB}{105, 105, 105}
 
 
@@ -35,15 +35,18 @@
 \newcommand{\cvdesc}{Élève-ingénieure en Informatique et Intelligence \\Artificielle à l’ENSEIRB-MATMECA.}
 \newcommand{\github}{https://urlr.me/6Qy4Kc}
 \newcommand{\medium}{https://urlr.me/GNY4s}
-\newcommand{\email}{melissa.colin0@proton.me}
+\newcommand{\email}{contact@melissacolin.ai}
 \newcommand{\location}{Bordeaux et périphérie}
 \newcommand{\website}{https://melissacolin.ai}
 \newcommand{\linkedin}{https://urlr.me/Bpqxd}
-% \newcommand{\phone}{+33 7 82 52 XX XX}
-\newcommand{\phone}{+33 7 82 52 XX XX}
-\newcommand{\search}{Recherche d'un stage de fin d'études (Research Scientist Intern) en IA / Computer Vision à partir de Février 2027}
+\IfFileExists{personal.tex}{\input{personal.tex}}{}
+\providecommand{\myphone}{+33 7 82 52 XX XX}
+\newcommand{\phone}{\myphone}
+% Deux portes d'entrée, la plus tôt en premier : un recruteur qui peut te prendre
+% dès octobre ne doit pas avoir à lire jusqu'au bout pour s'en rendre compte.
+\newcommand{\search}{Contrat de professionnalisation dès 10/2026, ou stage de recherche de 5 à 8 mois (02/2027 -- 09/2027), en vision par ordinateur et mouvement humain 3D. Thèse visée après le diplôme.}
 \newcommand{\profilepicture}{assets/img/pdp.png}
-\newcommand{\background}{background.jpg}
+\newcommand{\background}{background.jpeg}
 
 
 
@@ -58,90 +61,106 @@
 \begin{area-left}
   % --- PUBLICATION EN PREMIER DANS LA COLONNE DE GAUCHE (Ou déplacer à droite si tu préfères) ---
   \section{Recherche}
-    \textbf{Distinction Académique}\\
-    \textit{Lauréate Bourse Mitacs Globalink 2026}\\
-    Sélectionnée pour l'excellence académique pour mener des recherches au Canada (Top-tier funding).
-    % (Déclinée pour rejoindre Google Research)
+  \vspace{\spaceSections}
+    \textbf{Distinction académique}\\
+    \textit{Lauréate de la bourse Mitacs Globalink 2026}\\
+    Financement international compétitif, attribué sur projet de recherche.
 
     \vspace{0.2cm}
-    \textbf{Article Technique} (Vulgarisation)\\
-    \textit{YOLOv8 Explained: Understanding Object Detection from Scratch.} \href{https://medium.com/@melissa.colin/yolov8-explained-understanding-object-detection-from-scratch-763479652312}{\textcolor{darkgray}{\faPaperclip}}
+    \textbf{Article, première autrice} (visé CVPR 2027)\\
+    \textbf{Colin, M.}\\
+    \textit{Correction de mouvement humain 3D ancrée sur l'image. En préparation.}
 
     \vspace{0.2cm}
-    \textbf{Publication PFIA 2024} (Conférence majeure IA France)\\
-    \textbf{Colin, M.}, \& Hraibi Kaadoud, I. \\
-    \textit{Performances et explicabilité de ViT et d’architectures CNN.}\href{https://hal.science/hal-04641791v1}{\faPaperclip} 
+    \textbf{Article, co-autrice} (soumission visée ICLR 2027)\\
+    \textit{Génération de danse de groupe en 3D. Contribution : le corpus de mouvements assaini par mon pipeline de correction a servi à réentraîner et réévaluer le modèle.}
+
+    \vspace{0.2cm}
+    \textbf{Publication PFIA 2024} (conférence IA francophone)\\
+    \textbf{Colin, M.}, \& Chraibi Kaadoud, I.\\
+    \textit{Performances et explicabilité de ViT et d'architectures CNN.}\href{https://hal.science/hal-04641791v1}{\faPaperclip}
     
+  \vspace{\spaceSections}
   \section{Compétences Techniques}
-% --- PYTHON EST LA PRIORITÉ ---
-    \subsection{Langages de programmation}
-      \textbf{Python} (Expert), SQL, C, C++ (Notions), R et Java
-
-    \vspace{\spaceSections} 
-    \subsection{Deep Learning \& Computer Vision}
-      PyTorch, TensorFlow, OpenCV, Transformers (ViT), CNNs, Attention Mechanisms
-    
-    % \vspace{\spaceSections} 
-    % \subsection{AI Safety \& Régulation}
-    %   AI Act, Normes de Sûreté (IEC 61508), Robustesse des modèles, Éthique de l'IA
-    
-    \vspace{\spaceSections} 
-    \subsection{Data Science \& XAI}
-      NumPy, Pandas, scikit-learn, Grad-CAM, LIME, SHAP (Explicabilité)
-    
-    % \vspace{\spaceSections} 
-    % \subsection{MLOps \& Outils}
-    %   Docker, Kubernetes, Git/GitHub, Linux, LaTeX
-    
-    \vspace{\spaceSections} 
-    \subsection{Langues}
-      Français (Natif) et anglais (Avancé / B2)
-      % Espagnol/Chinois : Ne mets que si tu peux tenir une conversation, sinon ça surcharge.
-
-\section{Formation}
-\subsection{Diplôme d'ingénieur en Informatique, spé IA}
-    \job{ENSEIRB-MATMECA}{09/2024 -- 09/2027}
-    \textbf{Rang : 3/93 (Top 3\%)} \hfill \textbf{GPA : 3.7/4.0}\\
-    Parcours Recherche (Ingénieur-Docteur)\\
-    \textit{Cours clés :} Théorie des Graphes, Méthodes Numériques, Algorithmique Avancée, Machine Learning.
+  \vspace{\spaceSections}
+    \subsection{\faCode~ Langages de programmation}
+      \textbf{Python} (avancé), C et SQL (intermédiaire), Java, TypeScript/JavaScript, C++, Bash, R
 
     \vspace{\spaceSections}
-    \subsection{Bachelor Développeuse IA (Niveau 6)}
+    \subsection{\faBrain~ Deep Learning \& Computer Vision}
+      PyTorch, CNNs, Transformers/ViT, VQ-VAE, LoRA/PEFT, OpenCV
+
+    % Rubrique « Simulateurs physiques » (MuJoCo, Isaac Gym, Isaac Lab, PhysX)
+    % retirée le 29/07/2026 : le bloc physique MuJoCo a été supprimé du dépôt le
+    % 22/07/2026 et Isaac/PhysX n'ont aucun support dans master-cv.md. La règle
+    % tient : rien sur ce CV qui ne figure au CV maître.
+    \vspace{\spaceSections}
+    \subsection{\faRunning~ Mouvement humain 3D}
+      SMPL/SMPL-X, AMASS, estimation de pose monoculaire, Multi-HMR, calibration caméra, z-buffer. Métriques : MPJPE, PA-MPJPE, pénétration, foot-skate, FID-motion
+
+    \vspace{\spaceSections}
+    \subsection{\faTools~ MLOps \& Outils}
+      Docker, Kubernetes/K3s, GitHub Actions, Linux/Bash, \LaTeX{}
+
+    \vspace{\spaceSections}
+    \subsection{\faChartBar~ Data Science \& XAI}
+      NumPy, Pandas, scikit-learn, Grad-CAM, LIME, SHAP
+
+    % \vspace{\spaceSections}
+    % \subsection{AI Safety \& Régulation}
+    %   AI Act, IEC 61508, robustesse des modèles, éthique
+
+    \vspace{\spaceSections}
+    \subsection{\faLanguage~ Langues}
+      Français (natif), anglais B2 -- \textbf{TOEIC 840/990}, chinois (notions)
+
+  \vspace{\spaceSections}
+  \section{Formation}
+  \vspace{\spaceSections}
+    \subsection{Diplôme d'ingénieur en Informatique, spé IA}
+    \job{ENSEIRB-MATMECA}{09/2024 -- 09/2027}
+    % Les GPA /4.0 sont retirés : aucune conversion officielle du /20 français
+    % n'existe, et Google n'a jamais publié de table de correspondance. Un rang
+    % dans une cohorte dont on donne la taille se lit dans n'importe quel pays.
+    % Deux rangs encadrants, pas une trajectoire.
+    \textbf{Rang : 5/81 (S8)} \hfill \textbf{3/93 (S6)}\\
+    Filière IA, parcours recherche\\
+    \textit{Cours clés :} Deep Learning 18/20, Initiation à la recherche 17/20, Réseaux appliqués 17,5/20, Cryptologie 16,5/20, Programmation fonctionnelle 18,4/20.
+
+    \vspace{\spaceSections}
+    \subsection{Bachelor Développeuse IA (RNCP niveau 6)}
     \job{EPSI Bordeaux}{09/2023 -- 09/2024}
-    \textbf{Major de Promotion (1\textsuperscript{ère})} \hfill \textbf{GPA : 3.8/4.0}\\
-    \textit{Cours clés :} Data Mining, Évaluation de modèles, SQL.
+    \textbf{Rang : 1/10} \hfill \textbf{Moyenne : 16,38/20}\\
+    \textit{Cours clés :} Data Mining, évaluation de modèles, SQL.
 
     \vspace{\spaceSections}
     \subsection{BTS Services Informatiques (SIO)}
     \job{EPSI Bordeaux}{09/2021 -- 09/2023}
-    \textbf{Major de Promotion (1\textsuperscript{ère})} \hfill \textbf{GPA : 3.3/4.0}\\
-    Option Solutions Logicielles (SLAM)
+    % « Major de promotion » seul serait trompeur : le BTS était une option
+    % suivie par un groupe de 9, pas la promo EPSI entière (35). Donner la
+    % taille de la cohorte rend l'affirmation vraie ET vérifiable.
+    \textbf{Major de l'option : 1/9}\\
+    Option Solutions Logicielles (SLAM). Rangs 3/35 puis 4/35 sur la promotion EPSI complète.
 
-\section{Centres d'intérêt}
-  \textbf{Sport :} Demi-fond (Compétition), Escalade\\
-  \textbf{Créatif :} Montage vidéo (Sony Vegas), Photographie\\
 
 \end{area-left}
 
 \begin{area-right}
   \section{Expériences professionnelles}
+  \vspace{\spaceSections}
 
-% \subsection{Student Researcher (Research Intern)}
-      % \job{Google Research (Paris / Zürich)}{02/2027 -- 09/2027}
-      % \begin{itemize}
-      %   \item \textbf{Équipe :} Intégration à l'équipe [Nom de l'équipe, ex: Perception / Brain / DeepMind].
-      %   \item \textbf{Recherche :} Travaux sur [Sujet précis, ex: l'explicabilité des Transformers] pour améliorer la robustesse des modèles de vision.
-      %   \item \textbf{Technique :} Implémentation d'expériences à large échelle sur \textbf{TPU} avec \textbf{JAX/Flax} ou TensorFlow.
-      %   \item \textbf{Collaboration :} Travail direct avec des Senior Research Scientists et contribution à une publication [ex: soumis à NeurIPS/ICLR].
-      % \end{itemize}
-      % \vspace{\spaceSections}
+    % Bloc « Student Researcher — Google Research » supprimé le 29/07/2026.
+    % C'était une expérience inventée d'avance, avec des placeholders [Nom de
+    % l'équipe]. Commentée elle ne s'imprimait pas, mais elle restait lisible
+    % par quiconque ouvre la source — et ce dépôt a vocation à devenir public.
 
-    \subsection{Visiting Research Student (Deep Learning)}
+    \subsection{Visiting Research Student}
       \job{University of Alberta -- Vision and Learning Lab}{05/2026 -- 09/2026}
       \begin{itemize}
-        \item \textbf{Projet :} Développement d'algorithmes de vision par ordinateur intégrant du \textbf{Quantum Computing} pour l'analyse comportementale.
-        \item \textbf{Labo :} Recherche sous la supervision du Prof. Li Cheng (financée par Mitacs Globalink).
-        \item \textbf{Objectif :} Soumission de résultats aux conférences majeures (CVPR/ICCV).
+        \item \textbf{Correction de mouvement fondée sur l'image :} pipeline qui corrige un mouvement humain 3D reconstruit \textit{sans jamais lire le mouvement bruité lui-même}, à partir des seuls signaux extraits de l'image : contact pied-sol par intersection rayon-plan, ordre d'occultation par z-buffer, profondeur monoculaire, calibration caméra. La correction vient donc d'une source indépendante de l'erreur.
+        \item \textbf{Correcteur de profondeur :} profondeur monoculaire (\textit{Depth Anything}) remise à l'échelle par ancrage sur deux grandeurs mesurables directement dans l'image (hauteur des pieds, taille de la tête). Purement algorithmique, rien d'entraîné, aucune vérité terrain. Résultat : \textbf{-33\% de pénétration inter-personnes}, mesuré sur 100\% des données.
+        \item \textbf{Infrastructure distribuée :} sharding multi-GPU sur 12 shards avec vol de travail entre deux sites de calcul, environnements reproductibles, exécution détachée résiliente.
+        \item Sous la supervision du Prof. Li Cheng. Bourse Mitacs Globalink 2026.
       \end{itemize}
       \vspace{\spaceSections}
       
@@ -163,7 +182,10 @@
     \subsection{Ingénieure R\&D - IA et sûreté (stage)}
       \job{Sector Group (Paris)}{06/2025 -- 08/2025}
       \begin{itemize}
-        \item Conception d'un RAG sécurisé (\textbf{100\% fiabilité}, \textbf{70\% recall}) sur \textbf{100+ requêtes} via un pipeline d'analyse multi-format.
+        % ATTENTION : couple 70 % / 100 % marqué [À CONFIRMER] dans master-cv.md §4.3.
+        % Il n'est cohérent que si le système s'abstient quand il n'est pas sûr.
+        % Si la sémantique réelle est autre, réécris la ligne avant d'envoyer.
+        \item Conception d'un RAG sécurisé réglé en régime d'abstention, où une réponse fausse coûte plus cher qu'une réponse manquante : \textbf{100\% de précision sur les réponses émises}, pour 70\% de rappel sur \textbf{100+ requêtes} d'évaluation.
         \item Formation IA de \textbf{9 managers} (\textbf{100\% satisfaction}) et définition de la stratégie IA par branche via un audit des besoins.
         \item Analyse de la norme \textbf{IEC 61508} pour définir un cadre de certification des composants IA critiques (Safety).
       \end{itemize}
@@ -179,16 +201,13 @@
           \item Gain de \textbf{7h/cycle} d'entraînement des modèles via l'automatisation complète des pipelines MLOps (Data, Train \& Eval).
         \end{itemize}
       \end{leftarrowbox}
-      \vspace{\spaceSections} 
+      \vspace{\spaceSections}
       
       \job{Développeuse Python (stage)}{01/2023 -- 03/2023}
       \begin{dendleftarrowbox}
         Développement d'un algo de post-traitement (\textbf{100\% précision}) corrigeant les erreurs de tracking d'objets (post traitement).
       \end{dendleftarrowbox}\\
 
-      \vspace{\spaceSections} 
-    \subsection{Permanence Contraception Masculine}
-    \job{Planning Familial / ENSC}{01/2022 -- 09/2024}
 
     % \subsection{Chargée de projet web (stage)}
     %   \job{Eveho (Cenon)}{06/2022 -- 08/2022}
