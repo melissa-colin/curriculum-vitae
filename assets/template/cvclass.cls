@@ -278,7 +278,10 @@
       yshift=-\margin - 0.5cm,
       text=white,
       font=\fontsize{27}{48}\selectfont
-    ] at (current page.north west) {\fontspec{Lekton}\textbf{\cvname}};
+    % \fontspec{Lekton} appelait la police par NOM DE FAMILLE, sans Path :
+    % ça court-circuite la déclaration ci-dessus et ne marche que si Lekton
+    % est installée sur la machine. \Lekton utilise les fichiers du dépôt.
+    ] at (current page.north west) {\Lekton\textbf{\cvname}};
 
     % Description
     \node[
