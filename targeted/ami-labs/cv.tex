@@ -1,0 +1,155 @@
+\documentclass[10pt, letterpaper]{article}
+
+% --- Packages ---
+\usepackage[
+    ignoreheadfoot,
+    top=0.7 cm,
+    bottom=0.7 cm,
+    left=1.0 cm,
+    right=1.0 cm,
+    footskip=0.5 cm,
+]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage{eurosym}
+\usepackage[dvipsnames]{xcolor}
+
+% --- Accent color (Mélissa's signature red) ---
+\definecolor{MyRed}{RGB}{160, 20, 40}
+
+\usepackage[
+    pdftitle={Melissa Colin - CV - AMI Labs},
+    pdfauthor={Melissa Colin},
+    colorlinks=true,
+    urlcolor=MyRed
+]{hyperref}
+
+% --- Font ---
+\usepackage{charter}
+
+% --- Settings ---
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+% --- Section formatting ---
+\titleformat{\section}
+  {\small\bfseries\scshape\raggedright\color{MyRed}}
+  {}
+  {0em}
+  {}
+  [\titlerule]
+
+\titlespacing{\section}{0pt}{5pt}{2pt}
+
+\setlist[itemize]{leftmargin=*, noitemsep, topsep=0pt, partopsep=0pt, parsep=0pt}
+
+% --- Macros ---
+\newcommand{\entry}[4]{
+  \noindent \textbf{#1} \hfill #2 \\
+  \textit{#3} \hfill \textit{#4} \par
+}
+
+\IfFileExists{personal.tex}{\input{personal.tex}}{}
+\providecommand{\myphone}{+33 7 82 52 XX XX}
+
+\begin{document}
+
+\small
+
+% ==================== HEADER ====================
+\begin{center}
+    {\fontsize{20}{20}\selectfont \textbf{\color{MyRed}Mélissa Colin}} \\[2pt]
+    {\footnotesize \textbf{AI Research, Physics-grounded Motion Generation, World Models}} \\[3pt]
+    \scriptsize{
+    \faMapMarker* Bordeaux, France (mobile EU) \quad|\quad
+    \faPhone* \myphone{} \quad|\quad
+    \faEnvelope~ \href{mailto:contact@melissacolin.ai}{contact@melissacolin.ai} \\
+    \faGlobe~ \href{https://melissacolin.ai}{melissacolin.ai} \quad|\quad
+    \faLinkedin~ \href{https://www.linkedin.com/in/m\%C3\%A9lissa-colin/}{linkedin.com/in/mélissa-colin} \quad|\quad
+    \faGithub~ \href{https://github.com/melissa-colin}{github.com/melissa-colin}
+    }
+\end{center}
+
+% ==================== SUMMARY ====================
+\vspace{2pt}
+{\footnotesize
+\textit{M.Sc. engineering student (Top 3\%) at ENSEIRB-MATMECA, Engineer-Doctor research track (engineering degree with research focus, preparing for a PhD). Visiting researcher at U.~Alberta Vision \& Learning Lab (Mitacs Globalink Award 2026), working on physics-grounded 3D human motion generation in the lineage of PhysDiff, Morph and InterMask. Open to a 6-month research internship (Feb 2027) or a 12-month French work-study contract (contrat de professionnalisation, Sept 2026) at AMI Labs.}}
+
+% ==================== PUBLICATIONS ====================
+\section{Publications \& Manuscripts}
+
+Wang, Y., \textbf{Colin, M.}, et al. Paper in preparation on 3D human motion generation (Vision \& Learning Lab, University of Alberta), targeting CVPR 2027 submission.
+
+\vspace{1pt}
+
+\textbf{Colin, M.}, Chraibi Kaadoud, I. (2024). \textit{Performances et explicabilité de ViT et d'architectures CNN.} RJCIA 2024 / PFIA, La Rochelle. Empirical comparison of Vision Transformers vs CNNs using LIME, SHAP and Grad-CAM. \href{https://hal.science/hal-04641791}{[HAL]}
+
+\vspace{1pt}
+
+\textbf{Colin, M.} \textit{\href{https://medium.com/@melissa.colin/yolov8-explained-understanding-object-detection-from-scratch-763479652312}{YOLOv8 Explained: Understanding Object Detection from Scratch.}} Technical vulgarization article, Medium (2024).
+
+% ==================== EXPERIENCE ====================
+\section{Research \& Engineering Experience}
+
+\entry{Vision \& Learning Lab, University of Alberta}{May 2026 -- Sep 2026}{Visiting Research Scholar (Prof. Li Cheng; mentored by Yilin Wang, 1st author of MotionDreamer, ICLR 2025)}{Edmonton, Canada}
+\begin{itemize}
+    \item Working with Yilin Wang as co-author on a paper in preparation, targeted for CVPR 2027 submission, on 3D human motion generation in the lineage of masked-iterative methods (InterMask, ICLR 2025) and physics-based refinement (PhysDiff ICCV 2023, Morph ICCV 2025).
+    \item Built a comprehensive audit framework on the standard motion-evaluation metrics (FID-motion, R-Precision, MM-Dist, Penetrate, Foot-Skate, Float, Jitter).
+\end{itemize}
+
+\vspace{3pt}
+
+\entry{Sector Group}{Jun 2025 -- Aug 2025}{R\&D AI Engineer Intern, Industrial AI safety}{Paris, France}
+\begin{itemize}
+    \item Engineered an offline, on-premise RAG pipeline (Ollama + BGE embeddings) for confidential industrial documents: \textbf{70\% recall, 100\% reliability} on 100+ queries.
+    \item Audited 9 business units on AI integration and analyzed the IEC 61508 functional-safety standard for certifying critical AI components.
+\end{itemize}
+
+\vspace{3pt}
+
+\entry{Cali Intelligences}{Jan 2023 -- Sep 2024}{Applied AI Intern (Jan--Mar 2023), then AI Developer (14-month apprenticeship)}{Talence, France}
+\begin{itemize}
+    \item Built the company's end-to-end MLOps training pipeline for object-detection models (YOLOv7 $\to$ YOLOv8): custom from-scratch image-augmentation library (8 filters), LabelMe$\to$YOLO converter, sklearn dataset splitter, automated label validation, full containerization (Docker, K3S, GitHub Actions, Helm), plus a simplified UI letting non-technical users launch trainings.
+    \item Raised production detection accuracy from \textbf{60\% to 90\%} on a 100k+ video dataset through systematic data QA/QC and hyperparameter tuning. Cut false positives by \textbf{50\%} via a modular architecture separating detection, container-conformity and temporal-filtering logic.
+    \item Reduced inference latency by \textbf{70\%} through architecture optimization and a deployment-pipeline rewrite. Saved \textbf{7h per training cycle} once the MLOps automation was in place.
+    \item Earlier: tracking-error correction algorithm at parking-barrier crossings (YOLOv4 + custom heuristics on average paths and ID-swap rules), and parking-space counting from scratch (data labeling + augmentation + YOLOv7 training + IOV algorithm).
+\end{itemize}
+
+% ==================== EDUCATION ====================
+\section{Education}
+
+\entry{ENSEIRB-MATMECA, Bordeaux INP, M.Sc. CS \& Engineering, Engineer-Doctor research track}{Sep 2024 -- Sep 2027}{\textbf{Ranked 3rd/93 (semester 6)}, \textbf{5th/81 (semester 8)}}{Bordeaux}
+
+\hspace{1em}\textit{Info Theory 18.6/20, Functional Programming 18.4/20, Compilation Project 17/20, Networks 17.3/20, Computability \& Complexity, Graph Algorithms. Upcoming S9 (Fall 2026): LLMs \& Efficient Deep Learning, Reinforcement Learning, Computer Vision, Software Engineering for AI.}
+
+\vspace{2pt}
+
+\entry{EPSI Bordeaux, B.Sc. AI \& Data Science}{Sep 2023 -- Sep 2024}{16.38/20 \quad \textbf{Ranked 1st of 10}}{Talence}
+
+\vspace{2pt}
+
+\entry{BTS SIO, EPSI Bordeaux (C, OS, networks)}{Sep 2021 -- Jul 2023}{\textbf{Ranked 1st --- BTS SIO cohort (n=9)}; 3rd/35 then 4th/35 across the full EPSI class}{Bordeaux}
+
+\vspace{2pt}
+
+\entry{IRD / FUN-MOOC}{Dec 2023}{Certificate: \textit{Writing and Publishing a Scientific Article}}{Online}
+
+% ==================== SKILLS ====================
+\section{Technical Skills}
+\begin{itemize}
+    \item \textbf{Programming:} Python (expert), C, SQL, R, JavaScript; notions of C++ and Java.
+    \item \textbf{Deep Learning:} PyTorch (proficient), TensorFlow, Transformers (ViT, masked-iterative models), diffusion models, CNNs, attention.
+    \item \textbf{3D human motion:} SMPL/SMPL-X, AMASS, monocular pose estimation (Multi-HMR), camera calibration, z-buffer occlusion reasoning. Metrics: MPJPE, PA-MPJPE, penetration, foot-skate, FID-motion.
+    \item \textbf{Tooling \& languages:} Docker, Kubernetes, Git, Linux/Bash, LaTeX. French (native), English (advanced B2), Chinese (beginner).
+\end{itemize}
+
+% ==================== AWARDS & LEADERSHIP ====================
+\section{Awards \& Leadership}
+\begin{itemize}
+    \item \textbf{Mitacs Globalink Research Award} (2026): selective international research funding.
+    \item \textbf{Vice President, Forum Ingenib} (2025--2026): 20-person team, \euro 100k budget, 800 students \& 80 companies event.
+    \item \textbf{Networking Coordinator, ai4industry} (2024--2025): 20+ researchers, national academic networking day.
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,167 @@
+\documentclass[10pt, letterpaper]{article}
+
+% --- Packages ---
+\usepackage[
+    ignoreheadfoot,
+    top=1.2 cm,
+    bottom=1.2 cm,
+    left=1.2 cm,
+    right=1.2 cm,
+    footskip=1.0 cm,
+]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage[dvipsnames]{xcolor}
+
+% --- DÉFINITION DE TON ROUGE ---
+\definecolor{MyRed}{RGB}{160, 20, 40}
+
+\usepackage[
+    pdftitle={Melissa Colin CV},
+    pdfauthor={Melissa Colin},
+    colorlinks=true,
+    urlcolor=MyRed
+]{hyperref}
+\usepackage{paracol} 
+
+% --- Fonts ---
+\usepackage{charter} 
+
+% --- Settings ---
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\columnsep}{0.6cm}
+
+% --- SECTION FORMATTING ---
+\titleformat{\section}
+  {\large\bfseries\scshape\raggedright\color{MyRed}} 
+  {} 
+  {0em} 
+  {} 
+  [\titlerule]
+
+\titlespacing{\section}{0pt}{8pt}{4pt} 
+
+% Custom itemize
+\setlist[itemize]{leftmargin=*, noitemsep, topsep=1pt, partopsep=0pt, parsep=0pt} 
+
+% --- Macros ---
+\newcommand{\entry}[4]{
+  \noindent \textbf{#1} \hfill #2 \\
+  \textit{#3} \hfill \textit{#4} \par 
+}
+
+\IfFileExists{personal.tex}{\input{personal.tex}}{}
+\providecommand{\myphone}{+33 7 82 52 XX XX}
+
+\begin{document}
+
+% --- HEADER ---
+\begin{center}
+    {\fontsize{22}{22}\selectfont \textbf{Mélissa COLIN}} \\[5pt] 
+    {\large \textbf{AI \& Deep Learning Student | Aspiring Research Scientist}} \\[5pt] 
+    
+    \small{ 
+    \faMapMarker* Bordeaux, France \quad | \quad \faPhone* \myphone{} \quad | \quad \faEnvelope~ \href{mailto:melissa.colin@enseirb-matmeca.fr}{melissa.colin@enseirb-matmeca.fr} \\
+    \faGlobe~ \href{https://melissacolin.ai}{melissacolin.ai} \quad | \quad \faLinkedin~ \href{https://www.linkedin.com/in/m\%C3\%A9lissa-colin/}{LinkedIn} \quad | \quad \faGithub~ \href{https://github.com/melissa-colin}{GitHub}
+    }
+\end{center}
+
+% --- SUMMARY ---
+\vspace{2pt}
+{\small
+\textit{Incoming Visiting Research Student at UAlberta (Mitacs Globalink Awardee). Top 3\% Engineering Student focused on Fundamental Deep Learning. Seeking a \textbf{Research Apprenticeship} (Sept 2026) to contribute to the design of \textbf{novel neural architectures (Post-Transformer)} and \textbf{Multimodal Foundation Models}.}
+}
+
+% --- RESEARCH & AWARDS ---
+\section{Research \& Academic Honors}
+
+\entry{Mitacs Globalink Research Award}{2026}{Highly selective grant for international research excellence (Top-tier funding).}{Edmonton, Canada}
+\begin{itemize}
+    \item Selected to join the \textbf{Vision and Learning Lab (UAlberta)} under Prof. Li Cheng to research 3D Generative Models.
+\end{itemize}
+
+\vspace{6pt}
+
+\entry{Published Paper (PFIA 2024)}{2024}{Colin, M. \& Chraibi Kaadoud, I. "Performances and Explainability of ViT and CNN Architectures"}{La Rochelle, France}
+\begin{itemize}
+    \item Demonstrated the contradictions in XAI methodologies by conducting an empirical comparative study of Vision Transformers and CNNs using \textbf{LIME, SHAP, and Grad-CAM}.
+    \item Link to paper: \href{https://hal.science/hal-04641791}{HAL Science Archive}
+\end{itemize}
+
+% --- EDUCATION ---
+\section{Education}
+
+\entry{ENSEIRB-MATMECA, Bordeaux INP}{Sep 2024 -- Sep 2027}{M.Sc. in Computer Science \& Engineering (Diplôme d'ingénieur)}{Ranked 3rd/93 (S6), 5th/81 (S8)}
+\begin{itemize}
+    \item \textbf{Rank:} 3\textsuperscript{rd} / 93 (Top 3\%). \textbf{Track:} Research Focus (Engineer-Doctor).
+    \item \textbf{Relevant Coursework:} Computability and Complexity, Deep Learning Architectures, Information Theory, Advanced Algorithms.
+\end{itemize}
+
+\vspace{6pt}
+
+\entry{EPSI Bordeaux}{Sep 2023 -- Sep 2024}{B.Sc. in AI \& Data Science}{16.38/20 --- ranked 1st of 10}
+\begin{itemize}
+    \item \textbf{Ranked 1\textsuperscript{st}} in cohort. Focused on Data Mining, Model Evaluation, and Software Architecture.
+\end{itemize}
+
+\vspace{6pt}
+
+\entry{EPSI Bordeaux}{Sep 2021 -- Jul 2023}{BTS SIO --- ranked 1st of the BTS cohort (n=9); 3rd/35 then 4th/35 across the full EPSI class}{}
+\begin{itemize}
+    \item \textbf{Ranked 1\textsuperscript{st}}. Built an intensive technical foundation in lower-level programming (C), operating systems, and hardware architecture.
+\end{itemize}
+
+% --- EXPERIENCE ---
+\section{Professional Experience}
+
+\entry{Vision and Learning Lab, University of Alberta}{May 2026 -- Sep 2026}{Visiting Research Scholar (Under Prof. Li Cheng)}{Edmonton, Canada}
+\begin{itemize}
+    \item \textbf{3D Generative Models:} Extending the \textbf{InterMask} (ICLR) collaborative masked modeling architecture by implementing novel algorithms for 3D Human Interaction Generation.
+    \item \textbf{Physics-Informed Deep Learning:} Enforcing dynamic physics constraints by developing custom modules in PyTorch and C++/CUDA, targeting a top-tier conference publication (e.g., \textbf{ICLR}).
+\end{itemize}
+
+\vspace{6pt}
+
+\entry{Sector Group}{Jun 2025 -- Aug 2025}{R\&D AI Engineer Intern}{Paris, France}
+\begin{itemize}
+    \item \textbf{Secure RAG System:} Achieved \textbf{70\% recall} and \textbf{100\% reliability} on a confidential dataset by engineering an offline Retrieval-Augmented Generation pipeline using \textbf{Ollama} and \textbf{BGE embeddings}.
+    \item \textbf{Normative Compliance:} Defined AI certification requirements by analyzing the \textbf{IEC 61508} safety standard.
+\end{itemize}
+
+\vspace{6pt}
+
+\entry{Cali Intelligences}{Jul 2023 -- Sep 2024}{AI Developer (Apprenticeship)}{Talence, France}
+\begin{itemize}
+    \item \textbf{Model Optimization:} Boosted object detection accuracy from \textbf{60\% to 90\%} by intervening directly on the YOLOv8 backbone (DarknetBottleneck, SPPF) and curating a dataset of \textbf{100,000+ videos}.
+    \item \textbf{Inference Latency:} Decreased inference latency by \textbf{70\%} and reduced false positives by \textbf{50\%} by separating the bounding box logic from temporal filtering logic in the deployment pipeline.
+    \item \textbf{MLOps:} Saved \textbf{7 hours per training cycle} by fully automating Data, Train, and Eval pipelines using Docker and Kubernetes.
+\end{itemize}
+
+\vspace{6pt}
+
+\entry{Cali Intelligences}{Jan 2023 -- Mar 2023}{Applied AI Intern}{Talence, France}
+\begin{itemize}
+    \item \textbf{Trajectory Optimization:} Corrected object tracking anomalies (ID switches) with \textbf{100\% precision} by developing a Python-based offline trajectory-matching algorithm.
+\end{itemize}
+
+% --- SKILLS ---
+\section{Technical Skills}
+\begin{itemize}
+    \item \textbf{Deep Learning \& CV:} PyTorch, TensorFlow, OpenCV, Transformers (ViT), YOLO, CNNs, Attention Mechanisms.
+    \item \textbf{Languages:} Python (Expert), SQL, C, C++, JavaScript.
+    \item \textbf{Data Science \& XAI:} Pandas, NumPy, scikit-learn, Grad-CAM, LIME, SHAP.
+    \item \textbf{MLOps \& Tools:} Docker, Kubernetes, Git, Linux/Bash, LaTeX.
+\end{itemize}
+
+% --- LEADERSHIP ---
+\section{Leadership \& Engagement}
+
+\entry{Vice President, Forum Ingenib}{May 2025 -- Present}{Managed €100k budget \& team of 20 students for a fair with 1,500+ attendees.}{}
+
+\vspace{2pt}
+
+\entry{Networking Coordinator, ai4industry}{Oct 2024 -- Present}{Coordinated 30+ researchers for a national academic networking event.}{}
+
+\end{document}

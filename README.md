@@ -1,12 +1,23 @@
 # CV — Mélissa Colin
 
-Sources LaTeX de mes CV. Trois documents, deux moteurs, une classe maison.
+Sources LaTeX de mes CV. Deux moteurs, une classe maison.
+
+**CV généralistes**, à la racine :
 
 | Fichier | Moteur | Usage |
 |---|---|---|
 | `french.tex` | XeLaTeX | CV français, mise en page deux colonnes (classe `assets/template/cvclass`) |
 | `cv-research-general.tex` | pdfLaTeX | CV anglais, candidatures recherche et LinkedIn |
-| `google-student-researcher.tex` | pdfLaTeX | CV anglais ciblé Google Student Researcher |
+
+**CV ciblés**, un sous-dossier par entreprise dans `targeted/` :
+
+| Dossier | Poste |
+|---|---|
+| `targeted/google-student-researcher/` | Google — Student Researcher, BS/MS, Fall 2026 |
+| `targeted/google-swe-apprentice/` | Google — apprentissage ingénierie logicielle |
+| `targeted/ami-labs/` | AMI Labs — CV et lettre |
+
+Le Makefile découvre `targeted/*/*.tex` tout seul : un nouveau dossier entre dans le build sans qu'on touche au Makefile.
 
 ## Données personnelles
 
@@ -23,15 +34,23 @@ Les PDF compilés ne sont pas suivis non plus, pour la même raison : en local i
 ## Compilation
 
 ```sh
-make all      # les trois CV
+make all      # tout
 make french   # français uniquement
 make general  # CV recherche généraliste
-make google   # CV ciblé Google
+make targeted # tous les CV ciblés
 make clean    # supprime auxiliaires et PDF
-make help     # liste les cibles
+make help     # liste les cibles et les CV ciblés détectés
 ```
 
 Il faut XeLaTeX et pdfLaTeX. Les polices sont incluses dans `assets/fonts/`.
+
+**Toujours compiler depuis la racine du dépôt**, jamais depuis un sous-dossier : LaTeX résout les chemins relatifs depuis le répertoire courant, pas depuis le `.tex`. C'est ce qui permet à `targeted/*/cv.tex` de trouver `personal.tex`.
+
+## Intégration continue
+
+`.github/workflows/build-cv.yml` compile tout à chaque poussée sur `main` et attache les deux CV généralistes à la release `latest`, donc à une URL qui ne change jamais.
+
+Le runner n'a pas `personal.tex` : les PDF publiés portent le numéro masqué. Une étape du workflow refuse de publier si un PDF contient un motif de mobile français complet — elle cherche le motif, pas le numéro actuel, pour rester valable si celui-ci change.
 
 ## Structure
 
