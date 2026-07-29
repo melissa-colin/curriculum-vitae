@@ -1,0 +1,94 @@
+# Compile les CV à chaque poussée sur main et les attache à une release.
+#
+# POINT CLÉ : ce runner n'a PAS personal.tex (il est dans .gitignore, donc
+# absent du clone que fait la CI). Les PDF publiés portent donc le numéro
+# masqué du \providecommand de repli. C'est voulu, pas un bug : un PDF
+# téléchargeable publiquement avec un vrai numéro se fait aspirer par des
+# bots en quelques semaines.
+#
+# NE METS JAMAIS le vrai numéro dans un GitHub Secret pour « corriger » ça.
+# Ça remettrait exactement le problème qu'on vient de purger de l'historique,
+# avec juste un chemin plus long pour y arriver.
+
+name: Build CV
+
+on:
+  push:
+    branches: [main]
+    # On ne relance pas le build quand seul le README bouge.
+    paths:
+      - '**.tex'
+      - '**.cls'
+      - 'Makefile'
+      - 'assets/**'
+      - '.github/workflows/build-cv.yml'
+  workflow_dispatch:        # bouton « Run workflow » dans l'onglet Actions
+
+permissions:
+  contents: write           # nécessaire pour créer/mettre à jour la release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    # Image officielle TeX Live : xelatex, pdflatex, fontspec et make déjà
+    # présents. Plus rapide et plus reproductible qu'un apt-get install de
+    # texlive-full, qui prend plusieurs minutes à chaque exécution.
+    container: texlive/texlive:latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compiler tous les CV
+        run: make all
+
+      # Filet de sécurité : si un jour un \providecommand est mal placé et
+      # que le vrai numéro se retrouve dans un PDF, le build échoue AVANT
+      # la publication. Une vérification vaut mieux qu'une bonne intention.
+      # On cherche le MOTIF d'un mobile français, pas la chaîne littérale du
+      # numéro actuel. Chercher le numéro exact ne protégerait que contre
+      # celui-là ; le jour où il change, la garde ne sert plus à rien.
+      #
+      # Motif : indicatif (+33 ou 0), puis 6 ou 7 (mobiles français), puis
+      # quatre groupes de deux CHIFFRES. La version masquée se termine par
+      # des X, donc elle ne peut pas satisfaire les quatre groupes.
+      # Le [67] évite le faux positif de l'ORCID, qui commence par 0000-000.
+      - name: Vérifier qu'aucun PDF ne contient de numéro complet
+        run: |
+          set -u
+          command -v pdftotext >/dev/null 2>&1 || {
+            apt-get update -qq && apt-get install -y -qq poppler-utils
+          }
+          motif='(\+33|0)[[:space:]]*[67]([[:space:]]*[0-9]{2}){4}'
+          fuite=0
+          for pdf in $(find . -name '*.pdf' -not -path './.git/*'); do
+            if pdftotext "$pdf" - 2>/dev/null | grep -qE "$motif"; then
+              echo "::error file=$pdf::numéro de téléphone complet détecté"
+              fuite=1
+            else
+              echo "ok  $pdf"
+            fi
+          done
+          exit $fuite
+
+      - name: Publier les PDF
+        uses: softprops/action-gh-release@v2
+        with:
+          # Tag fixe : une seule release, écrasée à chaque poussée. L'URL de
+          # téléchargement ne change jamais, donc le lien mis sur LinkedIn ou
+          # dans une signature mail reste valable indéfiniment. On perd
+          # l'historique des versions, mais git l'a déjà.
+          tag_name: latest
+          name: 'CV — dernière version'
+          prerelease: false
+          # Seuls les deux CV généralistes sont attachés. Les CV de targeted/
+          # nomment des entreprises précises : leurs SOURCES sont dans le
+          # dépôt, ce qui suffit à montrer le travail, mais en faire des PDF
+          # à télécharger d'un clic revient à mettre en avant des
+          # candidatures passées auprès de recruteurs actuels.
+          files: |
+            cv-research-general.pdf
+            french.pdf
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

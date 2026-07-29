@@ -1,0 +1,79 @@
+\documentclass[10pt, letterpaper]{article}
+
+% --- Packages ---
+\usepackage[
+    ignoreheadfoot,
+    top=1.0 cm,
+    bottom=1.0 cm,
+    left=1.5 cm,
+    right=1.5 cm,
+    footskip=1.0 cm,
+]{geometry}
+\usepackage{titlesec}
+\usepackage{fontawesome5}
+\usepackage[dvipsnames]{xcolor}
+
+% --- Mélissa's signature red ---
+\definecolor{MyRed}{RGB}{160, 20, 40}
+
+\usepackage[
+    pdftitle={Melissa Colin - Cover Letter - AMI Labs},
+    pdfauthor={Melissa Colin},
+    colorlinks=true,
+    urlcolor=MyRed
+]{hyperref}
+\usepackage{charter}
+
+% --- Settings ---
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.8em}
+
+\IfFileExists{personal.tex}{\input{personal.tex}}{}
+\providecommand{\myphone}{+33 7 82 52 XX XX}
+
+\begin{document}
+
+% ==================== HEADER ====================
+\begin{center}
+    {\fontsize{22}{22}\selectfont \textbf{\color{MyRed}Mélissa Colin}} \\[4pt]
+    {\large \textbf{AI Research, Physics-grounded Motion Generation, World Models}} \\[4pt]
+    \small{
+    \faMapMarker* Bordeaux \quad|\quad
+    \faPhone* \myphone{} \quad|\quad
+    \faEnvelope~ \href{mailto:contact@melissacolin.ai}{Email} \quad|\quad
+    \faGlobe~ \href{https://melissacolin.ai}{Portfolio} \quad|\quad
+    \faLinkedin~ \href{https://www.linkedin.com/in/m\%C3\%A9lissa-colin/}{LinkedIn} \quad|\quad
+    \faGithub~ \href{https://github.com/melissa-colin}{GitHub}
+    }
+\end{center}
+
+\vspace{12pt}
+
+% ==================== RECIPIENT ====================
+\textbf{AMI Labs} \\
+General Application 2026--2027 \\
+Paris, France
+
+\textbf{Subject: Spontaneous application for a research position (apprenticeship Sept 2026, or internship Feb 2027)}
+
+% ==================== BODY ====================
+Dear AMI Labs Team,
+
+I want to do research on AI architectures that work closer to how biological intelligence does. AMI Labs is the only place I've found where that's the central agenda and not a side topic. The JEPA and world models direction is what made me apply.
+
+I'm currently a Visiting Research Scholar at the University of Alberta Vision and Learning Lab (Mitacs Globalink Award 2026), with Prof.~Li Cheng and mentored by Yilin Wang (first author of MotionDreamer, ICLR 2025). I work on physics-grounded multi-person motion generation: making generated human motion satisfy real physical and biomechanical constraints, not just look right on a screen. I'm working with Yilin as a co-author on a paper in preparation that we're aiming to submit to CVPR 2027.
+
+Two earlier experiences pushed me toward architecture-level research. A summer R\&D internship at Sector Group on industrial AI safety, where I built an offline on-premise RAG pipeline (Ollama + BGE embeddings, 70\,\% recall, 100\,\% reliability) and worked on the IEC 61508 functional-safety standard. And a first scientific paper I wrote on my free time with Ikram Chraibi Kaadoud to learn how research works (published at PFIA 2024); we compared LIME, SHAP and Grad-CAM and found the three disagreed on the same models.
+
+On the engineering side, 14 months at Cali Intelligences on YOLO-based detection: I designed and built the company's MLOps training pipeline from scratch, brought the production model from 60\,\% to 90\,\% accuracy on a 100,000-video dataset, and cut inference latency by 70\,\%.
+
+I'd like to join AMI as either a 6-month research intern starting February 2027 (end-of-studies internship from ENSEIRB-MATMECA's Engineer-Doctor research track, an engineering degree with a research focus that prepares for a PhD; Top 3\,\% rank), or on a 12-month French work-study contract (contrat de professionnalisation) starting September 2026. The role that would fit me best is one bridging research and engineering.
+
+Thank you for considering my application.
+
+\vspace{6pt}
+Sincerely, \\
+\textbf{Mélissa Colin}
+
+\end{document}

@@ -1,9 +1,17 @@
 # Makefile — CV Mélissa Colin
 #
-# Trois CV, deux moteurs :
-#   french.tex                  → xelatex  (classe maison assets/template/cvclass)
-#   cv-research-general.tex     → pdflatex (article, candidatures recherche)
-#   google-student-researcher.tex → pdflatex (article, ciblé Google)
+# Deux CV généralistes à la racine, deux moteurs :
+#   french.tex               → xelatex  (classe maison assets/template/cvclass)
+#   cv-research-general.tex  → pdflatex (article, candidatures recherche)
+#
+# Les CV ciblés vivent dans targeted/<entreprise>/*.tex et sont découverts
+# automatiquement : tu crées un dossier, il entre dans le build sans que tu
+# aies à modifier ce fichier. Une liste écrite à la main finit toujours par
+# diverger de la réalité du disque.
+#
+# TOUT se compile depuis la racine du dépôt, jamais depuis un sous-dossier.
+# C'est ce qui fait que \IfFileExists{personal.tex} trouve le fichier : LaTeX
+# résout les chemins relatifs depuis le répertoire courant, pas depuis le .tex.
 #
 # Le vrai numéro de téléphone vit dans personal.tex, ignoré par git.
 # S'il est absent, les CV compilent avec un numéro masqué : c'est voulu.
@@ -13,12 +21,14 @@ PDFLATEX = pdflatex -interaction=nonstopmode
 
 FRENCH  = french
 GENERAL = cv-research-general
-GOOGLE  = google-student-researcher
 
-.PHONY: all french general google compile clean cleanaux check-personal help
+TARGETED_SRC = $(wildcard targeted/*/*.tex)
+TARGETED_PDF = $(TARGETED_SRC:.tex=.pdf)
 
-# Compile les trois CV, puis nettoie les auxiliaires
-all: french general google
+.PHONY: all french general targeted compile clean cleanaux check-personal help
+
+# Compile tout, puis nettoie les auxiliaires
+all: french general targeted
 	$(MAKE) cleanaux
 
 french: check-personal
@@ -31,10 +41,16 @@ general: check-personal
 	$(PDFLATEX) $(GENERAL).tex
 	$(MAKE) cleanaux
 
-google: check-personal
-	$(PDFLATEX) $(GOOGLE).tex
-	$(PDFLATEX) $(GOOGLE).tex
+targeted: check-personal $(TARGETED_PDF)
 	$(MAKE) cleanaux
+
+# Règle motif : un .pdf à côté de son .tex, mais compilé DEPUIS la racine.
+# -output-directory range le PDF et ses auxiliaires dans le dossier de
+# l'entreprise, sans changer le répertoire courant — donc personal.tex reste
+# visible. Deux passes parce que hyperref a besoin d'un .aux déjà écrit.
+targeted/%.pdf: targeted/%.tex
+	$(PDFLATEX) -output-directory=$(dir $@) $<
+	$(PDFLATEX) -output-directory=$(dir $@) $<
 
 # Avertit si personal.tex manque, sans bloquer la compilation.
 # Un avertissement vaut mieux qu'une erreur : sur une machine neuve tu veux
@@ -53,16 +69,21 @@ compile:
 cleanaux:
 	@rm -f *.aux *.bbl *.blg *.dvi *.log *.out *.upa *.toc *.out.ps \
 	       *.fls *.fdb_latexmk *.synctex.gz
+	@rm -f targeted/*/*.aux targeted/*/*.log targeted/*/*.out \
+	       targeted/*/*.fls targeted/*/*.fdb_latexmk targeted/*/*.synctex.gz
 
 # Supprime tout ce qui est généré, PDF compris
 clean: cleanaux
-	@rm -f $(FRENCH).pdf $(GENERAL).pdf $(GOOGLE).pdf
+	@rm -f $(FRENCH).pdf $(GENERAL).pdf $(TARGETED_PDF)
 
 help:
-	@echo "make all      — compile les trois CV"
+	@echo "make all      — compile tous les CV"
 	@echo "make french   — CV français (xelatex)"
 	@echo "make general  — CV recherche, version générale (pdflatex)"
-	@echo "make google   — CV ciblé Google Student Researcher (pdflatex)"
+	@echo "make targeted — tous les CV ciblés de targeted/*/"
 	@echo "make compile FILE=x.tex — compile un fichier isolé"
 	@echo "make cleanaux — supprime les auxiliaires"
 	@echo "make clean    — supprime auxiliaires et PDF"
+	@echo ""
+	@echo "CV ciblés détectés :"
+	@for f in $(TARGETED_SRC); do echo "  $$f"; done
