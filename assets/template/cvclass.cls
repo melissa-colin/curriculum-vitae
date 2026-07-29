@@ -62,6 +62,12 @@
 
 % -------------------- Font
 \ifxetex
+  % Le nom de base doit désigner un FICHIER réel du dossier, pas la famille.
+  % Avec « Lekton », toute fonte non déclarée explicitement (le gras italique,
+  % par exemple) fait chercher « Lekton.ttf », qui n'existe pas. Sur une
+  % machine où Lekton est installée, fontconfig rattrape par le nom de famille
+  % et on ne voit rien ; dans un conteneur vierge, la compilation s'arrête.
+  % Pointer sur Lekton-Regular rend le dépôt compilable sans rien installer.
   \newfontfamily{\Lekton}[
   Path=assets/fonts/,
   Extension = .ttf,
@@ -69,7 +75,8 @@
   UprightFont = Lekton-Regular,
   BoldFont = Lekton-Bold,
   ItalicFont = Lekton-Italic,
-  ]{Lekton}
+  BoldItalicFont = Lekton-Italic,
+  ]{Lekton-Regular}
   \newfontfamily{\Poppins}[
     Path=assets/fonts/,
     Extension = .ttf,
@@ -84,7 +91,7 @@
     FontFace={l}{it}{Poppins-LightItalic},
     FontFace={mb}{n}{Poppins-Medium},
     FontFace={mb}{it}{Poppins-MediumItalic},
-  ]{Poppins}
+  ]{Poppins-Light}
   \newfontfamily{\RobotoMono}[
   NFSSFamily=RobotoMono,
   Path=assets/fonts/,
@@ -100,7 +107,7 @@
   FontFace={l}{it}{RobotoMono-LightItalic},
   FontFace={mb}{n}{RobotoMono-Medium},
   FontFace={mb}{it}{RobotoMono-MediumItalic},
-  ]{RobotoMono}
+  ]{RobotoMono-Regular}
   \renewcommand{\familydefault}{RobotoMono}
 
   \newfontface\lekton{Lekton-Regular.ttf}[Path=assets/fonts/]
