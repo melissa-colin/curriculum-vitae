@@ -451,13 +451,14 @@
 
 \newcommand{\wtffsdyfjfgd}[1]{
   \begin{tikzpicture}[overlay, remember picture]
-  \draw[-, ultra thick, color=gray] (0,0) -- (0, #1); 
+  \draw[-, ultra thick, color=gray] (0,0) -- (0, #1);
+  \filldraw[fill=gray, draw=gray] (0, #1) circle (0.11cm);
 \end{tikzpicture}
 }
 
 \NewEnviron{leftarrowbox}{
   \begin{tikzpicture}[overlay, remember picture]
-    \node[anchor=north west, xshift=0, yshift=-1.75cm] at (0, 0) {\arrowup{4.}};
+    \node[anchor=north west, xshift=0.02cm, yshift=-2.05cm] at (0, 0) {\arrowup{4.}};
   \end{tikzpicture}
   \hspace*{0.05cm}
   \begin{minipage}{(\blockWidth-0.05cm)}%
@@ -467,7 +468,7 @@
 
 \NewEnviron{dendleftarrowbox}{
   \begin{tikzpicture}[overlay, remember picture]
-    \node[anchor=north west, xshift=0, yshift=-0.3cm] at (0, 0) {\wtffsdyfjfgd{1.}};
+    \node[anchor=north west, xshift=0.02cm, yshift=-0.3cm] at (0, 0) {\wtffsdyfjfgd{1.15}};
   \end{tikzpicture}
   \hspace*{0.05cm}
   \begin{minipage}{(\blockWidth-0.05cm)}%
