@@ -38,7 +38,9 @@
 \newcommand{\email}{contact@melissacolin.ai}
 \newcommand{\location}{Bordeaux et périphérie}
 \newcommand{\website}{https://melissacolin.ai}
-\newcommand{\linkedin}{https://urlr.me/Bpqxd}
+\newcommand{\linkedin}{https://www.linkedin.com/in/melissacolin/}
+% Affichage court dans l'en-tete ; la cible du lien reste l'URL complete.
+\newcommand{\linkedinText}{linkedin.com/in/melissacolin}
 \IfFileExists{personal.tex}{\input{personal.tex}}{}
 \providecommand{\myphone}{+33 7 82 52 XX XX}
 \newcommand{\phone}{\myphone}
@@ -62,18 +64,16 @@
   % --- PUBLICATION EN PREMIER DANS LA COLONNE DE GAUCHE (Ou déplacer à droite si tu préfères) ---
   \section{Recherche}
   \vspace{\spaceSections}
-    \textbf{Distinction académique}\\
-    \textit{Lauréate de la bourse Mitacs Globalink 2026}\\
-    Financement international compétitif, attribué sur projet de recherche.
+    \textbf{Bourse Mitacs Globalink 2026} --- financement international compétitif, attribué sur projet de recherche.
 
     \vspace{0.2cm}
     \textbf{Article, première autrice} (visé CVPR 2027)\\
-    \textbf{Colin, M.}\\
-    \textit{Correction de mouvement humain 3D ancrée sur l'image. En préparation.}
+    \textbf{Colin, M.}, Wang, Y., Cheng, L.\\
+    \textit{InterForce: Physically Admissible Multi-Person Motion Refinement. En préparation.}
 
     \vspace{0.2cm}
     \textbf{Article, co-autrice} (soumission visée ICLR 2027)\\
-    \textit{Génération de danse de groupe en 3D. Contribution : le corpus de mouvements assaini par mon pipeline de correction a servi à réentraîner et réévaluer le modèle.}
+    \textit{Génération de danse de groupe en 3D. Contribution : corpus assaini par mon pipeline, réentraînement et réévaluation du modèle.}
 
     \vspace{0.2cm}
     \textbf{Publication PFIA 2024} (conférence IA francophone)\\
@@ -125,13 +125,12 @@
     % Deux rangs encadrants, pas une trajectoire.
     \textbf{Rang : 5/81 (S8)} \hfill \textbf{3/93 (S6)}\\
     Filière IA, parcours recherche\\
-    \textit{Cours clés :} Deep Learning 18/20, Initiation à la recherche 17/20, Réseaux appliqués 17,5/20, Cryptologie 16,5/20, Programmation fonctionnelle 18,4/20.
+    \textit{Cours clés :} Deep Learning 18/20, Initiation à la recherche 17/20, Réseaux appliqués 17,5/20.
 
     \vspace{\spaceSections}
     \subsection{Bachelor Développeuse IA (RNCP niveau 6)}
     \job{EPSI Bordeaux}{09/2023 -- 09/2024}
-    \textbf{Rang : 1/10} \hfill \textbf{Moyenne : 16,38/20}\\
-    \textit{Cours clés :} Data Mining, évaluation de modèles, SQL.
+    \textbf{Rang : 1/10} \hfill \textbf{Moyenne : 16,38/20}
 
     \vspace{\spaceSections}
     \subsection{BTS Services Informatiques (SIO)}
@@ -139,8 +138,7 @@
     % « Major de promotion » seul serait trompeur : le BTS était une option
     % suivie par un groupe de 9, pas la promo EPSI entière (35). Donner la
     % taille de la cohorte rend l'affirmation vraie ET vérifiable.
-    \textbf{Major de l'option : 1/9}\\
-    Option Solutions Logicielles (SLAM). Rangs 3/35 puis 4/35 sur la promotion EPSI complète.
+    \textbf{Major de l'option SLAM : 1/9} $\cdot$ promotion EPSI complète : 3/35 puis 4/35.
 
 
 \end{area-left}
@@ -155,12 +153,12 @@
     % par quiconque ouvre la source — et ce dépôt a vocation à devenir public.
 
     \subsection{Visiting Research Student}
-      \job{University of Alberta -- Vision and Learning Lab}{05/2026 -- 09/2026}
+      \job{University of Alberta -- Vision and Learning Lab (Prof. Li Cheng)}{05/2026 -- 09/2026}
       \begin{itemize}
-        \item \textbf{Correction de mouvement fondée sur l'image :} pipeline qui corrige un mouvement humain 3D reconstruit \textit{sans jamais lire le mouvement bruité lui-même}, à partir des seuls signaux extraits de l'image : contact pied-sol par intersection rayon-plan, ordre d'occultation par z-buffer, profondeur monoculaire, calibration caméra. La correction vient donc d'une source indépendante de l'erreur.
-        \item \textbf{Correcteur de profondeur :} profondeur monoculaire (\textit{Depth Anything}) remise à l'échelle par ancrage sur deux grandeurs mesurables directement dans l'image (hauteur des pieds, taille de la tête). Purement algorithmique, rien d'entraîné, aucune vérité terrain. Résultat : \textbf{-33\% de pénétration inter-personnes}, mesuré sur 100\% des données.
-        \item \textbf{Infrastructure distribuée :} sharding multi-GPU sur 12 shards avec vol de travail entre deux sites de calcul, environnements reproductibles, exécution détachée résiliente.
-        \item Sous la supervision du Prof. Li Cheng. Bourse Mitacs Globalink 2026.
+        \item \textbf{Conception du modèle} (première autrice) : transformer équivariant par permutation (attention personnes/articulations/temps), sortie en \textbf{forces plutôt qu'en poses} via un \textbf{moteur physique différentiable écrit de zéro} --- l'impossible devient \textbf{inexprimable}. Rejeu simulateur sans chute : \textbf{19\% $\to$ 79\%}.
+        \item \textbf{Correction fondée sur l'image :} corrige le mouvement reconstruit \textit{sans lire le mouvement bruité}, depuis les seuls signaux de l'image (contact pied-sol, occultation z-buffer, profondeur, calibration) --- une source indépendante de l'erreur.
+        \item \textbf{Correcteur de profondeur :} \textit{Depth Anything} remis à l'échelle sur deux grandeurs mesurables dans l'image ; rien d'entraîné, aucune vérité terrain : \textbf{-33\% de pénétration inter-personnes} sur 100\% des données.
+        \item \textbf{Infrastructure :} sharding multi-GPU 12 shards, vol de travail entre deux sites, exécution détachée résiliente.
       \end{itemize}
       \vspace{\spaceSections}
       
@@ -176,7 +174,7 @@
 
     \subsection{Responsable Networking}
       \job{ai4industry (Talence)}{10/2024 -- 10/2025}
-      Organisation d'une journée "recherche" pour \textbf{50 étudiants} (budget \textbf{5k€}) : coordination de \textbf{20 intervenants} et animation de tables rondes chercheurs/élèves.
+      Journée « recherche » pour \textbf{50 étudiants} (budget \textbf{5k€}) : \textbf{20 intervenants}, tables rondes chercheurs/élèves.
           \vspace{\spaceSections}
 
     \subsection{Ingénieure R\&D - IA et sûreté (stage)}
@@ -185,9 +183,9 @@
         % ATTENTION : couple 70 % / 100 % marqué [À CONFIRMER] dans master-cv.md §4.3.
         % Il n'est cohérent que si le système s'abstient quand il n'est pas sûr.
         % Si la sémantique réelle est autre, réécris la ligne avant d'envoyer.
-        \item Conception d'un RAG sécurisé réglé en régime d'abstention, où une réponse fausse coûte plus cher qu'une réponse manquante : \textbf{100\% de précision sur les réponses émises}, pour 70\% de rappel sur \textbf{100+ requêtes} d'évaluation.
-        \item Formation IA de \textbf{9 managers} (\textbf{100\% satisfaction}) et définition de la stratégie IA par branche via un audit des besoins.
-        \item Analyse de la norme \textbf{IEC 61508} pour définir un cadre de certification des composants IA critiques (Safety).
+        \item RAG sécurisé réglé en abstention (une réponse fausse coûte plus qu'une manquante) : \textbf{100\% de précision sur les réponses émises}, 70\% de rappel, \textbf{100+ requêtes}.
+        \item Formation IA de \textbf{9 managers} (\textbf{100\% satisfaction}) ; stratégie IA par branche via audit des besoins.
+        \item Cadre de certification des composants IA critiques fondé sur la norme \textbf{IEC 61508}.
       \end{itemize}
     \vspace{\spaceSections}
 
@@ -195,17 +193,17 @@
       \job{Cali Intelligences (Talence)}{07/2023 -- 09/2024}
       \begin{leftarrowbox}
         \begin{itemize}
-          \item Hausse de la précision (\textbf{60\% $\to$ 90\%}) via des processus de QA/QC sur plus de (\textbf{100k images/videos}) et optimisation des hyperparamètres.
-          \item Réduction des faux positifs de \textbf{50\%} via une nouvelle architecture modulaire (détection, conformité contenants, filtrage temporel).
-          \item Accélération de l'inférence de \textbf{70\%} par optimisation de l'architecture et refonte des pipelines de déploiement.
-          \item Gain de \textbf{7h/cycle} d'entraînement des modèles via l'automatisation complète des pipelines MLOps (Data, Train \& Eval).
+          \item Précision \textbf{60\% $\to$ 90\%} via QA/QC sur \textbf{100k images/vidéos} et optimisation des hyperparamètres.
+          \item Faux positifs \textbf{-50\%} via une architecture modulaire (détection, conformité, filtrage temporel).
+          \item Inférence accélérée de \textbf{70\%} par refonte de l'architecture et du déploiement.
+          \item Gain de \textbf{7h/cycle} d'entraînement via l'automatisation MLOps complète (Data, Train \& Eval).
         \end{itemize}
       \end{leftarrowbox}
       \vspace{\spaceSections}
       
       \job{Développeuse Python (stage)}{01/2023 -- 03/2023}
       \begin{dendleftarrowbox}
-        Développement d'un algo de post-traitement (\textbf{100\% précision}) corrigeant les erreurs de tracking d'objets (post traitement).
+        Algorithme de post-traitement (\textbf{100\% précision}) corrigeant les erreurs de tracking d'objets.
       \end{dendleftarrowbox}\\
 
 

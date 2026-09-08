@@ -51,6 +51,12 @@ targeted: check-personal $(TARGETED_PDF)
 targeted/%.pdf: targeted/%.tex
 	$(PDFLATEX) -output-directory=$(dir $@) $<
 	$(PDFLATEX) -output-directory=$(dir $@) $<
+	@if [ -f personal.tex ]; then \
+	  num=$$(sed -n 's/.*myphone}{\([^}]*\)}.*/\1/p' personal.tex); \
+	  if [ -z "$$num" ] || ! pdftotext $@ - 2>/dev/null | grep -qF "$$num"; then \
+	    echo ">>> $@ : vrai numero ABSENT du PDF (le montage gdrive a rate une"; \
+	    echo ">>> lecture pendant le build). Relancer make targeted."; \
+	    exit 1; fi; fi
 
 # Avertit si personal.tex manque, sans bloquer la compilation.
 # Un avertissement vaut mieux qu'une erreur : sur une machine neuve tu veux

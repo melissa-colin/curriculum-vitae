@@ -84,7 +84,7 @@
     \faPhone* \myphone{} \quad|\quad
     \faEnvelope~\href{mailto:contact@melissacolin.ai}{contact@melissacolin.ai} \\
     \faGlobe~\href{https://melissacolin.ai}{melissacolin.ai} \quad|\quad
-    \faLinkedin~\href{https://www.linkedin.com/in/m\%C3\%A9lissa-colin/}{LinkedIn} \quad|\quad
+    \faLinkedin~\href{https://www.linkedin.com/in/melissacolin/}{LinkedIn} \quad|\quad
     \faGithub~\href{https://github.com/melissa-colin}{github.com/melissa-colin} \quad|\quad
     \faGraduationCap~\href{https://scholar.google.com/citations?user=7r7iFpsAAAAJ}{Scholar} \quad|\quad
     \href{https://orcid.org/0009-0003-2525-4824}{ORCID 0009-0003-2525-4824}
@@ -101,11 +101,12 @@
 % invitation. "academic or industrial" ouvre aussi la porte aux labos privés.
 % Phrase 4 : fenêtre bornée des deux côtés. Un encadrant a besoin du début ET
 % de la fin pour savoir si son projet tient dedans, sinon il doit t'écrire.
-{\small \textit{3D human motion reconstruction and computer vision. I correct physically
-impossible poses recovered from video using evidence taken from the image rather than from
-the noisy motion itself. Expected graduation 09/27, and seeking a PhD position in computer
-vision afterwards, academic or industrial. Available from 02/27 for a research placement of
-up to eight months, through 09/27.}}
+{\small \textit{3D human motion reconstruction and computer vision. I design neural
+architectures for multi-person motion and the differentiable physics engine they train
+against, so that physically impossible motion falls outside what the model can express.
+Expected graduation 09/27, and seeking a PhD position in computer vision afterwards,
+academic or industrial. Available from 02/27 for a research placement of up to eight months,
+through 09/27.}}
 
 % ---------------------------------------------------------------- EDUCATION
 \section{Education}
@@ -133,13 +134,13 @@ up to eight months, through 09/27.}}
 \section{Publications}
 
 \begin{itemize}
+    \item \textbf{Colin, M.}, Wang, Y., Cheng, L. \textit{InterForce: Physically Admissible Multi-Person Motion Refinement.} First author, in preparation, targeting \textbf{CVPR 2027}.
     \item \textbf{Colin, M.}, Chraibi Kaadoud, I. \textit{Performances and Explainability of ViT and CNN Architectures: An Empirical Study Using LIME, SHAP and Grad-CAM.} RJCIA / PFIA 2024, La Rochelle. First author, published, presented orally.
     \hfill \href{https://hal.science/hal-04641791}{[HAL]}
     % Titre exact du papier de Yilin Wang encore inconnu : marqué [À CONFIRMER]
     % dans master-cv.md §3.2, donc je ne l'écris pas. Demande-le AVANT le
     % 11 septembre : tu perds l'accès au Slack UAlberta en partant.
     \item \textbf{Co-author}, 3D group dance generation. In preparation, targeting ICLR 2027. My contribution: the motion corpus refined by my correction pipeline was used to retrain and re-evaluate the model.
-    \item \textbf{First author}, physics-grounded refinement of 3D human motion. In preparation, targeting CVPR 2027.
 \end{itemize}
 
 % ---------------------------------------------------------------- RESEARCH
@@ -150,8 +151,8 @@ up to eight months, through 09/27.}}
 \begin{itemize}
     \item \textbf{Evidence-based motion correction.} Built a pipeline that corrects reconstructed 3D human motion \textit{without reading the noisy motion itself}, using only signals extracted from the image: ray--plane foot-ground contact, z-buffer occlusion ordering, monocular depth, camera calibration. The correction therefore comes from a source independent of the error.
     \item \textbf{Depth corrector.} Monocular depth from \textit{Depth Anything}, brought to a usable scale by anchoring it on two quantities measurable directly in the image (foot height and head size), then used to fix the depth ordering between people. Purely algorithmic: nothing trained, no ground truth. Result: $-$33\% inter-person penetration, measured on 100\% of the data.
-    \item \textbf{First-author work in progress.} Paired clean$\leftrightarrow$noisy motion corpus built via \textit{render-then-estimate}; physics enters through the training data only, not the loss or the architecture. That choice follows the AGRoL ablation, where auxiliary physics losses degrade jitter by +68\%.
-    \item \textbf{Distributed infrastructure.} 12-shard multi-GPU sharding with work stealing across two compute sites, reproducible environments, resilient detached execution.
+    \item \textbf{Model design} (first-author work, \textit{InterForce}): a permutation-equivariant transformer whose attention is factorised over people, joints and time, so a scene never fixes its number of people; and an output in \textbf{forces, not poses}, backed by a \textbf{differentiable rigid-body dynamics engine written from scratch} (recursive Newton--Euler, composite-rigid-body mass matrix, joint limits) inside the training loop --- an impossible motion becomes unrepresentable rather than penalised. Clips a physics simulator replays without the character falling: \textbf{19\% $\to$ 79\%}.
+    \item \textbf{27{,}000-clip paired corpus} built via \textit{render-then-estimate} (clean motion rendered to video, then re-estimated), processed on a 12-shard multi-GPU pipeline with work stealing across two compute sites.
 \end{itemize}
 
 \vspace{4pt}
