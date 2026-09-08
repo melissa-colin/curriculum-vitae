@@ -348,7 +348,7 @@
     \node[anchor=north west, xshift=\margin*2 + \linkSize, yshift=-\margin - 3.8cm, text=white] at (current page.north west) {
     \begin{tabular}{@{}lll@{}}
         \includegraphics[height=0.5cm]{linkedin.png} & 
-        \hspace{-0.3cm}\raisebox{0.1cm}{\href{\linkedin}{\poppinsL{\fontsize{9}{12}\selectfont\textcolor{white}{\linkedin }}}}
+        \hspace{-0.3cm}\raisebox{0.1cm}{\href{\linkedin}{\poppinsL{\fontsize{9}{12}\selectfont\textcolor{white}{\linkedinText }}}}
     \end{tabular}
     };
     % Texte invisible superposé au logo pour les ATS

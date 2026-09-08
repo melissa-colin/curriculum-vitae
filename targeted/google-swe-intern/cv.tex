@@ -1,0 +1,181 @@
+% =====================================================================
+%  CV — Google, Software Engineering / Site Reliability Engineering
+%        BS/MS Intern, 2027 (EMEA) — CIBLE : ROUTAGE SWE, PAS SRE
+%  Dérivé de master-cv.md (source de vérité unique)
+%
+%  RÈGLES APPLIQUÉES — issues de la recherche du 2026-09-04, pas de goûts :
+%   - FORMULE X-Y-Z (Laszlo Bock, ex-SVP People Ops Google, citée par les
+%     recruteurs) : « Accomplished [X] as measured by [Y], by doing [Z] ».
+%     Chaque puce porte les trois. Une puce sans Y est une puce à réécrire.
+%   - UNE PAGE. Règle explicite pour un profil début de carrière.
+%   - Police unique, PDF. Le rouge MyRed est conservé : c'est l'identité
+%     visuelle de Mélissa, commune à tous ses CV. Décision d'elle, pas de moi.
+%   - Langages de programmation explicites → « preferred qualification » de
+%     l'annonce, et dans SON ordre : Python, C, C++, Java, JavaScript.
+%   - Date de diplôme en mois + année EN TOUTES LETTRES (09/27 est ambigu
+%     hors de France), disponibilité calée sur la fenêtre de l'annonce :
+%     l'annonce autorise mai/juin/juillet, MAIS le PFE doit finir avant
+%     octobre 2027 : juin + 17 sem. = 4 octobre, trop tard. Seul MAI est
+%     vrai. 17 semaines = le max du programme ; le minimum école (5 mois)
+%     se négocie côté école, pas sur le CV. Autorisation de travail
+%     affichée (l'annonce exclut tout sponsoring d'immigration).
+%
+%  ROUTAGE — l'annonce regroupe SWE et SRE et affecte d'après le CV
+%  (« our recruitment team will determine where you fit best based on your
+%  resume »). Mélissa veut SWE uniquement. Donc aucun vocabulaire ops
+%  (reliability, monitoring, incident, uptime). Ce qui route vers SWE :
+%  la conception (architectures, moteur physique), l'algorithmique
+%  (UE Software Engineering Project : 4/81 au relevé), le ML, l'échelle
+%  logicielle. L'infrastructure reste UNE puce, en dernier : preuve
+%  d'échelle, pas identité.
+%
+%  INTERDITS (master-cv.md §11) : projet clical, −58 %, PFA 82,3 %,
+%  audience Medium, Google Final Round, projets perso, noms de clients,
+%  rejet antérieur du papier ICLR, « Valedictorian » seul, mandarin
+%  « working knowledge » (niveau réel : débutant).
+%
+%  ⚠ AVANT ENVOI (l'offre ouvre le 7 septembre, rolling basis) :
+%    (1) le couple 100 % précision / 70 % recall chez Sector Group est
+%        [À CONFIRMER] dans master-cv.md §4.3 ;
+%    (2) « French citizen » : écrit sur parole — aucun document du dossier
+%        ne porte la nationalité. Si inexact, retirer la mention ;
+%    (3) le rang « 3/93 » du S6 a été RETIRÉ : absent du relevé officiel,
+%        qui est joint à cette candidature. Remplacé par des faits qui y
+%        figurent (4/81 UE génie logiciel, grade A programmation S6) ;
+%    (4) \texteuro s'extrayait en « C100k » côté ATS → « EUR ».
+% =====================================================================
+
+\documentclass[10pt, letterpaper]{article}
+
+\usepackage[
+    ignoreheadfoot,
+    top=0.7 cm,
+    bottom=0.5 cm,
+    left=1.15 cm,
+    right=1.15 cm,
+    footskip=0.8 cm,
+]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{textcomp}
+
+\definecolor{MyRed}{RGB}{160, 20, 40}
+
+\usepackage[
+    pdftitle={Melissa Colin — CV — Google SWE Intern 2027},
+    pdfauthor={Melissa Colin},
+    colorlinks=true,
+    urlcolor=MyRed
+]{hyperref}
+
+\usepackage{charter}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\titleformat{\section}
+  {\normalsize\bfseries\scshape\raggedright\color{MyRed}}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{6pt}{4pt}
+
+\setlist[itemize]{leftmargin=*, noitemsep, topsep=1pt, partopsep=0pt, parsep=0pt}
+
+\newcommand{\entry}[4]{%
+  \noindent \textbf{#1} \hfill #2 \\
+  \textit{#3} \hfill \textit{#4} \par
+}
+
+\IfFileExists{personal.tex}{\input{personal.tex}}{}
+\providecommand{\myphone}{+33 7 82 52 XX XX}
+
+\begin{document}
+
+% ---------------------------------------------------------------- HEADER
+\begin{center}
+    {\fontsize{19}{19}\selectfont \textbf{Mélissa COLIN}} \\[3pt]
+    {\normalsize Computer Vision \& 3D Human Motion $\cdot$ Machine Learning Systems} \\[3pt]
+
+    \small{
+    \faMapMarker* Bordeaux, France \;|\;
+    \faPhone* \myphone{} \;|\;
+    \faEnvelope~\href{mailto:contact@melissacolin.ai}{contact@melissacolin.ai} \;|\;
+    \faGlobe~\href{https://melissacolin.ai}{melissacolin.ai} \;|\;
+    \faGithub~\href{https://github.com/melissa-colin}{melissa-colin} \;|\;
+    \faLinkedin~\href{https://www.linkedin.com/in/melissacolin/}{LinkedIn}
+    }
+\end{center}
+
+\vspace{1pt}
+
+% Diplôme (mois + année), disponibilité vraie (mai uniquement : la fin du
+% PFE doit précéder octobre 2027), éligibilité sans sponsoring, EMEA.
+{\small \textit{Final-year MEng student in computer science. I design neural
+architectures for 3D human motion and the differentiable physics engine they train against,
+so that physically impossible motion falls outside what the model can express.
+First-author paper targeting CVPR 2027. French citizen; expected graduation September 2027.
+Available full-time for the full 17 weeks from May 2027, anywhere in EMEA.}}
+
+% ---------------------------------------------------------------- EDUCATION
+\section{Education}
+
+\entry{ENSEIRB-MATMECA, Bordeaux INP}{Sep 2024 -- Expected Sep 2027}%
+{MEng in Computer Science (\textit{Diplôme d'ingénieur}), AI track --- final year}{Bordeaux, France}
+\begin{itemize}
+    \item Ranked \textbf{5th/81 (top 6\%)} in semester 8, with \textbf{4th/81 on the software-engineering project unit} (OS and network projects, 16.3 and 17.5/20). \textbf{Deep Learning 18/20} $\cdot$ \textbf{Research Initiation 17/20} $\cdot$ Applied TCP/IP 17.5/20. All grades on the attached transcript (French /20 scale).
+\end{itemize}
+
+\vspace{1pt}
+
+\entry{EPSI Bordeaux}{Sep 2021 -- Sep 2024}%
+{BSc in Artificial Intelligence \& Data Science (RNCP level 6, EQF bachelor level)}{Bordeaux, France}
+
+% ---------------------------------------------------------------- EXPERIENCE
+\section{Experience}
+
+\entry{Vision and Learning Lab, University of Alberta (Prof.\ Li Cheng)}{May 2026 -- Sep 2026}%
+{Visiting Research Student --- \textbf{Mitacs Globalink Research Award}}{Edmonton, Canada}
+\begin{itemize}
+    \item \textbf{Designed the two neural architectures} the work rests on: a permutation-equivariant transformer whose attention is factorised over people, joints and time, so a scene is handled without ever fixing the number of people, and a second model whose output is forces, not poses. Chained them through a physics simulator used as a projector, raising the share of clips a simulator can reproduce \textbf{without the character falling from 19\% to 79\%} and cutting inter-person penetration by 33\%.
+    \item Implemented a \textbf{differentiable rigid-body dynamics engine from scratch}: recursive Newton--Euler inverse dynamics, composite-rigid-body mass matrix, implicit actuation, joint limits. Checked against nine analytic invariants to machine precision, and run inside the training loop, not as a post-process.
+    \item Made physical impossibility \textbf{unrepresentable rather than penalised}: the pelvis carries no actuator and every contact force is projected into its friction cone. Against the reference simulator, \textbf{33\% of its forces break that cone and 18\% pull on the ground instead of pushing}; none of ours can.
+    \item Ran the \textbf{27{,}000-clip} corpus through a multi-stage GPU pipeline \textbf{sharded 12 ways with work stealing across two compute sites}, so a slow site costs throughput, not the whole run; jobs run detached and survive disconnection.
+\end{itemize}
+
+\vspace{1pt}
+
+\entry{Sector Group}{Jun -- Aug 2025}{R\&D Engineer, AI and Safety}{Paris, France}
+\begin{itemize}
+    % ⚠ [À CONFIRMER] master-cv.md §4.3 : ce couple n'est cohérent que si le
+    % système s'abstient quand il n'est pas sûr. Vérifier avant envoi.
+    \item Reached \textbf{100\% precision on the answers actually returned, at 70\% recall} over a 100+ query set, by tuning a retrieval pipeline for abstention. Under \textbf{IEC 61508} functional safety, a wrong answer costs more than a missing one.
+    \item Built it on \textbf{PDFs with no text layer}, which ruled out parsing and forced vision and document processing together; 9 business units audited.
+\end{itemize}
+
+\vspace{1pt}
+
+\entry{Cali Intelligences (deeptech start-up, real-time video analytics)}{Jan 2023 -- Sep 2024}%
+{Applied AI Intern, then AI Developer (apprenticeship)}{Talence, France}
+\begin{itemize}
+    \item Took detection accuracy from \textbf{60\% to 90\%} by designing and building the entire training pipeline (YOLOv7 $\to$ YOLOv8): ingestion, label conversion, an augmentation library written from scratch in OpenCV, pre-training validation, and YAML-driven orchestration.
+    \item Shipped it to production on \textbf{Docker, GitHub Actions and K3s}, and redesigned data storage into a bronze/silver medallion architecture on AWS for GDPR and EU AI Act traceability.
+\end{itemize}
+
+% ---------------------------------------------------------------- SKILLS
+\section{Technical Skills}
+\begin{itemize}
+    \item \textbf{Programming languages:} \textbf{Python} (advanced) $\cdot$ \textbf{C} $\cdot$ \textbf{C++} $\cdot$ \textbf{Java} $\cdot$ \textbf{JavaScript}/TypeScript $\cdot$ SQL $\cdot$ Bash $\cdot$ R.
+    \item \textbf{Systems \& infrastructure:} Linux $\cdot$ distributed \& parallel computing $\cdot$ TCP/IP $\cdot$ Docker $\cdot$ Kubernetes/K3s $\cdot$ multi-GPU and SLURM-style clusters $\cdot$ Git $\cdot$ GitHub Actions $\cdot$ AWS.
+    \item \textbf{Algorithms \& ML:} data structures, complexity, graph search (A*, MinMax, MCTS self-play), numerical linear algebra $\cdot$ PyTorch, CNNs, Transformers $\cdot$ implemented from scratch: K-Means, naive Bayes, logistic regression, backpropagation, PCA.
+    \item \textbf{Languages:} French (native) $\cdot$ English \textbf{B2, TOEIC 840/990} --- research placement conducted entirely in English $\cdot$ Mandarin Chinese (elementary).
+\end{itemize}
+
+% ---------------------------------------------------------------- PUBLICATIONS
+\section{Publications \& Awards}
+\begin{itemize}
+    \item \textbf{Colin, M.}, Wang, Y., Cheng, L. \textit{InterForce: Physically Admissible Multi-Person Motion Refinement} --- first author. In preparation, targeting \textbf{CVPR 2027}. Co-author on a second paper, 3D group dance generation, targeting ICLR 2027.
+    \item \textbf{Colin, M.}, Chraibi Kaadoud, I. \textit{Performances and Explainability of ViT and CNN Architectures.} RJCIA / PFIA 2024 --- first author, oral presentation. \href{https://hal.science/hal-04641791}{[HAL]}
+    \item \textbf{Mitacs Globalink Research Award (2026)} $\cdot$ \textbf{Vice-President, Forum INGENIB}: EUR 100k budget, 20-student team, 800 students and 80 companies hosted.
+\end{itemize}
+
+\end{document}

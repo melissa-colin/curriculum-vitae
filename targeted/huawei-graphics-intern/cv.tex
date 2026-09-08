@@ -1,0 +1,172 @@
+% =====================================================================
+%  CV — Huawei Canada, Graphics Technology Lab (CMTI), Vancouver
+%        Intern Researcher — AI, stage de 6 mois
+%  Dérivé de master-cv.md (source de vérité unique)
+%
+%  CIBLAGE — ce que l'annonce demande, et ce qui remonte en conséquence :
+%   - « summarizing research findings in high-quality papers or patents »
+%     → les PUBLICATIONS passent en premier, avant l'expérience.
+%   - « ViT » est cité nommément dans les qualifications → la publication
+%     RJCIA sur l'explicabilité des ViT cesse d'être une ligne de bas de page.
+%   - « dense estimation », « neural rendering », « procedural generation »
+%     → la profondeur monoculaire et le corpus render-then-estimate montent.
+%       Ce sont les deux seuls blocs du dossier qui parlent leur langue.
+%   - « translating ideas into research prototypes quickly » → le corpus de
+%     27 000 clips et le moteur physique écrit de zéro.
+%
+%  CE QUI DESCEND : TCP/IP, K3s, sharding, IEC 61508. Un labo graphique ne
+%  recrute pas sur de la fiabilité de production.
+%
+%  CE QUI N'EST PAS REVENDIQUÉ, faute de preuve : GAN, diffusion, régression
+%  symbolique, SVBRDF, super-résolution, inpainting. L'annonce les demande ;
+%  les inventer se paierait au premier entretien technique.
+%  TensorFlow est écrit « Keras/TensorFlow » : le CNN de la publication RJCIA
+%  est en Keras, c'est la seule preuve disponible et elle tient.
+%
+%  INTERDITS (master-cv.md §11) : projet clical, −58 %, PFA 82,3 %,
+%  audience Medium, Google Final Round, projets perso, noms de clients,
+%  rejet antérieur du papier ICLR, canal Talents Handicap, mandarin
+%  « working knowledge » (niveau réel : débutant).
+%
+%  ⚠ AVANT ENVOI — deux points à trancher, voir la conversation :
+%    (1) l'annonce dit « immediate opening » ; la disponibilité affichée est
+%        février 2027. Décalage assumé, à confirmer par Mélissa.
+%    (2) autorisation de travail au Canada pour un stage de 6 mois en 2027 :
+%        rien n'est écrit ici tant que le statut n'est pas établi.
+% =====================================================================
+
+\documentclass[10pt, letterpaper]{article}
+
+\usepackage[
+    ignoreheadfoot,
+    top=0.7 cm,
+    bottom=0.55 cm,
+    left=1.15 cm,
+    right=1.15 cm,
+    footskip=0.8 cm,
+]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{textcomp}
+
+\definecolor{MyRed}{RGB}{160, 20, 40}
+
+\usepackage[
+    pdftitle={Melissa Colin — CV — Huawei Canada, Intern Researcher AI},
+    pdfauthor={Melissa Colin},
+    colorlinks=true,
+    urlcolor=MyRed
+]{hyperref}
+
+\usepackage{charter}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\titleformat{\section}
+  {\normalsize\bfseries\scshape\raggedright\color{MyRed}}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{6pt}{4pt}
+
+\setlist[itemize]{leftmargin=*, noitemsep, topsep=1pt, partopsep=0pt, parsep=0pt}
+
+\newcommand{\entry}[4]{%
+  \noindent \textbf{#1} \hfill #2 \\
+  \textit{#3} \hfill \textit{#4} \par
+}
+
+\IfFileExists{personal.tex}{\input{personal.tex}}{}
+\providecommand{\myphone}{+33 7 82 52 XX XX}
+
+\begin{document}
+
+% ---------------------------------------------------------------- HEADER
+\begin{center}
+    {\fontsize{19}{19}\selectfont \textbf{Mélissa COLIN}} \\[3pt]
+    {\normalsize Computer Vision \& Deep Learning $\cdot$ 3D Human Motion, Rendering and Differentiable Simulation} \\[3pt]
+
+    \small{
+    \faMapMarker* Bordeaux, France \;|\;
+    \faPhone* \myphone{} \;|\;
+    \faEnvelope~\href{mailto:contact@melissacolin.ai}{contact@melissacolin.ai} \;|\;
+    \faGlobe~\href{https://melissacolin.ai}{melissacolin.ai} \;|\;
+    \faGithub~\href{https://github.com/melissa-colin}{melissa-colin} \;|\;
+    \faGraduationCap~\href{https://scholar.google.com/citations?user=7r7iFpsAAAAJ}{Scholar}
+    }
+\end{center}
+
+\vspace{1pt}
+
+{\small \textit{Final-year MEng student in computer science, first author on a CVPR 2027
+submission. I design neural architectures for 3D human motion and the differentiable
+physics engine they train against, plus the rendering and estimation pipelines that produce
+their training data. Expected graduation 09/27, available from February 2027 for a placement
+of up to eight months, through October 2027.}}
+
+% ---------------------------------------------------------------- PUBLICATIONS
+\section{Publications}
+\begin{itemize}
+    \item \textbf{Colin, M.}, Wang, Y., Cheng, L. \textit{InterForce: Physically Admissible Multi-Person Motion Refinement.} First author, in preparation, targeting \textbf{CVPR 2027}.
+    \item \textbf{Colin, M.}, Chraibi Kaadoud, I. \textit{Performances and Explainability of ViT and CNN Architectures: An Empirical Study Using LIME, SHAP and Grad-CAM.} RJCIA / PFIA 2024, La Rochelle. First author, published, presented orally. \href{https://hal.science/hal-04641791}{[HAL]}
+    \item \textbf{Co-author}, 3D group dance generation. In preparation, targeting ICLR 2027.
+\end{itemize}
+
+% ---------------------------------------------------------------- RESEARCH
+\section{Research Experience}
+
+\entry{Vision and Learning Lab, University of Alberta (Prof.\ Li Cheng)}{May 2026 -- Sep 2026}%
+{Visiting Research Student, \textbf{Mitacs Globalink Research Award}}{Edmonton, Canada}
+\begin{itemize}
+    \item Designed \textbf{two neural architectures}: a permutation-equivariant transformer whose attention is factorised over people, joints and time, so a scene is handled without ever fixing the number of people, and a second model whose output is forces, not poses.
+    \item Wrote a \textbf{differentiable rigid-body dynamics engine from scratch}: recursive Newton--Euler inverse dynamics, composite-rigid-body mass matrix, implicit actuation, joint limits. Checked against nine analytic invariants to machine precision, and differentiated through inside the training loop.
+    \item Built a \textbf{27{,}000-clip paired corpus by render-then-estimate}: clean motion is rendered to video then re-estimated, and the estimation error becomes the paired noisy sample. SMPL-X mesh rendering, camera calibration, z-buffer occlusion ordering, silhouette masks.
+    \item \textbf{Dense monocular depth} (\textit{Depth Anything}) brought to metric scale by anchoring it on two quantities measurable directly in the image, then used to correct depth ordering between people: \textbf{$-$33\% inter-person penetration over 100\% of the corpus}, purely algorithmic, nothing trained, no ground truth.
+\end{itemize}
+
+\vspace{1pt}
+
+\entry{ENSEIRB-MATMECA --- Research Initiation, 17/20}{Feb -- May 2026}%
+{Reproduction and critical study of \textit{InterMask} (ICLR 2025)}{Bordeaux, France}
+\begin{itemize}
+    \item Reproduced the \textbf{VQ-VAE} baseline (FID 1.034 $\to$ \textbf{0.918}), then tested two hypotheses on the physical constraints of the loss. Neither improved FID or R-Precision; \textbf{reported the negative result} instead of dropping it.
+\end{itemize}
+
+% ---------------------------------------------------------------- INDUSTRY
+\section{Industry Experience}
+
+\entry{Sector Group}{Jun -- Aug 2025}{R\&D Engineer, AI and Safety --- information extraction from \textbf{PDFs with no text layer}, which ruled out parsing and forced vision and document processing together}{Paris, France}
+
+\vspace{1pt}
+
+\entry{Cali Intelligences (deeptech start-up, real-time video analytics)}{Jan 2023 -- Sep 2024}%
+{Applied AI Intern, then AI Developer (apprenticeship)}{Talence, France}
+\begin{itemize}
+    \item Took detection accuracy from \textbf{60\% to 90\%} by designing and building the entire training pipeline (YOLOv7 $\to$ YOLOv8): ingestion, label conversion, an image augmentation library written from scratch in OpenCV, pre-training validation, and YAML-driven orchestration.
+    \item Shipped it to production on Docker, GitHub Actions and K3s.
+\end{itemize}
+
+% ---------------------------------------------------------------- EDUCATION
+\section{Education}
+
+\entry{ENSEIRB-MATMECA, Bordeaux INP}{Sep 2024 -- Expected 09/27}%
+{MEng in Computer Science (\textit{Diplôme d'ingénieur}), AI track, final year}{Bordeaux, France}
+\begin{itemize}
+    \item Ranked \textbf{5\textsuperscript{th}/81 (top 6\%)} in semester 8 and \textbf{3\textsuperscript{rd}/93} in semester 6 (French /20 scale, transcript available). \textbf{Deep Learning 18/20} $\cdot$ \textbf{Research Initiation 17/20} $\cdot$ numerical algorithms (SVD, QR, Perona--Malik anisotropic diffusion).
+\end{itemize}
+
+\vspace{1pt}
+
+\entry{EPSI Bordeaux}{Sep 2021 -- Sep 2024}%
+{BSc in Artificial Intelligence \& Data Science, ranked \textbf{1\textsuperscript{st}/10} in final year}{Bordeaux, France}
+
+% ---------------------------------------------------------------- SKILLS
+\section{Technical Skills}
+\begin{itemize}
+    \item \textbf{Deep learning:} PyTorch (advanced) $\cdot$ Keras/TensorFlow $\cdot$ Transformers and ViT $\cdot$ VQ-VAE $\cdot$ CNNs $\cdot$ LoRA/PEFT $\cdot$ explainability: LIME, SHAP, Grad-CAM $\cdot$ written from scratch: backpropagation, PCA, K-Means, logistic regression.
+    \item \textbf{Graphics \& 3D vision:} SMPL / SMPL-X, forward kinematics, rotation representations (axis-angle, 6D) $\cdot$ mesh rendering, camera calibration, z-buffer occlusion ordering, silhouette masks $\cdot$ monocular depth $\cdot$ differentiable rigid-body dynamics $\cdot$ OpenCV, ffmpeg.
+    \item \textbf{Programming \& tools:} \textbf{Python} $\cdot$ C $\cdot$ C++ $\cdot$ Java $\cdot$ JavaScript $\cdot$ SQL $\cdot$ Bash $\cdot$ Git, Docker, multi-GPU clusters, \LaTeX{}.
+    \item \textbf{Languages:} French (native) $\cdot$ English \textbf{B2, TOEIC 840/990}, placement conducted entirely in English $\cdot$ Mandarin (elementary).
+\end{itemize}
+
+\end{document}
