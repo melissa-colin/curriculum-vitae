@@ -1,0 +1,164 @@
+% =====================================================================
+%  CV — Apple Machine Learning Research (MLR), Paris
+%        Research Internship, ~6 months, onsite Paris, start Feb 2027
+%  Dérivé de master-cv.md (source de vérité unique)
+%
+%  CIBLAGE — labo de ML FONDAMENTAL (Ablin : différentiation implicite,
+%  optimisation ; lignée Cuturi : transport optimal ; publie NeurIPS/ICLR).
+%  Ce qui remonte, honnêtement :
+%   - Le moteur physique différentiable = une COUCHE D'OPTIMISATION SOUS
+%     CONTRAINTE différentiable (RNEA, matrice de masse, PD implicite,
+%     solveur Gauss-Newton, projection sur le cône) dans laquelle on
+%     rétro-propage. C'est le point de contact réel avec le groupe.
+%   - Maths from-scratch et algèbre linéaire numérique (SVD, QR, gradient
+%     conjugué, Cholesky) : leur socle.
+%   - Rigueur expérimentale : le résultat NÉGATIF d'InterMask, publié tel
+%     quel, est un signal fort pour un labo de recherche.
+%   - Publications en tête (CVPR première autrice).
+%
+%  CE QUI DESCEND / SORT : IEC 61508, K3s, AWS, MLOps, métriques motion 3D
+%  détaillées, explicabilité en section propre. Un labo de ML fondamental
+%  ne recrute pas là-dessus.
+%
+%  CE QUI N'EST PAS REVENDIQUÉ, faute de preuve : transport optimal, théorie
+%  de l'optimisation avancée, diffusion. La proximité (optimisation
+%  différentiable, couche implicite) est nommée ; la possession, non.
+%
+%  INTERDITS (master-cv.md §11) : projet clical, −58 %, PFA 82,3 %,
+%  audience Medium, Google Final Round, rejet antérieur du papier ICLR,
+%  mandarin « working knowledge » (niveau réel : débutant).
+%
+%  ⚠ AVANT ENVOI : couple Sector 100 %/70 % [À CONFIRMER] §4.3 ; titre exact
+%  du papier de Yilin Wang inconnu ; postuler TÔT (l'annonce le dit).
+% =====================================================================
+
+\documentclass[10pt, letterpaper]{article}
+
+\usepackage[
+    ignoreheadfoot,
+    top=0.9 cm,
+    bottom=0.8 cm,
+    left=1.2 cm,
+    right=1.2 cm,
+    footskip=0.9 cm,
+]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{textcomp}
+
+\definecolor{MyRed}{RGB}{160, 20, 40}
+
+\usepackage[
+    pdftitle={Melissa Colin — CV — Apple MLR Paris Research Internship},
+    pdfauthor={Melissa Colin},
+    colorlinks=true,
+    urlcolor=MyRed
+]{hyperref}
+
+\usepackage{charter}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\titleformat{\section}
+  {\large\bfseries\scshape\raggedright\color{MyRed}}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{6pt}{3pt}
+
+\setlist[itemize]{leftmargin=*, noitemsep, topsep=1pt, partopsep=0pt, parsep=0pt}
+
+\newcommand{\entry}[4]{%
+  \noindent \textbf{#1} \hfill #2 \\
+  \textit{#3} \hfill \textit{#4} \par
+}
+
+\IfFileExists{personal.tex}{\input{personal.tex}}{}
+\providecommand{\myphone}{+33 7 82 52 XX XX}
+
+\begin{document}
+
+% ---------------------------------------------------------------- HEADER
+\begin{center}
+    {\fontsize{20}{20}\selectfont \textbf{Mélissa COLIN}} \\[3pt]
+    {\large Machine Learning $\cdot$ Differentiable Optimization \& Generative Models} \\[4pt]
+
+    \small{
+    \faMapMarker* Bordeaux / Paris, France \quad|\quad
+    \faPhone* \myphone{} \quad|\quad
+    \faEnvelope~\href{mailto:contact@melissacolin.ai}{contact@melissacolin.ai} \\
+    \faGlobe~\href{https://melissacolin.ai}{melissacolin.ai} \quad|\quad
+    \faLinkedin~\href{https://www.linkedin.com/in/melissacolin/}{LinkedIn} \quad|\quad
+    \faGithub~\href{https://github.com/melissa-colin}{github.com/melissa-colin} \quad|\quad
+    \faGraduationCap~\href{https://scholar.google.com/citations?user=7r7iFpsAAAAJ}{Scholar}
+    }
+\end{center}
+
+\vspace{2pt}
+
+{\small \textit{Final-year MEng student in computer science, with a first-author paper in preparation for CVPR 2027. My work centres on \textbf{differentiable simulation}: I wrote a rigid-body
+dynamics engine from scratch and backpropagate through the unrolled simulation to train
+neural models, and I care about rigorous experimentation, including publishing negative results. Available
+for a 5--6 month research internship, onsite in Paris, starting February 2027.}}
+
+% ---------------------------------------------------------------- PUBLICATIONS
+\section{Publications}
+\begin{itemize}
+    \item \textbf{Colin, M.}, Wang, Y., Cheng, L. \textit{InterForce: Physically Admissible Multi-Person Motion Refinement.} First author, in preparation, targeting \textbf{CVPR 2027}.
+    \item \textbf{Colin, M.}, Chraibi Kaadoud, I. \textit{Performances and Explainability of ViT and CNN Architectures: An Empirical Study Using LIME, SHAP and Grad-CAM.} RJCIA / PFIA 2024, La Rochelle. First author, published, presented orally. \hfill \href{https://hal.science/hal-04641791}{[HAL]}
+    \item Co-author, \textit{X-Dancers} (3D group choreography), submitted to ICLR 2027.
+\end{itemize}
+
+% ---------------------------------------------------------------- RESEARCH
+\section{Research Experience}
+
+\entry{Vision and Learning Lab, University of Alberta (Prof.\ Li Cheng)}{May 2026 -- Sep 2026}%
+{Visiting Research Student, \textbf{Mitacs Globalink Research Award}}{Edmonton, Canada}
+\begin{itemize}
+    \item Wrote a \textbf{differentiable rigid-body dynamics engine from scratch} --- recursive Newton--Euler, composite-rigid-body mass matrix, implicit (proximal) integration --- and \textbf{backpropagate through the unrolled simulation}, using \textbf{truncated BPTT} to keep the memory cost of unrolling tractable. Verified against nine analytic invariants to machine precision. (A separate constrained projection onto the friction cone is precomputed offline.)
+    \item Cast physical validity as a \textbf{representation constraint rather than a loss penalty}: the model outputs forces confined to the admissible set, so impossible motion is unrepresentable by construction. Share of trajectories a physics simulator reproduces without divergence: \textbf{19\% $\to$ 79\%}.
+    \item Designed the accompanying \textbf{permutation-equivariant transformer} (attention factorised over set elements, joints and time), and a \textbf{27{,}000-clip corpus} generated by render-then-estimate.
+\end{itemize}
+
+\vspace{3pt}
+
+\entry{ENSEIRB-MATMECA --- Research Initiation elective, 17/20}{Feb -- May 2026}%
+{Reproduction and critical study of \textit{InterMask} (ICLR 2025)}{Bordeaux, France}
+\begin{itemize}
+    \item Reproduced the \textbf{VQ-VAE} generative baseline (FID 1.034 $\to$ \textbf{0.918}), then tested two hypotheses on the constraints in the loss.
+    \item \textbf{Reported a negative result:} neither variant improved FID or R-Precision, and I published the finding as-is rather than dropping it.
+\end{itemize}
+
+% ---------------------------------------------------------------- SKILLS
+\section{Technical Skills}
+\begin{itemize}
+    \item \textbf{Maths for ML:} \textbf{differentiable simulation}, backpropagation through an unrolled physics rollout (truncated BPTT) $\cdot$ numerical linear algebra (SVD, QR, Cholesky, conjugate gradient) $\cdot$ Gauss--Newton, Newton--Raphson $\cdot$ convex \& integer programming $\cdot$ probability, optimisation, complexity theory.
+    \item \textbf{Deep learning:} \textbf{PyTorch} (advanced) $\cdot$ Transformers $\cdot$ \textbf{VQ-VAE} $\cdot$ CNNs $\cdot$ LoRA/PEFT $\cdot$ implemented from scratch: backpropagation, PCA, K-Means, logistic regression, naive Bayes.
+    \item \textbf{Programming \& compute:} \textbf{Python} $\cdot$ C $\cdot$ C++ $\cdot$ Java $\cdot$ SQL $\cdot$ Bash $\cdot$ Linux/POSIX $\cdot$ Git $\cdot$ multi-GPU / SLURM-style clusters $\cdot$ \LaTeX{}.
+    \item \textbf{Languages:} French (native) $\cdot$ English \textbf{B2, TOEIC 840/990}, research placement conducted entirely in English.
+\end{itemize}
+
+% ---------------------------------------------------------------- EDUCATION
+\section{Education}
+
+\entry{ENSEIRB-MATMECA, Bordeaux INP}{Sep 2024 -- Expected Sep 2027}%
+{MEng in Computer Science (\textit{Diplôme d'ingénieur}), AI track, final year}{Bordeaux, France}
+\begin{itemize}
+    \item Ranked \textbf{5th/81 (top 6\%)} in semester 8, with \textbf{4th/81 on the project unit} (French /20 scale, transcript available). \textbf{Deep Learning 18/20} $\cdot$ \textbf{Research Initiation 17/20} $\cdot$ numerical algorithms, operations research, complexity theory.
+\end{itemize}
+
+\vspace{3pt}
+
+\entry{EPSI Bordeaux}{Sep 2021 -- Sep 2024}%
+{BSc in Artificial Intelligence \& Data Science, ranked \textbf{1st/10} in final year}{Bordeaux, France}
+
+% ---------------------------------------------------------------- OTHER
+\section{Selected Experience \& Awards}
+\begin{itemize}
+    \item \textbf{Mitacs Globalink Research Award (2026)} --- competitive international research funding, awarded on project proposal.
+    \item \textbf{R\&D Engineer, AI \& Safety}, Sector Group (Jun--Aug 2025): tuned a retrieval pipeline for an abstention regime --- \textbf{100\% precision on the answers returned}, at 70\% recall over 100+ queries.
+    \item \textbf{Applied AI Developer}, Cali Intelligences (2023--2024, apprenticeship): built the full training pipeline for detection models, \textbf{accuracy 60\% $\to$ 90\%}.
+    \item \textbf{Vice-President, Forum INGENIB}: \texteuro{}100k budget, 20-student team, 800 students and 80 companies hosted.
+\end{itemize}
+
+\end{document}

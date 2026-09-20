@@ -1,0 +1,164 @@
+% =====================================================================
+%  CV — Microsoft, National Technology Officer (NTO) Intern, Paris
+%        Stage 6 mois, début janvier 2027
+%  Dérivé de master-cv.md (source de vérité unique)
+%
+%  CIBLAGE — poste IA APPLIQUÉE + IA RESPONSABLE + valeur métier, tourné
+%  gouvernance/politique publique. PAS un poste recherche ni SWE. Donc :
+%   - Sector Group EN TÊTE : trustworthy AI, IEC 61508, régime d'abstention,
+%     RAG. C'est le coeur du fit (responsible AI, safety, conformité).
+%   - Cali ensuite : RGPD, traçabilité EU AI Act, mise en production.
+%   - La recherche (Alberta) reste, mais recadrée « safety by construction /
+%     honnêteté intellectuelle » (contrainte physique, résultat négatif
+%     publié) — pas la physique différentiable en détail.
+%   - Communication & leadership REMONTENT : NTO est un rôle qui parle à des
+%     décideurs. VP Forum, networking, enseignement = atouts, pas décor.
+%   - Français natif = prérequis d'un bureau NTO France.
+%
+%  CE QUI DESCEND / SORT : moteur physique différentiable détaillé, métriques
+%  motion 3D, algèbre linéaire numérique, K3s. Hors sujet ici.
+%
+%  CE QUI N'EST PAS REVENDIQUÉ : « agents autonomes » construits (elle a fait
+%  du RAG, agent-adjacent, pas des agents complets) ; expertise juridique AI
+%  Act (elle a des NOTIONS appliquées, formulé comme tel).
+%
+%  INTERDITS (master-cv.md §11) : projet clical, −58 %, PFA 82,3 %,
+%  audience Medium, Google Final Round, rejet antérieur du papier ICLR,
+%  mandarin « working knowledge » (niveau réel : débutant).
+%
+%  ⚠ AVANT ENVOI : couple Sector 100 %/70 % [À CONFIRMER] §4.3 ; le début
+%  JANVIER 2027 est plus tôt que le février annoncé ailleurs — vérifier
+%  avec l'école que le PFE peut démarrer en janvier.
+% =====================================================================
+
+\documentclass[10pt, letterpaper]{article}
+
+\usepackage[
+    ignoreheadfoot,
+    top=1.05 cm,
+    bottom=0.95 cm,
+    left=1.2 cm,
+    right=1.2 cm,
+    footskip=0.9 cm,
+]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{textcomp}
+
+\definecolor{MyRed}{RGB}{160, 20, 40}
+
+\usepackage[
+    pdftitle={Melissa Colin — CV — Microsoft NTO Intern Paris},
+    pdfauthor={Melissa Colin},
+    colorlinks=true,
+    urlcolor=MyRed
+]{hyperref}
+
+\usepackage{charter}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\titleformat{\section}
+  {\large\bfseries\scshape\raggedright\color{MyRed}}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{8pt}{4pt}
+
+\setlist[itemize]{leftmargin=*, itemsep=1pt, topsep=2pt, partopsep=0pt, parsep=0pt}
+
+\newcommand{\entry}[4]{%
+  \noindent \textbf{#1} \hfill #2 \\
+  \textit{#3} \hfill \textit{#4} \par
+}
+
+\IfFileExists{personal.tex}{\input{personal.tex}}{}
+\providecommand{\myphone}{+33 7 82 52 XX XX}
+
+\begin{document}
+
+% ---------------------------------------------------------------- HEADER
+\begin{center}
+    {\fontsize{20}{20}\selectfont \textbf{Mélissa COLIN}} \\[3pt]
+    {\large Applied \& Responsible AI $\cdot$ AI Governance, Safety \& Compliance} \\[4pt]
+
+    \small{
+    \faMapMarker* Bordeaux / Paris, France \quad|\quad
+    \faPhone* \myphone{} \quad|\quad
+    \faEnvelope~\href{mailto:contact@melissacolin.ai}{contact@melissacolin.ai} \\
+    \faGlobe~\href{https://melissacolin.ai}{melissacolin.ai} \quad|\quad
+    \faLinkedin~\href{https://www.linkedin.com/in/melissacolin/}{LinkedIn} \quad|\quad
+    \faGithub~\href{https://github.com/melissa-colin}{github.com/melissa-colin} \quad|\quad
+    \faGraduationCap~\href{https://scholar.google.com/citations?user=7r7iFpsAAAAJ}{Scholar}
+    }
+\end{center}
+
+\vspace{2pt}
+
+{\small \textit{Final-year MEng student in computer science. I build applied AI systems
+(LLM / retrieval pipelines) and I care about deploying them \textbf{safely and responsibly}:
+functional-safety design, EU AI Act and GDPR traceability, and abstention when a wrong
+answer costs more than a missing one. A first-author paper in preparation for CVPR 2027. Native French
+speaker, available for a 6-month internship in Paris from early 2027.}}
+
+% ---------------------------------------------------------------- EXPERIENCE
+\section{Experience}
+
+\entry{Vision and Learning Lab, University of Alberta (Prof.\ Li Cheng)}{May 2026 -- Sep 2026}%
+{Visiting Research Student, \textbf{Mitacs Globalink Research Award}}{Edmonton, Canada}
+\begin{itemize}
+    \item First-author research (targeting CVPR 2027) making AI-generated 3D human motion \textbf{physically valid by construction rather than by penalty} --- a safety-by-design approach where invalid outputs are made impossible, not merely discouraged.
+    \item In a separate study, \textbf{published a negative result} as-is (a method that did not improve the metric) rather than dropping it --- intellectual honesty over a flattering headline.
+\end{itemize}
+
+\vspace{5pt}
+
+\entry{Sector Group}{Jun -- Aug 2025}{R\&D Engineer --- AI and Safety}{Paris, France}
+\begin{itemize}
+    \item \textbf{Trustworthy-AI research under the \textbf{IEC 61508} functional-safety framework}: designed a retrieval-augmented (RAG) system tuned for an \textbf{abstention regime}, where the model declines rather than answers when unsure. Reached \textbf{100\% precision on the answers actually returned}, at 70\% recall over 100+ evaluation queries.
+    \item Built it on \textbf{PDFs with no text layer}, combining vision and document processing; audited AI needs across \textbf{9 business units} and helped define a per-unit AI strategy.
+    \item Studied IEC 61508 to sketch a \textbf{certification framework for safety-critical AI components} --- how to make an AI system auditable and accountable.
+\end{itemize}
+
+\vspace{5pt}
+
+\entry{Cali Intelligences (deeptech start-up, real-time video analytics)}{Jan 2023 -- Sep 2024}%
+{Applied AI Intern, then AI Developer (apprenticeship)}{Talence, France}
+\begin{itemize}
+    \item Shipped AI detection models to production (\textbf{accuracy 60\% $\to$ 90\%}), and redesigned data storage into a bronze/silver medallion architecture on AWS for \textbf{GDPR and EU AI Act traceability} --- data lineage and accountability by design.
+    \item Deployed on Docker and GitHub Actions, with reproducible, auditable pipelines.
+    \item Benchmarked and selected the annotation tooling against \textbf{38 explicit requirements}, and trained non-technical staff on the resulting AI workflow.
+\end{itemize}
+
+% ---------------------------------------------------------------- SKILLS
+\section{Skills \& Knowledge}
+\begin{itemize}
+    \item \textbf{Applied AI:} LLMs, \textbf{RAG / retrieval pipelines}, prompt design, fine-tuning (LoRA/PEFT) $\cdot$ PyTorch, Transformers, computer vision $\cdot$ evaluation \& benchmarking of AI systems.
+    \item \textbf{Responsible AI \& governance:} \textbf{EU AI Act}, \textbf{GDPR}, \textbf{IEC 61508} functional safety $\cdot$ abstention / uncertainty-aware answering $\cdot$ auditability, data lineage, human oversight $\cdot$ AI explainability (LIME, SHAP, Grad-CAM --- subject of my first paper).
+    \item \textbf{Engineering:} Python (advanced) $\cdot$ SQL $\cdot$ C / C++ / Java $\cdot$ Docker, Git, GitHub Actions, AWS, Linux.
+    \item \textbf{Languages:} \textbf{French (native)} $\cdot$ English \textbf{B2, TOEIC 840/990}, research placement conducted entirely in English $\cdot$ Mandarin (elementary).
+\end{itemize}
+
+% ---------------------------------------------------------------- EDUCATION
+\section{Education}
+
+\entry{ENSEIRB-MATMECA, Bordeaux INP}{Sep 2024 -- Expected Sep 2027}%
+{MEng in Computer Science (\textit{Diplôme d'ingénieur}), AI track, final year}{Bordeaux, France}
+\begin{itemize}
+    \item Ranked \textbf{5th/81 (top 6\%)} in semester 8 (French /20 scale, transcript available). \textbf{Deep Learning 18/20} $\cdot$ \textbf{Research Initiation 17/20} $\cdot$ Applied TCP/IP 17.5/20.
+\end{itemize}
+
+\vspace{5pt}
+
+\entry{EPSI Bordeaux}{Sep 2021 -- Sep 2024}%
+{BSc in Artificial Intelligence \& Data Science, ranked \textbf{1st/10} in final year}{Bordeaux, France}
+
+% ---------------------------------------------------------------- PUBLICATIONS + LEADERSHIP
+\section{Publications, Awards \& Leadership}
+\begin{itemize}
+    \item \textbf{Colin, M.} et al. \textit{InterForce: Physically Admissible Multi-Person Motion Refinement.} First author, in preparation, targeting \textbf{CVPR 2027}. Earlier: first-author paper on \textbf{explainability of ViT and CNN} (RJCIA/PFIA 2024). \hfill \href{https://hal.science/hal-04641791}{[HAL]}
+    \item \textbf{Mitacs Globalink Research Award (2026)} --- competitive international research funding.
+    \item \textbf{Vice-President, Forum INGENIB}: led a 20-student team and a \texteuro{}100k budget to host 800 students and 80 companies. \textbf{Networking Lead, ai4industry}: coordinated 22 researchers and speakers. Stakeholder-facing, cross-team communication.
+\end{itemize}
+
+\end{document}
