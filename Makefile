@@ -21,14 +21,21 @@ PDFLATEX = pdflatex -interaction=nonstopmode
 
 FRENCH  = french
 GENERAL = cv-research-general
+RESUME  = research-resume
 
 TARGETED_SRC = $(wildcard targeted/*/*.tex)
 TARGETED_PDF = $(TARGETED_SRC:.tex=.pdf)
 
-.PHONY: all french general targeted compile clean cleanaux check-personal help
+# Campagne PFE 2027 → thèse : un dossier par cible dans PFE-PHD/cv/.
+# Le wildcard ne prend que les */cv.tex, donc PFE-PHD/cv/preamble.tex (qui
+# n'est pas dans un sous-dossier et n'est pas compilable seul) reste dehors.
+PFE_SRC = $(wildcard PFE-PHD/cv/*/cv.tex)
+PFE_PDF = $(PFE_SRC:.tex=.pdf)
+
+.PHONY: all french general resume targeted pfe compile clean cleanaux check-personal help
 
 # Compile tout, puis nettoie les auxiliaires
-all: french general targeted
+all: french general resume targeted pfe
 	$(MAKE) cleanaux
 
 french: check-personal
@@ -40,6 +47,17 @@ general: check-personal
 	$(PDFLATEX) $(GENERAL).tex
 	$(PDFLATEX) $(GENERAL).tex
 	$(MAKE) cleanaux
+
+# Même contenu que general, condensé sur une page.
+resume: check-personal
+	$(PDFLATEX) $(RESUME).tex
+	$(PDFLATEX) $(RESUME).tex
+	$(MAKE) cleanaux
+
+# cv-public.tex n'est qu'une enveloppe autour de cv.tex : sans cette ligne,
+# make ne voit pas le lien et laisse un PDF public périmé — or c'est celui
+# qui est versionné et partagé par lien.
+targeted/google-deepmind-openendedness/cv-public.pdf: targeted/google-deepmind-openendedness/cv.tex
 
 targeted: check-personal $(TARGETED_PDF)
 	$(MAKE) cleanaux
@@ -56,6 +74,23 @@ targeted/%.pdf: targeted/%.tex
 	  if [ -z "$$num" ] || ! pdftotext $@ - 2>/dev/null | grep -qF "$$num"; then \
 	    echo ">>> $@ : vrai numero ABSENT du PDF (le montage gdrive a rate une"; \
 	    echo ">>> lecture pendant le build). Relancer make targeted."; \
+	    exit 1; fi; fi
+
+pfe: check-personal $(PFE_PDF)
+	$(MAKE) cleanaux
+
+# Même logique que targeted/ : compilation depuis la racine via
+# -output-directory, pour que \input{PFE-PHD/cv/preamble.tex} et personal.tex
+# soient tous deux résolus. La dépendance sur preamble.tex fait que toucher au
+# préambule recompile les 58 CV — c'est voulu, sinon ils divergent en silence.
+PFE-PHD/cv/%.pdf: PFE-PHD/cv/%.tex PFE-PHD/cv/preamble.tex
+	$(PDFLATEX) -output-directory=$(dir $@) $<
+	$(PDFLATEX) -output-directory=$(dir $@) $<
+	@if [ -f personal.tex ]; then \
+	  num=$$(sed -n 's/.*myphone}{\([^}]*\)}.*/\1/p' personal.tex); \
+	  if [ -z "$$num" ] || ! pdftotext $@ - 2>/dev/null | grep -qF "$$num"; then \
+	    echo ">>> $@ : vrai numero ABSENT du PDF (le montage gdrive a rate une"; \
+	    echo ">>> lecture pendant le build). Relancer make pfe."; \
 	    exit 1; fi; fi
 
 # Avertit si personal.tex manque, sans bloquer la compilation.
@@ -77,16 +112,20 @@ cleanaux:
 	       *.fls *.fdb_latexmk *.synctex.gz
 	@rm -f targeted/*/*.aux targeted/*/*.log targeted/*/*.out \
 	       targeted/*/*.fls targeted/*/*.fdb_latexmk targeted/*/*.synctex.gz
+	@rm -f PFE-PHD/cv/*/*.aux PFE-PHD/cv/*/*.log PFE-PHD/cv/*/*.out \
+	       PFE-PHD/cv/*/*.fls PFE-PHD/cv/*/*.fdb_latexmk PFE-PHD/cv/*/*.synctex.gz
 
 # Supprime tout ce qui est généré, PDF compris
 clean: cleanaux
-	@rm -f $(FRENCH).pdf $(GENERAL).pdf $(TARGETED_PDF)
+	@rm -f $(FRENCH).pdf $(GENERAL).pdf $(RESUME).pdf $(TARGETED_PDF) $(PFE_PDF)
 
 help:
 	@echo "make all      — compile tous les CV"
 	@echo "make french   — CV français (xelatex)"
 	@echo "make general  — CV recherche, version générale (pdflatex)"
+	@echo "make resume   — CV recherche, version une page (pdflatex)"
 	@echo "make targeted — tous les CV ciblés de targeted/*/"
+	@echo "make pfe      — tous les CV de la campagne PFE-PHD/cv/*/"
 	@echo "make compile FILE=x.tex — compile un fichier isolé"
 	@echo "make cleanaux — supprime les auxiliaires"
 	@echo "make clean    — supprime auxiliaires et PDF"
