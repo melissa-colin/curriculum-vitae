@@ -1,0 +1,157 @@
+% =====================================================================
+%  CV — Google DeepMind, « Student Researcher 2027 », équipe Open-Endedness
+%  Londres, 6 mois, 100 % sur site. Hôte : Jake Bruce.
+%  Thèmes annoncés : LLM pretraining, model architecture, memory,
+%  reasoning, autoresearch.
+%
+%  DOUBLE DÉPÔT : formulaire Google Form spécifique à l'équipe + annonce
+%  officielle Google Careers req 86733690079453894 (clôture 13/12/2026).
+%  C'est la MÊME req que targeted/google-student-researcher-2027/ ; ce CV
+%  est la version ré-angleée pour l'équipe hôte.
+%
+%  ANGLE (07/11/2026) : le fil conducteur affiché n'est PAS le mouvement
+%  humain, c'est l'ARCHITECTURE — structure du problème câblée dans le
+%  modèle plutôt qu'apprise. C'est le seul axe qui transfère vraiment vers
+%  LLM pretraining / reasoning, et c'est sa vraie question de recherche.
+%  Le stage Alberta est donc raconté architecture d'abord, physique ensuite.
+%  L'initiation à la recherche remonte en visibilité : InterMask est un
+%  transformeur génératif à tokens discrets masqués, soit la famille de
+%  modélisation la plus proche du pré-entraînement par tokens masqués.
+%
+%  FAITS — source : master-cv.md §3.0 (faits de référence au 14/10/2026),
+%  qui prime sur §3.1 et §3.2. Donc : PAS d'InterForce, PAS de CVPR 2027,
+%  PAS de X-Dancers, PAS d'« outputs forces », PAS de 27 000 clips, PAS de
+%  Human3.6M, PAS du −33 % (non vérifiable, branche supprimée le 07/10).
+%  Le 19,3 → 79,1 % est autorisé UNIQUEMENT formulé en taux de réussite
+%  d'un tracker.
+%
+%  ANONYMAT DOUBLE AVEUGLE : papier co-signé sans titre, sans venue, sans
+%  mot de sujet, et SÉPARÉ de l'entrée Alberta. CV envoyé en privé à un
+%  recruteur = conforme ; ne JAMAIS publier cette version.
+%
+%  INTERDITS (master-cv.md §11) : santé, dossier handicap, rejet antérieur
+%  du papier co-signé, canal de candidature Google, −58 %, PFA 82,3 %,
+%  audience Medium, Google Final Round, noms de clients, projets perso,
+%  S7 isolé, chinois « working knowledge », anglais « fluent ».
+%
+%  À ARBITRER PAR MÉLISSA : la disponibilité annoncée (09/27). Le PFE
+%  NAVER × KINETIX court de février à août 2027 ; un départ « flexible
+%  en 2027 » ne peut donc commencer qu'après. Voir le point envoyé.
+% =====================================================================
+
+\ifdefined\PUBLICVERSION
+  \newcommand{\cvpdftitle}{Melissa Colin --- CV --- Research}
+\else
+  \newcommand{\cvpdftitle}{Melissa Colin --- CV --- Google DeepMind, Student Researcher 2027 (Open-Endedness)}
+\fi
+\newcommand{\cvtagline}{Deep Learning Architecture $\cdot$ Structured Attention $\cdot$ Constraints Built Into the Model}
+\input{PFE-PHD/cv/preamble.tex}
+
+\begin{document}
+\cvheader
+
+{\small Final-year MEng student in Computer Science (AI track, Engineer-Doctor track), graduating 09/27.
+I design architectures where the structure of the problem is written into the model rather than left to be
+learned from data: attention factorised along the axes that carry structure, and a differentiable constrained
+layer that makes the output valid by construction instead of merely penalised when wrong. Most recently at
+the University of Alberta on a Mitacs Globalink award.}
+
+% ---------------------------------------------------------------- EDUCATION
+\section{Education}
+
+\entry{ENSEIRB-MATMECA, Bordeaux INP}{09/24 -- expected 09/27}%
+{MEng in Computer Science (\textit{diplôme d'ingénieur}), AI track, Engineer-Doctor track (PhD preparation)}{Bordeaux, France}
+\begin{itemize}
+    \item Semester 8 (Feb--May 2026): 15.44/20, ranked 5th/81 (top 6\%), up from 12.65 in semester 7. Semester 6: ranked 3rd/93.
+    \item Deep Learning 18/20 $\cdot$ Research Initiation, PhD track 17/20 $\cdot$ Applied TCP/IP 17.5/20 $\cdot$ Cryptology 16.5/20 (French /20 scale; transcript attached).
+    \item Final-year coursework (2026--27): large language models; knowledge and reasoning; data science and learning; cognitive architectures; AI applications (vision, music generation, AlphaGo).
+\end{itemize}
+
+\entrygap
+
+\entry{EPSI Bordeaux}{09/21 -- 09/24}%
+{BSc in Artificial Intelligence and Data Science (RNCP level 6)}{Bordeaux, France}
+\begin{itemize}
+    \item Ranked 1st/10 in the final year (16.38/20).
+\end{itemize}
+
+% ---------------------------------------------------------------- RESEARCH
+\section{Research Experience}
+
+\entry{Vision and Learning Lab, University of Alberta (Prof.\ Li Cheng)}{05/26 -- 09/26}%
+{Visiting Research Student, Mitacs Globalink Research Award}{Edmonton, Canada}
+\begin{itemize}
+    \item \textbf{Architecture.} Designed a permutation-equivariant transformer with attention factorised over three axes --- people, joints, time --- so that the symmetry of the problem is a property of the model rather than something the model has to infer from data. Physical interaction between people enters as an attention bias on the people axis.
+    \item \textbf{Constraints inside the network.} Added a differentiable constrained layer as the final layer, trained end-to-end: the network proposes an output, the layer returns the nearest one that satisfies the constraints. Ground contact became a hard constraint instead of a penalty, leaving 0.001\,mm residual violation on an input perturbed by 154\,mm.
+    \item \textbf{Making it trainable at scale.} Solved the inner constrained least-squares problem matrix-free (Gauss--Newton with preconditioned conjugate gradients), so the 47.9\,GB dense Jacobian is never formed. Differentiated through the solver with the adjoint method rather than by unrolling it, and validated the gradients against finite differences to $6.6\times10^{-10}$. End-to-end inference 1.95$\times$ faster.
+    \item \textbf{Architectural decision from a controlled experiment.} Measured that the first output parameterisation moved the result by only $\sim$2\,mm, against 95\% retained for the second. Traced the cause to a dimension mismatch --- 6 equations constraining 159 unknowns --- and redirected the architecture accordingly rather than tuning around the symptom.
+    \item \textbf{Measurement discipline.} Found that run-to-run non-determinism from CUDA reduction order was 0.37\,mm (median), larger than the effect I was trying to measure. Made training and evaluation deterministic at a 1.76$\times$ runtime cost, then re-ran the comparisons.
+    \item \textbf{Data and compute.} Assembled a 26,000-clip corpus from several motion datasets, with pseudo-labels from three independent estimators; multi-day training over 14,912 windows on two RTX 4090 GPUs. An earlier refiner raised the success rate of the PHC physics tracker from 19.3\% to 79.1\% on 120 test windows (ground-truth motion scores 92.6\%).
+\end{itemize}
+
+\entrygap
+
+\entry{NAVER LABS Europe, co-supervised with Inria KINETIX}{02/27 -- 08/27 (accepted)}%
+{Research Internship --- foundation models for 3D human perception (G.\ Rogez, J.-S.\ Franco)}{Grenoble, France}
+\begin{itemize}
+    \item Final research internship of the degree, on large pretrained visual encoders and what their representation can and cannot express about non-rigid scenes.
+\end{itemize}
+
+\entrygap
+
+\entry{ENSEIRB-MATMECA, Research Initiation, PhD track (17/20)}{02/26 -- 05/26}%
+{Reproduction study of \textit{InterMask} (ICLR 2025), a masked generative transformer}{Bordeaux, France}
+\begin{itemize}
+    \item Reproduced a discrete-token model --- VQ-VAE tokeniser, then a transformer trained to fill masked tokens, the same modelling family as masked-token pretraining (FID 1.034 reported, 0.918 obtained).
+    \item Tested two hypotheses of my own on top of it: an asymmetric contact penalty, and temporal data augmentation. Neither improved FID or R-Precision. I reported the negative result rather than selecting a favourable seed.
+\end{itemize}
+
+% ---------------------------------------------------------- PUBLICATIONS
+\section{Publications \& Awards}
+\begin{itemize}
+\ifdefined\PUBLICVERSION\else
+    \item Co-authored paper under double-blind review at a top-tier machine learning conference (title and venue withheld). Contribution: data refinement and result visualizations. \hfill 2026
+\fi
+    \item \textbf{M.\ Colin} et al. A differentiable constrained layer for multi-person 3D motion refinement (University of Alberta placement). First-author manuscript in preparation. \hfill 2026
+    \item Mitacs Globalink Research Award: international research funding for the University of Alberta placement. \hfill 2026
+    \item \textbf{M.\ Colin}, I.\ Chraibi Kaadoud. \textit{Performances and Explainability of ViT and CNN Architectures: An Empirical Study Using LIME, SHAP and Grad-CAM.} RJCIA @ PFIA (French national AI conference). First author, oral presentation. \href{https://hal.science/hal-04641791}{[HAL]} \hfill 2024
+\end{itemize}
+
+% ---------------------------------------------------------------- PROFESSIONAL
+\section{Professional Experience}
+
+\entry{Sector Group}{06/25 -- 08/25}%
+{R\&D Engineer, AI and Safety (internship)}{Paris, France (remote)}
+\begin{itemize}
+    \item Built a retrieval-augmented question-answering system over PDF documents with no text layer, for functional-safety work under IEC 61508.
+    \item Worked on the decision to abstain, because a confident wrong answer cost more than a missing one: 100\% precision on the answers returned, at 70\% recall over 100+ evaluation queries. Audited 9 business units.
+\end{itemize}
+
+\entrygap
+
+\entry{Cali Intelligences}{01/23 -- 09/24}%
+{AI Developer (apprenticeship); previously Applied AI Intern}{Talence, France}
+\begin{itemize}
+    \item Built the training pipeline for the real-time video detection models (YOLOv7, then YOLOv8): data ingestion, an augmentation library written from scratch in OpenCV, validation, YAML-driven orchestration. Raised detection accuracy from 60\% to 90\%.
+    \item Corrected identity errors in multi-object tracking, halving false positives. Deployed with Docker and GitHub Actions; moved data storage to a bronze/silver architecture on AWS for GDPR traceability.
+\end{itemize}
+
+
+% ---------------------------------------------------------------- SKILLS
+\section{Skills}
+\begin{itemize}
+    \item \textbf{Programming languages:} Python (advanced), C, C++, SQL, Java, TypeScript/JavaScript, Bash.
+    \item \textbf{Model architecture:} transformers and attention design, equivariance and weight sharing, VQ-VAE and discrete-token models, masked-token training, ViT and CNN backbones, LoRA/PEFT, retrieval-augmented generation.
+    \item \textbf{Training and optimisation:} PyTorch, multi-GPU training, implicit differentiation through a solver, constrained optimisation, Gauss--Newton and conjugate gradients, deterministic evaluation.
+    \item \textbf{Analysis and infrastructure:} ablation design, negative-result reporting, explainability (LIME, SHAP, Grad-CAM); Linux, Git, Docker, GitHub Actions, AWS.
+    \item \textbf{Languages:} French (native), English (B2, TOEIC 840/990; four-month research placement conducted in English).
+\end{itemize}
+
+% ---------------------------------------------------------------- LEADERSHIP
+\section{Leadership}
+\begin{itemize}
+    \item Vice-President, Forum INGENIB (Apr 2025 -- present): EUR 100k budget, team of 20 students, 800 students and 80 companies hosted.
+    \item Networking Lead, ai4industry workshop (Oct 2024 -- Jun 2025): recruited and coordinated 22 speakers.
+\end{itemize}
+
+\end{document}
